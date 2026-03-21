@@ -129,27 +129,91 @@ function renderShortlist() {
         <p>Use the table to pin candidates, then compare workflow burden, buyer boundary, and watch-outs side by side.</p>
       </div>
     `;
+  } else {
+    const compareLead =
+      compareRows.length === 1
+        ? "Add one or two more markets to turn this shortlist into a real decision memo."
+        : "Use this grid to answer why one shortlisted market deserves the next founder week over the others.";
+
+    comparePanel.innerHTML = `
+      <p class="compare-lead">${compareLead}</p>
+      <div class="compare-grid">
+        ${compareRows.map((row) => buildCompareCard(row)).join("")}
+      </div>
+    `;
+
+    comparePanel.querySelectorAll("[data-remove-code]").forEach((button) => {
+      button.addEventListener("click", () => {
+        toggleCompare(button.dataset.removeCode);
+        renderExplorer();
+      });
+    });
+  }
+
+  renderMemo(compareRows);
+}
+
+function renderMemo(compareRows) {
+  const memoPanel = document.querySelector("#memo-panel");
+  const memoText = buildMemoMarkdown(compareRows);
+
+  if (!compareRows.length) {
+    memoPanel.innerHTML = `
+      <div class="memo-empty">
+        <strong>Decision memo appears after you shortlist markets.</strong>
+        <p>Once you pin candidates, Atlas will draft a lightweight memo you can copy or download as markdown.</p>
+      </div>
+    `;
     return;
   }
 
-  const compareLead =
-    compareRows.length === 1
-      ? "Add one or two more markets to turn this shortlist into a real decision memo."
-      : "Use this grid to answer why one shortlisted market deserves the next founder week over the others.";
-
-  comparePanel.innerHTML = `
-    <p class="compare-lead">${compareLead}</p>
-    <div class="compare-grid">
-      ${compareRows.map((row) => buildCompareCard(row)).join("")}
+  memoPanel.innerHTML = `
+    <div class="memo-header">
+      <div>
+        <p class="eyebrow">Memo Draft</p>
+        <h3>Export a shortlist decision artifact</h3>
+        <p class="memo-copy">
+          This draft turns the current shortlist into a founder-ready memo with the leading pick, comparison table,
+          and market-specific watch-outs grounded in the current public payload.
+        </p>
+      </div>
+      <div class="memo-actions">
+        <button id="copy-memo" class="secondary-button" type="button">Copy memo</button>
+        <button id="download-memo" class="secondary-button" type="button">Download markdown</button>
+        <span id="memo-status" class="memo-status">Ready</span>
+      </div>
     </div>
+    <pre class="memo-preview" id="memo-preview"></pre>
   `;
 
-  comparePanel.querySelectorAll("[data-remove-code]").forEach((button) => {
-    button.addEventListener("click", () => {
-      toggleCompare(button.dataset.removeCode);
-      renderExplorer();
-    });
+  document.querySelector("#memo-preview").textContent = memoText;
+  document.querySelector("#copy-memo").addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(memoText);
+      updateMemoStatus("Copied");
+    } catch (error) {
+      updateMemoStatus("Copy failed");
+    }
   });
+  document.querySelector("#download-memo").addEventListener("click", () => {
+    const blob = new Blob([memoText], { type: "text/markdown;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "atlas-shortlist-memo.md";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    updateMemoStatus("Downloaded");
+  });
+}
+
+function updateMemoStatus(label) {
+  const status = document.querySelector("#memo-status");
+  if (status) {
+    status.textContent = label;
+  }
 }
 
 function buildCompareCard(row) {
@@ -197,6 +261,58 @@ function buildCompareCard(row) {
   `;
 }
 
+function buildMemoMarkdown(compareRows) {
+  const orderedRows = [...compareRows].sort((left, right) => left.rank - right.rank);
+  const leadRow = orderedRows[0];
+  const shortlistNames = orderedRows.map((row) => `${row.entity_name} (${row.naics_code})`).join(", ");
+  const generatedAt = new Date(state.payload.generated_at).toLocaleString();
+  const comparisonTable = [
+    "| Rank | NAICS | Industry | Move | Software | Roll-up | Workflow | Confidence |",
+    "| --- | --- | --- | --- | ---: | ---: | ---: | ---: |",
+    ...orderedRows.map(
+      (row) =>
+        `| ${row.rank} | ${row.naics_code} | ${escapePipes(row.entity_name)} | ${row.recommended_move} | ${row.scores.software_wedge.toFixed(1)} | ${row.scores.rollup_wedge.toFixed(1)} | ${row.scores.workflow_intensity.toFixed(1)} | ${row.scores.confidence.toFixed(1)} |`
+    ),
+  ].join("\n");
+
+  const marketSections = orderedRows
+    .map(
+      (row) => `## ${row.entity_name} (${row.naics_code})
+
+- Current move: ${row.recommended_move}
+- Why it fits: ${firstPositiveSignal(row)}
+- Workflow read: ${workflowCompareLine(row)}
+- Buyer boundary: ${row.anchors.sba_size_standard.display} ceiling on a ${formatBasis(row.anchors.sba_size_standard.basis)} basis
+- Watch-out: ${firstWatchout(row)}
+- Top visible occupation: ${topOccupationLine(row)}
+`
+    )
+    .join("\n");
+
+  return `# Vertical SaaS White-Space Atlas Shortlist Memo
+
+Generated: ${generatedAt}
+Method: ${state.payload.method_version}
+Shortlist: ${shortlistNames}
+
+## Current Recommendation
+
+Best current pick inside this shortlist: **${leadRow.entity_name} (${leadRow.naics_code})**
+
+Reason to lead with it: ${firstPositiveSignal(leadRow)}
+
+Current watch-out: ${firstWatchout(leadRow)}
+
+## Side-By-Side Comparison
+
+${comparisonTable}
+
+## Market Notes
+
+${marketSections}
+`.trim();
+}
+
 function compareMetric(label, value) {
   return `
     <div class="compare-metric">
@@ -223,9 +339,7 @@ function renderTable() {
     state.selectedCode = filteredRows[0].naics_code;
   }
 
-  tbody.innerHTML = filteredRows
-    .map((row) => buildTableRow(row))
-    .join("");
+  tbody.innerHTML = filteredRows.map((row) => buildTableRow(row)).join("");
 
   [...tbody.querySelectorAll("tr[data-naics-code]")].forEach((row) => {
     row.addEventListener("click", () => {
@@ -541,6 +655,15 @@ function workflowCompareLine(row) {
   return `${topOccupation.occupation_title} is the top visible role at ${topOccupation.percent_of_industry.toFixed(1)}% of employment; frontline share is ${row.workflow_profile.frontline_operator_share_pct.toFixed(1)}% with ${row.workflow_profile.occupation_coverage_share_pct.toFixed(1)}% visible coverage.`;
 }
 
+function topOccupationLine(row) {
+  const topOccupation = row.workflow_profile.top_occupations[0];
+  return `${topOccupation.occupation_title} (${topOccupation.occupation_code}) at ${topOccupation.percent_of_industry.toFixed(1)}% of visible employment`;
+}
+
+function escapePipes(value) {
+  return value.replaceAll("|", "\\|");
+}
+
 function formatBasis(basis) {
   return basis.replaceAll("_", " ");
 }
@@ -554,6 +677,12 @@ load().catch((error) => {
   document.querySelector("#compare-panel").innerHTML = `
     <div class="compare-empty">
       <strong>Could not load site/data.json.</strong>
+      <p>${error.message}</p>
+    </div>
+  `;
+  document.querySelector("#memo-panel").innerHTML = `
+    <div class="memo-empty">
+      <strong>Memo preview unavailable.</strong>
       <p>${error.message}</p>
     </div>
   `;

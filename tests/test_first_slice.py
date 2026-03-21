@@ -136,6 +136,9 @@ def test_static_explorer_includes_shortlist_compare_surface() -> None:
 
     assert "Compare 2-3 markets side by side" in index_html
     assert 'id="compare-panel"' in index_html
+    assert 'id="memo-panel"' in index_html
     assert 'id="shortlist-chips"' in index_html
     assert "function renderShortlist()" in app_js
     assert "shortlistButtonLabel" in app_js
+    assert "function renderMemo(compareRows)" in app_js
+    assert "function buildMemoMarkdown(compareRows)" in app_js

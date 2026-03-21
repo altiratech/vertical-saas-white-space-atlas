@@ -221,6 +221,12 @@ h1 {
   margin-top: 18px;
 }
 
+.memo-panel {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
 .compare-empty {
   padding: 18px;
   border: 1px dashed var(--border);
@@ -233,6 +239,22 @@ h1 {
 }
 
 .compare-empty p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.memo-empty {
+  padding: 18px;
+  border: 1px dashed var(--border);
+  background: rgba(48, 86, 66, 0.04);
+}
+
+.memo-empty strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.memo-empty p {
   margin: 0;
   color: var(--muted);
 }
@@ -304,6 +326,47 @@ h1 {
   padding: 12px;
   border-left: 3px solid var(--accent);
   background: rgba(48, 86, 66, 0.08);
+}
+
+.memo-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: start;
+}
+
+.memo-copy {
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.memo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.memo-status {
+  font-family: "SF Mono", "Monaco", "Consolas", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.memo-preview {
+  margin: 16px 0 0;
+  padding: 18px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.74);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  font-family: "SF Mono", "Monaco", "Consolas", monospace;
+  font-size: 0.84rem;
 }
 
 input,
@@ -445,8 +508,13 @@ tbody tr.compared:not(.active) {
   .layout,
   .controls,
   .summary-grid,
-  .shortlist-bar {
+  .shortlist-bar,
+  .memo-header {
     grid-template-columns: 1fr;
+  }
+
+  .memo-actions {
+    justify-content: flex-start;
   }
 
   .shell {
