@@ -14,14 +14,11 @@ The founding loop is:
 
 ## Current Repo Status
 
-This repo is a fresh scaffold.
-
-The current goal is to establish:
-- founding docs
-- implementation guardrails
-- a stable repo shape
-
-before major code expands.
+This repo now contains the first real-data slice:
+- a Python build that fetches official CBP, SBA, BLS, and Census crosswalk artifacts
+- a normalized 6-digit national NAICS table in `clean/`
+- scored industry cells in `data/`
+- a static explorer payload and plain HTML surface in `site/`
 
 ## Canonical Build Truth
 
@@ -57,3 +54,18 @@ Treat these docs as authoritative:
 ## Build Rule
 
 Do not drift into a broad market-intelligence platform before the ranked move engine works.
+
+## First Slice Build
+
+Run the first slice end to end with:
+
+```bash
+python3 scripts/build_first_slice.py
+```
+
+Outputs land in:
+- `raw/` for cached source artifacts
+- `clean/` for normalized tables
+- `data/` for scored exports
+- `site/data.json` for the static explorer payload
+- `site/index.html` for the minimal explorer surface

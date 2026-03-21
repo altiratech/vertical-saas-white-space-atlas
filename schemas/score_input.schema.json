@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "score_input.schema.json",
+  "title": "Score Input",
+  "type": "object",
+  "required": [
+    "employees_per_establishment",
+    "payroll_per_establishment_usd",
+    "employment_gap_ratio_bls_to_cbp",
+    "sba_size_standard_basis",
+    "sba_size_standard_value"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "employees_per_establishment": {
+      "type": "number",
+      "minimum": 0
+    },
+    "payroll_per_establishment_usd": {
+      "type": "number",
+      "minimum": 0
+    },
+    "employment_gap_ratio_bls_to_cbp": {
+      "type": "number",
+      "minimum": 0
+    },
+    "sba_size_standard_basis": {
+      "type": "string",
+      "enum": ["receipts_millions_usd", "assets_millions_usd", "employees"]
+    },
+    "sba_size_standard_value": {
+      "type": "number",
+      "minimum": 0
+    }
+  }
+}

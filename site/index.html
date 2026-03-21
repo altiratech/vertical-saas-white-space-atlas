@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vertical SaaS White-Space Atlas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">First Slice</p>
+          <h1>Vertical SaaS White-Space Atlas</h1>
+          <p class="lede">
+            National-only, 6-digit NAICS ranking built from CBP, SBA, and BLS.
+          </p>
+        </div>
+        <div class="meta">
+          <div>
+            <span class="meta-label">Method</span>
+            <strong id="method-version">Loading...</strong>
+          </div>
+          <div>
+            <span class="meta-label">Rows</span>
+            <strong id="row-count">-</strong>
+          </div>
+          <div>
+            <span class="meta-label">Generated</span>
+            <strong id="generated-at">-</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="summary-grid" id="summary-grid"></section>
+
+      <section class="controls">
+        <label>
+          Search
+          <input id="search-input" type="search" placeholder="Search industry or NAICS code" />
+        </label>
+        <label>
+          Move
+          <select id="move-filter">
+            <option value="all">All moves</option>
+          </select>
+        </label>
+        <label>
+          Min confidence
+          <input id="confidence-filter" type="range" min="55" max="100" step="5" value="55" />
+          <span id="confidence-value">55+</span>
+        </label>
+      </section>
+
+      <main class="layout">
+        <section class="table-panel">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Industry</th>
+                <th>Software</th>
+                <th>Roll-up</th>
+                <th>Move</th>
+                <th>Confidence</th>
+              </tr>
+            </thead>
+            <tbody id="industry-table"></tbody>
+          </table>
+        </section>
+
+        <aside class="detail-panel" id="detail-panel">
+          <p class="detail-empty">Select an industry row to inspect evidence and caveats.</p>
+        </aside>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

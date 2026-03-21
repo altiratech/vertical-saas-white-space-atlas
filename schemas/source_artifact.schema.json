@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "source_artifact.schema.json",
+  "title": "Source Artifact",
+  "type": "object",
+  "required": [
+    "artifact_id",
+    "name",
+    "url",
+    "local_path",
+    "vintage",
+    "description",
+    "sha256",
+    "size_bytes"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "local_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "vintage": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "size_bytes": {
+      "type": "integer",
+      "minimum": 1
+    }
+  }
+}

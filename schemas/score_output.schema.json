@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "score_output.schema.json",
+  "title": "Score Output",
+  "type": "object",
+  "required": [
+    "fragmentation",
+    "operating_complexity",
+    "willingness_to_pay",
+    "growth",
+    "market_scale",
+    "software_wedge",
+    "rollup_wedge",
+    "confidence"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "fragmentation": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "operating_complexity": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "willingness_to_pay": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "growth": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "market_scale": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "software_wedge": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "rollup_wedge": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    }
+  }
+}

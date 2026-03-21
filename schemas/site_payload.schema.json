@@ -1,0 +1,525 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "site_payload.schema.json",
+  "title": "Site Payload",
+  "type": "object",
+  "required": [
+    "generated_at",
+    "method_version",
+    "canonical_naics_version",
+    "summary",
+    "coverage_gaps",
+    "source_artifacts",
+    "filters",
+    "entities"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "method_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_naics_version": {
+      "type": "string",
+      "const": "2022"
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "fully_joined_rows",
+        "excluded_rows",
+        "excluded_by_reason",
+        "recommended_move_counts",
+        "software_wedge_range",
+        "rollup_wedge_range",
+        "confidence_range",
+        "national_only"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fully_joined_rows": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "excluded_rows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excluded_by_reason": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "recommended_move_counts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "software_wedge_range": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number"
+          }
+        },
+        "rollup_wedge_range": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number"
+          }
+        },
+        "confidence_range": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number"
+          }
+        },
+        "national_only": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "coverage_gaps": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["count", "sample_codes"],
+        "additionalProperties": false,
+        "properties": {
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sample_codes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^\\d{6}$"
+            }
+          }
+        }
+      }
+    },
+    "source_artifacts": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "required": [
+          "artifact_id",
+          "name",
+          "url",
+          "local_path",
+          "vintage",
+          "description",
+          "sha256",
+          "size_bytes"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "artifact_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "local_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "vintage": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "filters": {
+      "type": "object",
+      "required": ["recommended_moves", "score_fields"],
+      "additionalProperties": false,
+      "properties": {
+        "recommended_moves": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["build", "sell", "acquire", "monitor", "ignore"]
+          }
+        },
+        "score_fields": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "entities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "entity_id",
+          "entity_name",
+          "entity_type",
+          "naics_code",
+          "naics_version",
+          "geography",
+          "size_band",
+          "placeholder",
+          "lineage",
+          "anchors",
+          "score_inputs",
+          "scores",
+          "recommended_move",
+          "summary",
+          "evidence",
+          "caveats",
+          "sources",
+          "rank"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "entity_id": {
+            "type": "string",
+            "pattern": "^naics:\\d{6}$"
+          },
+          "entity_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "entity_type": {
+            "type": "string",
+            "const": "naics_industry"
+          },
+          "naics_code": {
+            "type": "string",
+            "pattern": "^\\d{6}$"
+          },
+          "naics_version": {
+            "type": "string",
+            "const": "2022"
+          },
+          "geography": {
+            "type": "object",
+            "required": ["level", "code", "name"],
+            "additionalProperties": false,
+            "properties": {
+              "level": {
+                "type": "string",
+                "const": "national"
+              },
+              "code": {
+                "type": "string",
+                "const": "US"
+              },
+              "name": {
+                "type": "string",
+                "const": "United States"
+              }
+            }
+          },
+          "size_band": {
+            "type": "string",
+            "const": "all"
+          },
+          "placeholder": {
+            "type": "boolean",
+            "const": false
+          },
+          "lineage": {
+            "type": "object",
+            "required": ["cbp_mapping_type", "cbp_source_naics_2017_codes", "source_vintages"],
+            "additionalProperties": false,
+            "properties": {
+              "cbp_mapping_type": {
+                "type": "string",
+                "enum": ["direct", "aggregated_2017_to_2022"]
+              },
+              "cbp_source_naics_2017_codes": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^\\d{6}$"
+                }
+              },
+              "source_vintages": {
+                "type": "object",
+                "required": ["cbp", "sba", "bls"],
+                "additionalProperties": false,
+                "properties": {
+                  "cbp": {
+                    "type": "string"
+                  },
+                  "sba": {
+                    "type": "string"
+                  },
+                  "bls": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "anchors": {
+            "type": "object",
+            "required": [
+              "cbp_establishments",
+              "cbp_employment",
+              "cbp_annual_payroll_usd",
+              "cbp_average_annual_pay_usd",
+              "bls_establishments",
+              "bls_employment",
+              "bls_average_annual_pay_usd",
+              "bls_employment_growth_pct",
+              "bls_pay_growth_pct",
+              "sba_size_standard"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "cbp_establishments": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "cbp_employment": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "cbp_annual_payroll_usd": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "cbp_average_annual_pay_usd": {
+                "type": "number",
+                "minimum": 0
+              },
+              "bls_establishments": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "bls_employment": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "bls_average_annual_pay_usd": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "bls_employment_growth_pct": {
+                "type": "number"
+              },
+              "bls_pay_growth_pct": {
+                "type": "number"
+              },
+              "sba_size_standard": {
+                "type": "object",
+                "required": ["basis", "value", "display", "footnotes"],
+                "additionalProperties": false,
+                "properties": {
+                  "basis": {
+                    "type": "string",
+                    "enum": ["receipts_millions_usd", "assets_millions_usd", "employees"]
+                  },
+                  "value": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "display": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "footnotes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "score_inputs": {
+            "type": "object",
+            "required": [
+              "employees_per_establishment",
+              "payroll_per_establishment_usd",
+              "employment_gap_ratio_bls_to_cbp",
+              "sba_size_standard_basis",
+              "sba_size_standard_value"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "employees_per_establishment": {
+                "type": "number",
+                "minimum": 0
+              },
+              "payroll_per_establishment_usd": {
+                "type": "number",
+                "minimum": 0
+              },
+              "employment_gap_ratio_bls_to_cbp": {
+                "type": "number",
+                "minimum": 0
+              },
+              "sba_size_standard_basis": {
+                "type": "string",
+                "enum": ["receipts_millions_usd", "assets_millions_usd", "employees"]
+              },
+              "sba_size_standard_value": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          },
+          "scores": {
+            "type": "object",
+            "required": [
+              "fragmentation",
+              "operating_complexity",
+              "willingness_to_pay",
+              "growth",
+              "market_scale",
+              "software_wedge",
+              "rollup_wedge",
+              "confidence"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "fragmentation": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "operating_complexity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "willingness_to_pay": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "growth": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "market_scale": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "software_wedge": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "rollup_wedge": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "confidence": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              }
+            }
+          },
+          "recommended_move": {
+            "type": "string",
+            "enum": ["build", "sell", "acquire", "monitor", "ignore"]
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence": {
+            "type": "array",
+            "minItems": 4,
+            "items": {
+              "type": "object",
+              "required": ["label", "detail", "source_ids"],
+              "additionalProperties": false,
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "detail": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "source_ids": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          },
+          "caveats": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "sources": {
+            "type": "array",
+            "minItems": 4,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "rank": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    }
+  }
+}

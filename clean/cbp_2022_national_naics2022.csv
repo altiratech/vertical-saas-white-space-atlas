@@ -1,0 +1,847 @@
+naics_code_2022,naics_title_2022,cbp_mapping_type,cbp_source_naics_2017_codes,cbp_establishments_2022,cbp_employment_2022,cbp_annual_payroll_usd_2022,cbp_average_annual_pay_usd_2022
+113110,Timber Tract Operations,direct,113110,477,3769,247657000,65708.94
+113210,Forest Nurseries and Gathering of Forest Products,direct,113210,184,983,52175000,53077.31
+113310,Logging,direct,113310,7465,44989,2473145000,54972.22
+114111,Finfish Fishing,direct,114111,1548,3256,312531000,95986.18
+114112,Shellfish Fishing,direct,114112,969,1813,103942000,57331.49
+114119,Other Marine Fishing,direct,114119,120,275,30261000,110040.0
+114210,Hunting and Trapping,direct,114210,434,1899,86043000,45309.64
+115111,Cotton Ginning,direct,115111,186,1974,123544000,62585.61
+115112,"Soil Preparation, Planting, and Cultivating",direct,115112,2200,11841,716965000,60549.36
+115113,"Crop Harvesting, Primarily by Machine",direct,115113,382,2723,159075000,58419.02
+115114,Postharvest Crop Activities (except Cotton Ginning),direct,115114,1101,30666,1540441000,50232.86
+115115,Farm Labor Contractors and Crew Leaders,direct,115115,656,20633,785288000,38059.81
+115116,Farm Management Services,direct,115116,738,5178,354774000,68515.64
+115210,Support Activities for Animal Production,direct,115210,4893,23026,998941000,43383.18
+115310,Support Activities for Forestry,direct,115310,1979,15609,936850000,60019.86
+211120,Crude Petroleum Extraction,direct,211120,3973,58551,10449305000,178465.01
+211130,Natural Gas Extraction,direct,211130,1303,26219,4266223000,162714.94
+212210,Iron Ore Mining,direct,212210,26,4836,528811000,109348.84
+212220,Gold Ore and Silver Ore Mining,aggregated_2017_to_2022,212221|212222,189,15753,1691069000,107349.01
+212230,"Copper, Nickel, Lead, and Zinc Mining",direct,212230,59,16142,1537422000,95243.59
+212290,Other Metal Ore Mining,aggregated_2017_to_2022,212291|212299,55,3387,419443000,123839.09
+212311,Dimension Stone Mining and Quarrying,direct,212311,395,5138,317032000,61703.39
+212312,Crushed and Broken Limestone Mining and Quarrying,direct,212312,1388,25891,1901906000,73458.19
+212313,Crushed and Broken Granite Mining and Quarrying,direct,212313,286,6061,470710000,77662.1
+212319,Other Crushed and Broken Stone Mining and Quarrying,direct,212319,381,6142,508790000,82837.84
+212321,Construction Sand and Gravel Mining,direct,212321,2227,24864,1815211000,73005.59
+212322,Industrial Sand Mining,direct,212322,207,5612,469740000,83702.78
+212323,"Kaolin, Clay, and Ceramic and Refractory Minerals Mining",aggregated_2017_to_2022,212324|212325,117,4213,309593000,73485.16
+212390,Other Nonmetallic Mineral Mining and Quarrying,aggregated_2017_to_2022,212391|212392|212393|212399,226,9864,903951000,91641.42
+213111,Drilling Oil and Gas Wells,direct,213111,2008,53277,5405172000,101454.14
+213112,Support Activities for Oil and Gas Operations,direct,213112,9212,190758,19469508000,102063.91
+213113,Support Activities for Coal Mining,direct,213113,187,3154,287575000,91177.87
+213114,Support Activities for Metal Mining,direct,213114,236,5227,559880000,107113.07
+213115,Support Activities for Nonmetallic Minerals (except Fuels) Mining,direct,213115,204,3093,248424000,80318.14
+221111,Hydroelectric Power Generation,direct,221111,552,4633,508017000,109651.85
+221112,Fossil Fuel Electric Power Generation,direct,221112,1799,66913,8826107000,131904.22
+221113,Nuclear Electric Power Generation,direct,221113,164,38376,5133046000,133756.67
+221114,Solar Electric Power Generation,direct,221114,621,7822,1054415000,134801.2
+221115,Wind Electric Power Generation,direct,221115,629,8410,1139337000,135474.08
+221116,Geothermal Electric Power Generation,direct,221116,44,1335,166908000,125024.72
+221117,Biomass Electric Power Generation,direct,221117,113,2513,273836000,108967.77
+221118,Other Electric Power Generation,direct,221118,160,952,129202000,135716.39
+221121,Electric Bulk Power Transmission and Control,direct,221121,364,19570,2959586000,151230.76
+221122,Electric Power Distribution,direct,221122,8456,354608,44638820000,125882.16
+221210,Natural Gas Distribution,direct,221210,2420,91556,10269552000,112166.89
+221310,Water Supply and Irrigation Systems,direct,221310,4430,40710,3002986000,73765.32
+221320,Sewage Treatment Facilities,direct,221320,562,6096,414866000,68055.45
+221330,Steam and Air‑Conditioning Supply,direct,221330,111,1720,197988000,115109.3
+236115,New Single-family Housing Construction (Except For-Sale Builders),direct,236115,59568,238333,15139468000,63522.33
+236116,New Multifamily Housing Construction (except For-Sale Builders),direct,236116,3931,50573,5221010000,103237.1
+236117,New Housing For-Sale Builders,direct,236117,12612,130923,14780215000,112892.43
+236118,Residential Remodelers,direct,236118,133345,462690,25469622000,55046.84
+236210,Industrial Building Construction,direct,236210,3173,75129,6470507000,86125.29
+236220,Commercial and Institutional Building Construction,direct,236220,39005,618523,57022954000,92192.13
+237110,Water and Sewer Line and Related Structures Construction,direct,237110,10818,164091,12686499000,77313.8
+237120,Oil and Gas Pipeline and Related Structures Construction,direct,237120,2166,175880,14580447000,82899.97
+237130,Power and Communication Line and Related Structures Construction,direct,237130,6737,260175,22524053000,86572.7
+237210,Land Subdivision,direct,237210,4618,22909,2183946000,95331.35
+237310,"Highway, Street, and Bridge Construction",direct,237310,9202,306947,28345235000,92345.7
+237990,Other Heavy and Civil Engineering Construction,direct,237990,4673,82453,7483910000,90765.77
+311111,Dog and Cat Food Manufacturing,direct,311111,437,28548,1894825000,66373.3
+311119,Other Animal Food Manufacturing,direct,311119,1432,31887,1981046000,62127.07
+311211,Flour Milling,direct,311211,348,15658,1040423000,66446.74
+311212,Rice Milling,direct,311212,89,5521,314791000,57017.03
+311213,Malt Manufacturing,direct,311213,39,809,58255000,72008.65
+311221,Wet Corn Milling and Starch Manufacturing,direct,311221,70,7715,707464000,91699.81
+311224,Soybean and Other Oilseed Processing,direct,311224,181,9175,787694000,85852.21
+311225,Fats and Oils Refining and Blending,direct,311225,118,8587,498910000,58100.62
+311230,Breakfast Cereal Manufacturing,direct,311230,99,11845,861139000,72700.63
+311313,Beet Sugar Manufacturing,direct,311313,32,7010,448460000,63974.32
+311314,Cane Sugar Manufacturing,direct,311314,59,7459,579080000,77635.07
+311340,Nonchocolate Confectionery Manufacturing,direct,311340,538,27886,1734193000,62188.66
+311351,Chocolate and Confectionery Manufacturing from Cacao Beans,direct,311351,280,11908,757040000,63574.07
+311352,Confectionery Manufacturing from Purchased Chocolate,direct,311352,998,32664,1543784000,47262.55
+311411,"Frozen Fruit, Juice and Vegetable Manufacturing",direct,311411,214,28070,1506299000,53662.24
+311412,Frozen Specialty Food Manufacturing,direct,311412,552,60915,3147693000,51673.53
+311421,Fruit and Vegetable Canning,direct,311421,811,47466,2980729000,62797.14
+311422,Specialty Canning,direct,311422,118,9633,629425000,65340.5
+311423,Dried and Dehydrated Food Manufacturing,direct,311423,268,17286,959873000,55528.93
+311511,Fluid Milk Manufacturing,direct,311511,421,57058,3652448000,64012.9
+311512,Creamery Butter Manufacturing,direct,311512,57,4075,279310000,68542.33
+311513,Cheese Manufacturing,direct,311513,579,60219,3756174000,62375.23
+311514,"Dry, Condensed, and Evaporated Dairy Product Manufacturing",direct,311514,175,17843,1238625000,69417.98
+311520,Ice Cream and Frozen Dessert Manufacturing,direct,311520,488,23400,1278814000,54650.17
+311611,Animal (except Poultry) Slaughtering,direct,311611,1311,162918,9235124000,56685.72
+311612,Meat Processed from Carcasses,direct,311612,1636,130494,7226542000,55378.35
+311613,Rendering and Meat Byproduct Processing,direct,311613,197,11196,710779000,63485.08
+311615,Poultry Processing,direct,311615,519,229548,10071345000,43874.68
+311710,Seafood Product Preparation and Packaging,direct,311710,528,29146,1667486000,57211.49
+311811,Retail Bakeries,direct,311811,8979,93603,2900219000,30984.25
+311812,Commercial Bakeries,direct,311812,2745,113039,5788234000,51205.64
+311813,"Frozen Cakes, Pies, and Other Pastries Manufacturing",direct,311813,228,22444,1103959000,49187.27
+311821,Cookie and Cracker Manufacturing,direct,311821,439,31632,1572064000,49698.53
+311824,"Dry Pasta, Dough, and Flour Mixes Manufacturing from Purchased Flour",direct,311824,390,23332,1361903000,58370.61
+311830,Tortilla Manufacturing,direct,311830,429,20682,945101000,45696.79
+311911,Roasted Nuts and Peanut Butter Manufacturing,direct,311911,267,18867,1131768000,59986.64
+311919,Other Snack Food Manufacturing,direct,311919,484,48507,2424776000,49988.17
+311920,Coffee and Tea Manufacturing,direct,311920,1090,22372,1269646000,56751.56
+311930,Flavoring Syrup and Concentrate Manufacturing,direct,311930,170,8621,657418000,76257.74
+311941,"Mayonnaise, Dressing and Other Prepared Sauce Manufacturing",direct,311941,402,23972,1442271000,60164.82
+311942,Spice and Extract Manufacturing,direct,311942,471,23128,1678230000,72562.69
+311991,Perishable Prepared Food Manufacturing,direct,311991,955,74259,3365824000,45325.47
+311999,All Other Miscellaneous Food Manufacturing,direct,311999,860,31981,1922155000,60103.03
+312111,Soft Drink Manufacturing,direct,312111,610,67219,4329511000,64409.04
+312112,Bottled Water Manufacturing,direct,312112,293,11912,769116000,64566.49
+312113,Ice Manufacturing,direct,312113,397,5492,303887000,55332.67
+312120,Breweries,direct,312120,5165,95186,4223849000,44374.69
+312130,Wineries,direct,312130,4494,65192,3691497000,56625.0
+312140,Distilleries,direct,312140,1281,23736,1587357000,66875.51
+312230,Tobacco Manufacturing,direct,312230,133,11784,965285000,81914.88
+313110,"Fiber, Yarn, and Thread Mills",direct,313110,262,20713,876506000,42316.71
+313210,Broadwoven Fabric Mills,direct,313210,260,13806,635592000,46037.38
+313220,Narrow Fabric Mills and Schiffli Machine Embroidery,direct,313220,174,5173,244986000,47358.59
+313230,Nonwoven Fabric Mills,direct,313230,229,16609,1024830000,61703.29
+313240,Knit Fabric Mills,direct,313240,109,5278,250445000,47450.74
+313310,Textile and Fabric Finishing Mills,direct,313310,599,15084,754420000,50014.58
+313320,Fabric Coating Mills,direct,313320,153,7077,449949000,63579.06
+314110,Carpet and Rug Mills,direct,314110,225,27178,1353129000,49787.66
+314120,Curtain and Linen Mills,direct,314120,1146,20783,785661000,37803.06
+314910,Textile Bag and Canvas Mills,direct,314910,1389,22624,1096130000,48449.88
+314994,"Rope, Cordage, Twine, Tire Cord, and Tire Fabric Mills",direct,314994,130,6371,367458000,57676.66
+314999,All Other Miscellaneous Textile Product Mills,direct,314999,2316,28743,1151859000,40074.42
+315120,Apparel Knitting Mills,aggregated_2017_to_2022,315110|315190,196,8915,333031000,37356.25
+315210,Cut and Sew Apparel Contractors,direct,315210,2316,24661,834865000,33853.66
+315250,Cut and Sew Apparel Manufacturing (except Contractors),aggregated_2017_to_2022,315220|315240|315280,1508,27646,1212984000,43875.57
+315990,Apparel Accessories and Other Apparel Manufacturing,direct,315990,713,9093,404117000,44442.65
+316110,Leather and Hide Tanning and Finishing,direct,316110,167,3121,171261000,54873.76
+316210,Footwear Manufacturing,direct,316210,224,9950,459243000,46155.08
+316990,Other Leather and Allied Product Manufacturing,aggregated_2017_to_2022,316992|316998,685,12035,501522000,41671.96
+321113,Sawmills,direct,321113,2706,78889,4782810000,60627.08
+321114,Wood Preservation,direct,321114,361,10842,619675000,57155.05
+321211,Hardwood Veneer and Plywood Manufacturing,direct,321211,207,11602,641749000,55313.65
+321212,Softwood Veneer and Plywood Manufacturing,direct,321212,75,12620,794858000,62983.99
+321215,Engineered Wood Member Manufacturing,aggregated_2017_to_2022,321213|321214,967,46340,2579794000,55671.0
+321219,Reconstituted Wood Product Manufacturing,direct,321219,196,14520,997574000,68703.44
+321911,Wood Window and Door Manufacturing,direct,321911,1093,62010,3484625000,56194.57
+321912,"Cut Stock, Resawing Lumber, and Planing",direct,321912,739,21623,1145174000,52960.92
+321918,Other Millwork (including Flooring),direct,321918,1516,35989,1772106000,49240.21
+321920,Wood Container and Pallet Manufacturing,direct,321920,2767,59688,2859086000,47900.52
+321991,Manufactured Home (Mobile Home) Manufacturing,direct,321991,245,32042,1739538000,54289.31
+321992,Prefabricated Wood Building Manufacturing,direct,321992,752,23628,1295602000,54833.33
+321999,All Other Miscellaneous Wood Product Manufacturing,direct,321999,2369,36259,1765610000,48694.39
+322110,Pulp Mills,direct,322110,39,9453,941308000,99577.7
+322120,Paper Mills,aggregated_2017_to_2022,322121|322122,202,44836,3652747000,81469.07
+322130,Paperboard Mills,direct,322130,175,37451,3667370000,97924.49
+322211,Corrugated and Solid Fiber Box Manufacturing,direct,322211,1052,80507,5522325000,68594.35
+322212,Folding Paperboard Box Manufacturing,direct,322212,567,56240,3732454000,66366.54
+322219,Other Paperboard Container Manufacturing,direct,322219,266,19625,1182814000,60270.78
+322220,Paper Bag and Coated and Treated Paper Manufacturing,direct,322220,708,57432,3889754000,67727.99
+322230,Stationery Product Manufacturing,direct,322230,317,15486,852989000,55081.3
+322291,Sanitary Paper Product Manufacturing,direct,322291,132,18655,1232948000,66092.09
+322299,All Other Converted Paper Product Manufacturing,direct,322299,364,15638,883451000,56493.86
+323111,Commercial Printing (except Screen and Books),direct,323111,15430,282135,16718709000,59257.83
+323113,Commercial Screen Printing,direct,323113,5800,69967,2973145000,42493.53
+323117,Books Printing,direct,323117,385,19283,1029916000,53410.57
+323120,Support Activities for Printing,direct,323120,1036,17651,953081000,53995.86
+324110,Petroleum Refineries,direct,324110,153,56784,8812320000,155190.19
+324121,Asphalt Paving Mixture and Block Manufacturing,direct,324121,1397,16755,1328549000,79292.69
+324122,Asphalt Shingle and Coating Materials Manufacturing,direct,324122,200,11075,941797000,85038.1
+324191,Petroleum Lubricating Oil and Grease Manufacturing,direct,324191,284,12325,1101361000,89359.92
+324199,All Other Petroleum and Coal Products Manufacturing,direct,324199,77,3675,310631000,84525.44
+325110,Petrochemical Manufacturing,direct,325110,71,9971,1455090000,145932.2
+325120,Industrial Gas Manufacturing,direct,325120,657,15143,1300138000,85857.36
+325130,Synthetic Dye and Pigment Manufacturing,direct,325130,125,7896,776567000,98349.42
+325180,Other Basic Inorganic Chemical Manufacturing,direct,325180,647,41788,4416363000,105684.96
+325193,Ethyl Alcohol Manufacturing,direct,325193,206,10024,896514000,89436.75
+325194,"Cyclic Crude, Intermediate, and Gum and Wood Chemical Manufacturing",direct,325194,69,5856,512280000,87479.51
+325199,All Other Basic Organic Chemical Manufacturing,direct,325199,870,73222,8485193000,115883.11
+325211,Plastics Material and Resin Manufacturing,direct,325211,1258,87075,8435160000,96872.35
+325212,Synthetic Rubber Manufacturing,direct,325212,143,10140,918306000,90562.72
+325220,Artificial and Synthetic Fibers and Filaments Manufacturing,direct,325220,122,14565,830263000,57003.98
+325311,Nitrogenous Fertilizer Manufacturing,direct,325311,205,6904,901432000,130566.63
+325312,Phosphatic Fertilizer Manufacturing,direct,325312,78,5952,604351000,101537.47
+325320,Pesticide and Other Agricultural Chemical Manufacturing,direct,325320,246,11988,1079764000,90070.4
+325411,Medicinal and Botanical Manufacturing,direct,325411,754,35925,2788829000,77629.2
+325412,Pharmaceutical Preparation Manufacturing,direct,325412,1444,165088,17608704000,106662.53
+325413,In‑Vitro Diagnostic Substance Manufacturing,direct,325413,261,40884,4484182000,109680.61
+325414,Biological Product (except Diagnostic) Manufacturing,direct,325414,423,72345,8562502000,118356.51
+325510,Paint and Coating Manufacturing,direct,325510,1142,42280,3020072000,71430.27
+325520,Adhesive Manufacturing,direct,325520,539,30167,2312065000,76642.19
+325611,Soap and Other Detergent Manufacturing,direct,325611,866,33859,2169153000,64064.3
+325612,Polish and Other Sanitation Good Manufacturing,direct,325612,452,17318,1265268000,73060.86
+325613,Surface Active Agent Manufacturing,direct,325613,116,6283,644187000,102528.57
+325620,Toilet Preparation Manufacturing,direct,325620,1124,53641,3414113000,63647.45
+325910,Printing Ink Manufacturing,direct,325910,301,9139,653787000,71538.13
+325920,Explosives Manufacturing,direct,325920,90,7776,616277000,79253.73
+325991,Custom Compounding of Purchased Resins,direct,325991,422,21372,1480267000,69261.98
+325992,"Photographic Film, Paper, Plate, Chemical, and Copy Toner Manufacturing",direct,325992,147,6641,437590000,65892.18
+325998,All Other Miscellaneous Chemical Product and Preparation Manufacturing,direct,325998,1303,42853,3432460000,80098.48
+326111,Plastic Bag and Pouch Manufacturing,direct,326111,352,37026,2339325000,63180.6
+326112,Plastics Packaging Film and Sheet (including Laminated) Manufacturing,direct,326112,418,34071,2279958000,66917.85
+326113,Unlaminated Plastics Film and Sheet (except Packaging) Manufacturing,direct,326113,437,34252,2401659000,70117.34
+326121,Unlaminated Plastics Profile Shape Manufacturing,direct,326121,342,18806,1200075000,63813.41
+326122,Plastics Pipe and Pipe Fitting Manufacturing,direct,326122,484,25329,1537623000,60706.03
+326130,"Laminated Plastics Plate, Sheet (except Packaging), and Shape Manufacturing",direct,326130,224,11949,798450000,66821.49
+326140,Polystyrene Foam Product Manufacturing,direct,326140,413,27221,1559815000,57301.9
+326150,Urethane and Other Foam Product (except Polystyrene) Manufacturing,direct,326150,662,32267,1808923000,56061.08
+326160,Plastics Bottle Manufacturing,direct,326160,472,37743,2219016000,58792.78
+326191,Plastics Plumbing Fixture Manufacturing,direct,326191,303,20306,978098000,48167.93
+326199,All Other Plastics Product Manufacturing,direct,326199,5566,393135,21432138000,54515.98
+326211,Tire Manufacturing (except Retreading),direct,326211,131,51236,3633115000,70909.42
+326212,Tire Retreading,direct,326212,350,6284,332785000,52957.51
+326220,Rubber and Plastics Hoses and Belting Manufacturing,direct,326220,267,19658,1155477000,58778.97
+326291,Rubber Product Manufacturing for Mechanical Use,direct,326291,385,28319,1502230000,53046.72
+326299,All Other Rubber Product Manufacturing,direct,326299,681,35113,2132620000,60735.91
+327110,"Pottery, Ceramics, and Plumbing Fixture Manufacturing",direct,327110,567,12552,664659000,52952.44
+327120,Clay Building Material and Refractories Manufacturing,direct,327120,464,23258,1376030000,59163.73
+327211,Flat Glass Manufacturing,direct,327211,128,12291,783443000,63741.19
+327212,Other Pressed and Blown Glass and Glassware Manufacturing,direct,327212,387,11415,734536000,64348.31
+327213,Glass Container Manufacturing,direct,327213,78,15042,1054830000,70125.65
+327215,Glass Product Manufacturing Made of Purchased Glass,direct,327215,976,49897,3089996000,61927.49
+327310,Cement Manufacturing,direct,327310,186,13978,967317000,69202.82
+327320,Ready‑Mix Concrete Manufacturing,direct,327320,5969,89259,6403887000,71745.0
+327331,Concrete Block and Brick Manufacturing,direct,327331,632,16935,1076235000,63550.93
+327332,Concrete Pipe Manufacturing,direct,327332,144,5116,349509000,68316.85
+327390,Other Concrete Product Manufacturing,direct,327390,1831,60264,3619763000,60065.1
+327410,Lime Manufacturing,direct,327410,98,3986,316304000,79353.74
+327420,Gypsum Product Manufacturing,direct,327420,184,11865,1008465000,84994.94
+327910,Abrasive Product Manufacturing,direct,327910,261,10912,758302000,69492.49
+327991,Cut Stone and Stone Product Manufacturing,direct,327991,2134,36565,2047006000,55982.66
+327992,Ground or Treated Mineral and Earth Manufacturing,direct,327992,265,8942,718505000,80351.71
+327993,Mineral Wool Manufacturing,direct,327993,239,13662,999921000,73189.94
+327999,All Other Miscellaneous Nonmetallic Mineral Product Manufacturing,direct,327999,408,11801,796239000,67472.16
+331110,Iron and Steel Mills and Ferroalloy Manufacturing,direct,331110,314,79317,8554524000,107852.34
+331210,Iron and Steel Pipe and Tube Manufacturing from Purchased Steel,direct,331210,260,24835,2061740000,83017.52
+331221,Rolled Steel Shape Manufacturing,direct,331221,230,13191,1095576000,83054.81
+331222,Steel Wire Drawing,direct,331222,219,14714,933736000,63459.02
+331313,Alumina Refining and Primary Aluminum Production,direct,331313,34,4197,357866000,85267.1
+331314,Secondary Smelting and Alloying of Aluminum,direct,331314,95,5712,421363000,73768.03
+331315,"Aluminum Sheet, Plate and Foil Manufacturing",direct,331315,80,18643,1675813000,89889.66
+331318,"Other Aluminum Rolling, Drawing, and Extruding",direct,331318,233,29679,1776091000,59843.36
+331410,Nonferrous Metal (except Aluminum) Smelting and Refining,direct,331410,115,7597,618189000,81372.78
+331420,"Copper Rolling, Drawing, Extruding, and Alloying",direct,331420,222,25199,1777262000,70529.07
+331491,"Nonferrous Metal (except Copper and Aluminum) Rolling, Drawing and Extruding",direct,331491,225,13100,1017391000,77663.44
+331492,"Secondary Smelting, Refining, and Alloying of Nonferrous Metal (except Copper and Aluminum)",direct,331492,185,9146,716167000,78303.85
+331511,Iron Foundries,direct,331511,286,32406,2270855000,70075.14
+331512,Steel Investment Foundries,direct,331512,112,14381,929988000,64667.83
+331513,Steel Foundries (except Investment),direct,331513,148,9824,615521000,62654.82
+331523,Nonferrous Metal Die-Casting Foundries,direct,331523,321,28481,1702245000,59767.74
+331524,Aluminum Foundries (except Die‑Casting),direct,331524,264,12093,750112000,62028.61
+331529,Other Nonferrous Metal Foundries (except Die-Casting),direct,331529,236,9207,586326000,63682.63
+332111,Iron and Steel Forging,direct,332111,253,16339,1146736000,70183.98
+332112,Nonferrous Forging,direct,332112,52,5695,415784000,73008.6
+332114,Custom Roll Forming,direct,332114,391,16187,1082533000,66876.69
+332117,Powder Metallurgy Part Manufacturing,direct,332117,140,8765,499694000,57010.15
+332119,"Metal Crown, Closure, and Other Metal Stamping (except Automotive)",direct,332119,1145,46966,2837496000,60415.96
+332215,"Metal Kitchen Cookware, Utensil, Cutlery, and Flatware (except Precious) Manufacturing",direct,332215,213,7428,474043000,63818.39
+332216,Saw Blade and Handtool Manufacturing,direct,332216,819,25743,1541539000,59881.87
+332311,Prefabricated Metal Building and Component Manufacturing,direct,332311,799,28109,1937492000,68927.82
+332312,Fabricated Structural Metal Manufacturing,direct,332312,3430,107516,7345384000,68318.99
+332313,Plate Work Manufacturing,direct,332313,1694,43272,2700286000,62402.62
+332321,Metal Window and Door Manufacturing,direct,332321,1018,59168,3387109000,57245.62
+332322,Sheet Metal Work Manufacturing,direct,332322,4605,124704,7548072000,60527.91
+332323,Ornamental and Architectural Metal Work Manufacturing,direct,332323,2801,41418,2376650000,57382.06
+332410,Power Boiler and Heat Exchanger Manufacturing,direct,332410,258,22715,1758926000,77434.56
+332420,Metal Tank (Heavy Gauge) Manufacturing,direct,332420,708,34002,2314545000,68070.85
+332431,Metal Can Manufacturing,direct,332431,175,21594,1735284000,80359.54
+332439,Other Metal Container Manufacturing,direct,332439,276,10359,569827000,55007.92
+332510,Hardware Manufacturing,direct,332510,550,30575,1930842000,63151.01
+332613,Spring Manufacturing,direct,332613,340,16123,951806000,59034.05
+332618,Other Fabricated Wire Product Manufacturing,direct,332618,676,18732,1097223000,58574.79
+332710,Machine Shops,direct,332710,17433,218350,13449119000,61594.32
+332721,Precision Turned Product Manufacturing,direct,332721,3939,102053,6232435000,61070.57
+332722,"Bolt, Nut, Screw, Rivet and Washer Manufacturing",direct,332722,709,35382,2353940000,66529.31
+332811,Metal Heat Treating,direct,332811,725,18553,1226810000,66124.62
+332812,"Metal Coating, Engraving (except Jewelry and Silverware), and Allied Services to Manufacturers",direct,332812,2677,53201,3041397000,57168.04
+332813,"Electroplating, Plating, Polishing, Anodizing and Coloring",direct,332813,2005,46263,2521304000,54499.36
+332911,Industrial Valve Manufacturing,direct,332911,458,32727,2457739000,75098.21
+332912,Fluid Power Valve and Hose Fitting Manufacturing,direct,332912,343,30332,2179693000,71861.17
+332913,Plumbing Fixture Fitting and Trim Manufacturing,direct,332913,128,9384,569354000,60672.85
+332919,Other Metal Valve and Pipe Fitting Manufacturing,direct,332919,215,12789,848431000,66340.68
+332991,Ball and Roller Bearing Manufacturing,direct,332991,178,18936,1205535000,63663.66
+332992,Small Arms Ammunition Manufacturing,direct,332992,175,14645,933690000,63754.87
+332993,Ammunition (except Small Arms) Manufacturing,direct,332993,61,13856,1384948000,99952.94
+332994,"Small Arms, Ordnance, and Ordnance Accessories Manufacturing",direct,332994,517,25407,1810126000,71245.17
+332996,Fabricated Pipe and Pipe Fitting Manufacturing,direct,332996,724,26615,1762863000,66235.69
+332999,All Other Miscellaneous Fabricated Metal Product Manufacturing,direct,332999,3410,68683,4021278000,58548.37
+333111,Farm Machinery and Equipment Manufacturing,direct,333111,1118,67750,4883476000,72080.83
+333112,Lawn and Garden Tractor and Home Lawn and Garden Equipment Manufacturing,direct,333112,143,18262,977373000,53519.49
+333120,Construction Machinery Manufacturing,direct,333120,666,64443,4852053000,75292.17
+333131,Mining Machinery and Equipment Manufacturing,direct,333131,268,10114,737120000,72881.15
+333132,Oil and Gas Field Machinery and Equipment Manufacturing,direct,333132,626,29919,2458311000,82165.55
+333241,Food Product Machinery Manufacturing,direct,333241,512,18510,1510494000,81604.21
+333242,Semiconductor Machinery Manufacturing,direct,333242,181,24209,3441774000,142169.19
+333243,"Sawmill, Woodworking, and Paper Machinery Manufacturing",direct,333243,375,12990,1014433000,78093.38
+333248,All Other Industrial Machinery Manufacturing,aggregated_2017_to_2022,333244|333249,1842,58310,4419633000,75795.46
+333310,Commercial and Service Industry Machinery Manufacturing,aggregated_2017_to_2022,333314|333316|333318,1728,77092,6497423000,84281.42
+333413,Industrial and Commercial Fan and Blower and Air Purification Equipment Manufacturing,direct,333413,472,28581,1628348000,56973.09
+333414,Heating Equipment (except Warm Air Furnaces) Manufacturing,direct,333414,360,17004,1111662000,65376.5
+333415,Air‑Conditioning and Warm Air Heating Equipment and Commercial and Industrial Refrigeration Equipment Manufacturing,direct,333415,829,99520,6045631000,60747.9
+333511,Industrial Mold Manufacturing,direct,333511,1286,31052,1944563000,62622.79
+333514,"Special Die and Tool, Die Set, Jig and Fixture Manufacturing",direct,333514,2006,40862,2747824000,67246.44
+333515,Cutting Tool and Machine Tool Accessory Manufacturing,direct,333515,1094,24529,1592074000,64905.78
+333517,Machine Tool Manufacturing,direct,333517,1200,28273,2042534000,72243.27
+333519,Rolling Mill and Other Metalworking Machinery Manufacturing,direct,333519,312,11511,855852000,74350.79
+333611,Turbine and Turbine Generator Set Unit Manufacturing,direct,333611,208,28061,2684733000,95674.89
+333612,"Speed Changer, Industrial High‑Speed Drive and Gear Manufacturing",direct,333612,201,10712,713620000,66618.75
+333613,Mechanical Power Transmission Equipment Manufacturing,direct,333613,226,15636,1045601000,66871.39
+333618,Other Engine Equipment Manufacturing,direct,333618,273,41155,3079677000,74831.17
+333912,Air and Gas Compressor Manufacturing,direct,333912,282,19108,1468992000,76878.38
+333914,"Measuring, Dispensing, and Other Pumping Equipment Manufacturing",direct,333914,547,37289,3066216000,82228.43
+333921,Elevator and Moving Stairway Manufacturing,direct,333921,182,8198,608146000,74182.24
+333922,Conveyor and Conveying Equipment Manufacturing,direct,333922,785,41377,3184509000,76963.26
+333923,"Overhead Traveling Crane, Hoist and Monorail System Manufacturing",direct,333923,321,20029,1306507000,65230.77
+333924,"Industrial Truck, Tractor, Trailer and Stacker Machinery Manufacturing",direct,333924,328,30512,2122275000,69555.42
+333991,Power‑Driven Hand Tool Manufacturing,direct,333991,121,7111,490906000,69034.73
+333992,Welding and Soldering Equipment Manufacturing,direct,333992,520,15231,1180128000,77481.98
+333993,Packaging Machinery Manufacturing,direct,333993,516,26153,1998463000,76414.29
+333994,Industrial Process Furnace and Oven Manufacturing,direct,333994,312,9842,711509000,72293.13
+333995,Fluid Power Cylinder and Actuator Manufacturing,direct,333995,289,19399,1481098000,76349.19
+333996,Fluid Power Pump and Motor Manufacturing,direct,333996,149,12661,951534000,75154.73
+333998,All Other Miscellaneous General Purpose Machinery Manufacturing,aggregated_2017_to_2022,333997|333999,1481,60026,5003474000,83355.11
+334111,Electronic Computer Manufacturing,direct,334111,224,13968,1651689000,118248.07
+334112,Computer Storage Device Manufacturing,direct,334112,68,7864,1034918000,131601.98
+334118,Computer Terminal and Other Computer Peripheral Equipment Manufacturing,direct,334118,299,14483,1425609000,98433.27
+334210,Telephone Apparatus Manufacturing,direct,334210,172,9010,1239784000,137600.89
+334220,Radio and Television Broadcasting and Wireless Communications Equipment Manufacturing,direct,334220,664,49776,6074114000,122028.97
+334290,Other Communications Equipment Manufacturing,direct,334290,334,12762,1005404000,78781.07
+334310,Audio and Video Equipment Manufacturing,direct,334310,543,10487,821448000,78330.12
+334412,Bare Printed Circuit Board Manufacturing,direct,334412,376,23048,1345528000,58379.38
+334413,Semiconductor and Related Device Manufacturing,direct,334413,791,108559,14900985000,137261.63
+334416,"Capacitor, Resistor, Coil, Transformer, and Other Inductor Manufacturing",direct,334416,330,18128,1087039000,59964.64
+334417,Electronic Connector Manufacturing,direct,334417,205,20365,1505679000,73934.64
+334418,Printed Circuit Assembly (Electronic Assembly) Manufacturing,direct,334418,852,48351,3365444000,69604.43
+334419,Other Electronic Component Manufacturing,direct,334419,1097,51070,3660919000,71684.34
+334510,Electromedical and Electrotherapeutic Apparatus Manufacturing,direct,334510,923,92285,10030531000,108690.81
+334511,"Search, Detection, Navigation, Guidance, Aeronautical, and Nautical System and Instrument Manufacturing",direct,334511,503,126086,12257410000,97214.68
+334512,"Automatic Environmental Control Manufacturing for Residential, Commercial and Appliance Use",direct,334512,240,13350,1045355000,78303.75
+334513,"Instruments and Related Products Manufacturing for Measuring, Displaying, and Controlling Industrial Process Variables",direct,334513,840,34571,2877558000,83236.18
+334514,Totalizing Fluid Meter and Counting Device Manufacturing,direct,334514,165,11493,942923000,82043.24
+334515,Instrument Manufacturing for Measuring and Testing Electricity and Electrical Signals,direct,334515,675,32596,4094880000,125625.23
+334516,Analytical Laboratory Instrument Manufacturing,direct,334516,647,46288,4963729000,107235.76
+334517,Irradiation Apparatus Manufacturing,direct,334517,130,11749,1208179000,102832.5
+334519,Other Measuring and Controlling Device Manufacturing,direct,334519,887,35032,3316635000,94674.44
+334610,Manufacturing and Reproducing Magnetic and Optical Media,aggregated_2017_to_2022,334613|334614,320,5481,412092000,75185.55
+335131,Residential Electric Lighting Fixture Manufacturing,aggregated_2017_to_2022,335121,245,5643,396853000,70326.6
+335132,"Commercial, Industrial, and Institutional Electric Lighting Fixture Manufacturing",aggregated_2017_to_2022,335122,446,17407,1229005000,70604.07
+335139,Electric Lamp Bulb and Other Lighting Equipment Manufacturing,aggregated_2017_to_2022,335110|335129,330,11980,904687000,75516.44
+335210,Small Electrical Appliance Manufacturing,direct,335210,180,9160,498491000,54420.41
+335220,Major Household Appliance Manufacturing,direct,335220,183,50586,2598225000,51362.53
+335311,"Power, Distribution and Specialty Transformer Manufacturing",direct,335311,242,21586,1664556000,77112.76
+335312,Motor and Generator Manufacturing,direct,335312,402,29080,2121478000,72953.16
+335313,Switchgear and Switchboard Apparatus Manufacturing,direct,335313,467,34788,2457072000,70629.87
+335314,Relay and Industrial Control Manufacturing,direct,335314,729,33908,2556894000,75406.81
+335910,Battery Manufacturing,aggregated_2017_to_2022,335911|335912,297,31445,2387692000,75932.33
+335921,Fiber Optic Cable Manufacturing,direct,335921,116,7933,530109000,66823.27
+335929,Other Communication and Energy Wire Manufacturing,direct,335929,212,15462,1019669000,65946.77
+335931,Current‑Carrying Wiring Device Manufacturing,direct,335931,390,23969,1533824000,63991.99
+335932,Noncurrent‑Carrying Wiring Device Manufacturing,direct,335932,148,14785,972401000,65769.43
+335991,Carbon and Graphite Product Manufacturing,direct,335991,177,8947,681323000,76151.0
+335999,All Other Miscellaneous Electrical Equipment and Component Manufacturing,direct,335999,805,37384,3818639000,102146.35
+336110,Automobile and Light Duty Motor Vehicle Manufacturing,aggregated_2017_to_2022,336111|336112,262,233453,24406862000,104547.22
+336120,Heavy Duty Truck Manufacturing,direct,336120,97,38385,2733460000,71211.67
+336211,Motor Vehicle Body Manufacturing,direct,336211,818,54669,3108183000,56854.58
+336212,Truck Trailer Manufacturing,direct,336212,549,43903,2357195000,53690.98
+336213,Motor Home Manufacturing,direct,336213,76,13490,902775000,66921.79
+336214,Travel Trailer and Camper Manufacturing,direct,336214,723,66206,4233780000,63948.58
+336310,Motor Vehicle Gasoline Engine and Engine Parts Manufacturing,direct,336310,699,62176,4035994000,64912.41
+336320,Motor Vehicle Electrical and Electronic Equipment Manufacturing,direct,336320,557,58478,3424329000,58557.56
+336330,Motor Vehicle Steering and Suspension Components (except Spring) Manufacturing,direct,336330,277,36942,2148052000,58146.61
+336340,Motor Vehicle Brake System Manufacturing,direct,336340,166,20411,1128393000,55283.57
+336350,Motor Vehicle Transmission and Power Train Parts Manufacturing,direct,336350,464,80357,5382187000,66978.45
+336360,Motor Vehicle Seating and Interior Trim Manufacturing,direct,336360,434,71009,3645112000,51333.1
+336370,Motor Vehicle Metal Stamping,direct,336370,717,100990,6118213000,60582.36
+336390,Other Motor Vehicle Parts Manufacturing,direct,336390,1326,142496,7931005000,55657.74
+336411,Aircraft Manufacturing,direct,336411,368,177544,18188022000,102442.34
+336412,Aircraft Engine and Engine Parts Manufacturing,direct,336412,438,68353,6770237000,99048.13
+336413,Other Aircraft Part and Auxiliary Equipment Manufacturing,direct,336413,908,96154,7988614000,83081.45
+336414,Guided Missile and Space Vehicle Manufacturing,direct,336414,49,36107,5230504000,144861.22
+336415,Guided Missile and Space Vehicle Propulsion Unit and Propulsion Unit Parts Manufacturing,direct,336415,34,36373,4586083000,126084.82
+336419,Other Guided Missile and Space Vehicle Parts and Auxiliary Equipment Manufacturing,direct,336419,43,6951,752216000,108216.95
+336510,Railroad Rolling Stock Manufacturing,direct,336510,211,24409,2074934000,85006.92
+336611,Ship Building and Repairing,direct,336611,489,98195,7574476000,77137.08
+336612,Boat Building,direct,336612,903,48087,2637598000,54850.54
+336991,"Motorcycle, Bicycle and Parts Manufacturing",direct,336991,429,8454,486359000,57530.04
+336992,"Military Armored Vehicle, Tank and Tank Component Manufacturing",direct,336992,71,12410,930099000,74947.54
+336999,All Other Transportation Equipment Manufacturing,direct,336999,457,19017,1303070000,68521.32
+337110,Wood Kitchen Cabinet and Counter Top Manufacturing,direct,337110,6118,102338,4853916000,47430.24
+337121,Upholstered Household Furniture Manufacturing,direct,337121,996,71151,2964970000,41671.52
+337122,Nonupholstered Wood Household Furniture Manufacturing,direct,337122,2126,23526,970094000,41234.97
+337126,Household Furniture (except Wood and Upholstered) Manufacturing,aggregated_2017_to_2022,337124|337125,417,12287,623978000,50783.59
+337127,Institutional Furniture Manufacturing,direct,337127,530,20734,1158006000,55850.58
+337211,Wood Office Furniture Manufacturing,direct,337211,307,13611,751377000,55203.66
+337212,Custom Architectural Woodwork and Millwork Manufacturing,direct,337212,2352,43464,2564139000,58994.55
+337214,Office Furniture (Except Wood) Manufacturing,direct,337214,205,18766,1087791000,57966.06
+337215,"Showcase, Partition, Shelving, and Locker Manufacturing",direct,337215,823,30054,1691604000,56285.49
+337910,Mattress Manufacturing,direct,337910,403,23676,1188040000,50179.08
+337920,Blind and Shade Manufacturing,direct,337920,329,11557,622602000,53872.29
+339112,Surgical and Medical Instrument Manufacturing,direct,339112,1303,127400,10247067000,80432.24
+339113,Surgical Appliance and Supplies Manufacturing,direct,339113,1828,95927,9335229000,97315.97
+339114,Dental Equipment and Supplies Manufacturing,direct,339114,500,16724,1234539000,73818.4
+339115,Ophthalmic Goods Manufacturing,direct,339115,450,22117,1529678000,69163.0
+339116,Dental Laboratories,direct,339116,4928,42539,2220737000,52204.73
+339910,Jewelry and Silverware Manufacturing,direct,339910,1879,19899,1145389000,57560.13
+339920,Sporting and Athletic Goods Manufacturing,direct,339920,1673,40574,2376170000,58563.86
+339930,"Doll, Toy, and Game Manufacturing",direct,339930,503,6377,338634000,53102.4
+339940,Office Supplies (except Paper) Manufacturing,direct,339940,376,10181,546211000,53650.03
+339950,Sign Manufacturing,direct,339950,5910,72137,4085882000,56640.59
+339991,"Gasket, Packing, and Sealing Device Manufacturing",direct,339991,632,31258,2198716000,70340.9
+339992,Musical Instrument Manufacturing,direct,339992,615,12634,695542000,55053.19
+339993,"Fastener, Button, Needle and Pin Manufacturing",direct,339993,94,3678,223158000,60673.74
+339994,"Broom, Brush and Mop Manufacturing",direct,339994,150,8984,515205000,57346.95
+339995,Burial Casket Manufacturing,direct,339995,83,3174,156802000,49402.02
+339999,All Other Miscellaneous Manufacturing,direct,339999,3080,42972,2591479000,60306.22
+423110,Automobile and Other Motor Vehicle Merchant Wholesalers,direct,423110,6047,128083,11072632000,86448.88
+423120,Motor Vehicle Supplies and New Parts Merchant Wholesalers,direct,423120,12377,222885,14171024000,63579.98
+423130,Tire and Tube Merchant Wholesalers,direct,423130,2527,43386,2841446000,65492.23
+423140,Motor Vehicle Parts (Used) Merchant Wholesalers,direct,423140,1765,22892,1082596000,47291.46
+423210,Furniture Merchant Wholesalers,direct,423210,5186,70390,5370041000,76289.83
+423220,Home Furnishing Merchant Wholesalers,direct,423220,6766,95624,6841045000,71541.09
+423310,"Lumber, Plywood, Millwork, and Wood Panel Merchant Wholesalers",direct,423310,6990,129347,10227478000,79070.08
+423320,"Brick, Stone, and Related Construction Material Merchant Wholesalers",direct,423320,3721,39337,2657648000,67561.02
+423330,"Roofing, Siding, and Insulation Material Merchant Wholesalers",direct,423330,3495,47223,4161355000,88121.36
+423390,Other Construction Material Merchant Wholesalers,direct,423390,3736,50210,3674786000,73188.33
+423410,Photographic Equipment and Supplies Merchant Wholesalers,direct,423410,550,8080,771392000,95469.31
+423420,Office Equipment Merchant Wholesalers,direct,423420,8554,98137,6917703000,70490.26
+423430,Computer and Computer Peripheral Equipment and Software Merchant Wholesalers,direct,423430,6818,186463,25807680000,138406.44
+423440,Other Commercial Equipment Merchant Wholesalers,direct,423440,3695,47854,3375344000,70534.21
+423450,"Medical, Dental, and Hospital Equipment and Supplies Merchant Wholesalers",direct,423450,10599,264593,32821844000,124046.53
+423460,Ophthalmic Goods Merchant Wholesalers,direct,423460,1021,19806,1525434000,77018.78
+423490,Other Professional Equipment and Supplies Merchant Wholesalers,direct,423490,2418,43147,4268220000,98922.75
+423510,Metal Service Centers and Other Metal Merchant Wholesalers,direct,423510,8629,141114,12017351000,85160.59
+423520,Coal and Other Mineral and Ore Merchant Wholesalers,direct,423520,303,2442,284211000,116384.52
+423610,"Electrical Apparatus and Equipment, Wiring Supplies, and Related Equipment Merchant Wholesalers",direct,423610,13462,216108,19704280000,91177.93
+423620,"Household Appliances, Electric Housewares, and Consumer Electronics Merchant Wholesalers",direct,423620,2546,55348,5142693000,92915.61
+423690,Other Electronic Parts and Equipment Merchant Wholesalers,direct,423690,10346,245753,39987219000,162713.05
+423710,Hardware Merchant Wholesalers,direct,423710,5904,95631,6929090000,72456.53
+423720,Plumbing and Heating Equipment and Supplies (Hydronics) Merchant Wholesalers,direct,423720,6747,87630,7473876000,85289.01
+423730,Warm Air Heating and Air‑Conditioning Equipment and Supplies Merchant Wholesalers,direct,423730,6427,81052,7529787000,92900.69
+423740,Refrigeration Equipment and Supplies Merchant Wholesalers,direct,423740,1198,12197,932607000,76462.0
+423810,Construction and Mining (except Oil Well) Machinery and Equipment Merchant Wholesalers,direct,423810,4853,101144,9182405000,90785.46
+423820,Farm and Garden Machinery and Equipment Merchant Wholesalers,direct,423820,7451,108592,7785884000,71698.5
+423830,Industrial Machinery and Equipment Merchant Wholesalers,direct,423830,26655,367665,32356597000,88005.65
+423840,Industrial Supplies Merchant Wholesalers,direct,423840,9063,106518,8991440000,84412.4
+423850,Service Establishment Equipment and Supplies Merchant Wholesalers,direct,423850,4484,49154,3094248000,62950.08
+423860,Transportation Equipment and Supplies (except Motor Vehicle) Merchant Wholesalers,direct,423860,2380,33655,2980862000,88571.15
+423910,Sporting and Recreational Goods and Supplies Merchant Wholesalers,direct,423910,5404,71730,5466800000,76213.58
+423920,Toy and Hobby Goods and Supplies Merchant Wholesalers,direct,423920,2015,35597,3663256000,102909.12
+423930,Recyclable Material Merchant Wholesalers,direct,423930,7761,102804,6329795000,61571.49
+423940,"Jewelry, Watch, Precious Stone, and Precious Metal Merchant Wholesalers",direct,423940,6964,38382,2829815000,73727.66
+423990,Other Miscellaneous Durable Goods Merchant Wholesalers,direct,423990,9928,88789,6164515000,69428.81
+424110,Printing and Writing Paper Merchant Wholesalers,direct,424110,672,8018,711705000,88763.41
+424120,Stationary and Office Supplies Merchant Wholesalers,direct,424120,3319,56672,3193006000,56341.86
+424130,Industrial and Personal Service Paper Merchant Wholesalers,direct,424130,3858,66283,5794750000,87424.38
+424210,Drugs and Druggists’ Sundries Merchant Wholesalers,direct,424210,9959,311580,45647533000,146503.41
+424310,"Piece Goods, Notions, and Other Dry Goods Merchant Wholesalers",direct,424310,2923,23557,1474914000,62610.43
+424340,Footwear Merchant Wholesalers,direct,424340,1188,27738,2706091000,97558.98
+424350,Clothing and Clothing Accessories Merchant Wholesalers,aggregated_2017_to_2022,424320|424330,9552,121284,8794728000,72513.51
+424410,General Line Grocery Merchant Wholesalers,direct,424410,3290,160816,10895366000,67750.51
+424420,Packaged Frozen Food Merchant Wholesalers,direct,424420,3116,88597,6051459000,68303.2
+424430,Dairy Product (except Dried or Canned) Merchant Wholesalers,direct,424430,1800,37781,2705728000,71616.1
+424440,Poultry and Poultry Product Merchant Wholesalers,direct,424440,436,10212,577936000,56593.81
+424450,Confectionery Merchant Wholesalers,direct,424450,2312,43619,2941273000,67431.0
+424460,Fish and Seafood Merchant Wholesalers,direct,424460,1964,22994,1350052000,58713.23
+424470,Meat and Meat Product Merchant Wholesalers,direct,424470,2198,47823,3422285000,71561.49
+424480,Fresh Fruit and Vegetable Merchant Wholesalers,direct,424480,4923,106172,6357659000,59880.75
+424490,Other Grocery and Related Products Merchant Wholesalers,direct,424490,14813,328949,21262974000,64639.12
+424510,Grain and Field Bean Merchant Wholesalers,direct,424510,4481,47065,3396626000,72168.83
+424520,Livestock Merchant Wholesalers,direct,424520,633,5108,175377000,34333.79
+424590,Other Farm Product Raw Material Merchant Wholesalers,direct,424590,1098,13378,886167000,66240.62
+424610,Plastics Materials and Basic Forms and Shapes Merchant Wholesalers,direct,424610,2581,32998,2957496000,89626.52
+424690,Other Chemical and Allied Products Merchant Wholesalers,direct,424690,9139,129957,12251593000,94274.21
+424710,Petroleum Bulk Stations and Terminals,direct,424710,3784,68089,6042232000,88740.21
+424720,Petroleum and Petroleum Products Merchant Wholesalers (except Bulk Stations and Terminals),direct,424720,2541,31803,3710644000,116675.91
+424810,Beer and Ale Merchant Wholesalers,direct,424810,1899,115134,7239622000,62879.97
+424820,Wine and Distilled Alcoholic Beverage Merchant Wholesalers,direct,424820,2915,95603,8618879000,90152.81
+424910,Farm Supplies Merchant Wholesalers,direct,424910,9043,105996,8509140000,80277.94
+424920,"Book, Periodical, and Newspaper Merchant Wholesalers",direct,424920,1175,19497,1045801000,53639.07
+424930,"Flower, Nursery Stock, and Florists’ Supplies Merchant Wholesalers",direct,424930,3886,51988,2476574000,47637.42
+424940,Tobacco Product and Electronic Cigarette Merchant Wholesalers,direct,424940,1656,58418,3656812000,62597.35
+424950,"Paint, Varnish, and Supplies Merchant Wholesalers",direct,424950,1927,20085,1491099000,74239.43
+424990,Other Miscellaneous Nondurable Goods Merchant Wholesalers,direct,424990,10634,77207,4911307000,63612.2
+425120,Wholesale Trade Agents and Brokers,aggregated_2017_to_2022,425110|425120,36206,250047,17504313000,70004.09
+441110,New Car Dealers,direct,441110,21835,1110728,91268697000,82170.16
+441120,Used Car Dealers,direct,441120,25607,187929,9700939000,51620.23
+441210,Recreational Vehicle Dealers,direct,441210,2979,60384,4320883000,71556.75
+441222,Boat Dealers,direct,441222,4320,37626,2455008000,65247.65
+444110,Home Centers,direct,444110,6038,803805,23588743000,29346.35
+444120,Paint and Wallpaper Retailers,direct,444120,7244,33526,1696952000,50616.0
+445110,Supermarkets and Other Grocery Retailers (except Convenience Retailers),direct,445110,62647,2796910,78756843000,28158.52
+445132,Vending Machine Operators,aggregated_2017_to_2022,454210,3243,38830,1585763000,40838.6
+445230,Fruit and Vegetable Retailers,direct,445230,3906,19704,630116000,31979.09
+445291,Baked Goods Retailers,direct,445291,2807,21765,581691000,26725.98
+445292,Confectionery and Nut Retailers,direct,445292,3399,19161,471939000,24630.19
+457110,Gasoline Stations with Convenience Stores,aggregated_2017_to_2022,447110,96486,832419,21971970000,26395.32
+457120,Other Gasoline Stations,aggregated_2017_to_2022,447190,12757,155860,5028071000,32260.18
+457210,Fuel Dealers,aggregated_2017_to_2022,454310,7795,73930,4340864000,58715.87
+459930,Manufactured (Mobile) Home Dealers,aggregated_2017_to_2022,453930,1825,11168,1093654000,97927.47
+481111,Scheduled Passenger Air Transportation,direct,481111,1787,432803,40063984000,92568.64
+481112,Scheduled Freight Air Transportation,direct,481112,385,8195,784643000,95746.55
+481211,Nonscheduled Chartered Passenger Air Transportation,direct,481211,1670,37400,4634664000,123921.5
+481212,Nonscheduled Chartered Freight Air Transportation,direct,481212,215,9037,1037088000,114760.21
+481219,Other Nonscheduled Air Transportation,direct,481219,588,6453,557456000,86387.11
+483111,Deep Sea Freight Transportation,direct,483111,324,6472,722931000,111701.33
+483112,Deep Sea Passenger Transportation,direct,483112,86,12502,1315158000,105195.81
+483113,Coastal and Great Lakes Freight Transportation,direct,483113,495,19347,2122863000,109725.69
+483114,Coastal and Great Lakes Passenger Transportation,direct,483114,190,2858,223569000,78225.68
+483211,Inland Water Freight Transportation,direct,483211,382,16231,1488427000,91702.73
+483212,Inland Water Passenger Transportation,direct,483212,303,3225,198217000,61462.64
+484110,"General Freight Trucking, Local",direct,484110,45436,317257,15469416000,48759.89
+484121,"General Freight Trucking, Long‑Distance, Truckload",direct,484121,63315,592167,35233622000,59499.47
+484122,"General Freight Trucking, Long‑Distance, Less Than Truckload",direct,484122,11197,314738,20736747000,65885.74
+484210,Used Household and Office Goods Moving,direct,484210,9803,105910,4706454000,44438.24
+484220,"Specialized Freight (except Used Goods) Trucking, Local",direct,484220,32829,227981,14260653000,62551.94
+484230,"Specialized Freight (except Used Goods) Trucking, Long‑Distance",direct,484230,11976,173625,11048936000,63636.78
+485111,Mixed Mode Transit Systems,direct,485111,38,770,42092000,54664.94
+485112,Commuter Rail Systems,direct,485112,17,4049,412914000,101979.25
+485113,Bus and Other Motor Vehicle Transit Systems,direct,485113,537,39076,2209557000,56545.12
+485119,Other Urban Transit Systems,direct,485119,60,1447,99430000,68714.58
+485210,Interurban and Rural Bus Transportation,direct,485210,549,13538,560394000,41394.15
+485310,Taxi and Ridesharing Services,direct,485310,3162,21565,1577173000,73135.78
+485320,Limousine Service,direct,485320,4225,25832,1019862000,39480.57
+485410,School and Employee Bus Transportation,direct,485410,4000,210606,6177329000,29331.21
+485510,Charter Bus Industry,direct,485510,1129,24447,1081218000,44227.02
+485991,Special Needs Transportation,direct,485991,3825,63864,2339268000,36628.9
+485999,All Other Transit and Ground Passenger Transportation,direct,485999,2171,23010,851106000,36988.53
+486110,Pipeline Transportation of Crude Oil,direct,486110,649,9703,1346557000,138777.39
+486210,Pipeline Transportation of Natural Gas,direct,486210,2021,25854,3515711000,135983.25
+486910,Pipeline Transportation of Refined Petroleum Products,direct,486910,660,8723,1128473000,129367.53
+486990,All Other Pipeline Transportation,direct,486990,62,262,35634000,136007.63
+487110,"Scenic and Sightseeing Transportation, Land",direct,487110,709,8384,361309000,43095.06
+487210,"Scenic and Sightseeing Transportation, Water",direct,487210,2243,12878,708593000,55023.53
+487990,"Scenic and Sightseeing Transportation, Other",direct,487990,259,2813,172356000,61271.24
+488111,Air Traffic Control,direct,488111,221,1803,138419000,76771.49
+488119,Other Airport Operations,direct,488119,2189,115782,4618340000,39888.24
+488190,Other Support Activities for Air Transportation,direct,488190,4096,91750,6490989000,70746.47
+488210,Support Activities for Rail Transportation,direct,488210,1761,45044,2981807000,66197.65
+488310,Port and Harbor Operations,direct,488310,346,13327,994178000,74598.78
+488320,Marine Cargo Handling,direct,488320,475,69158,6047200000,87440.35
+488330,Navigational Services to Shipping,direct,488330,1044,13673,1237667000,90519.05
+488390,Other Support Activities for Water Transportation,direct,488390,752,7284,568364000,78029.1
+488410,Motor Vehicle Towing,direct,488410,10554,69825,3452241000,49441.33
+488490,Other Support Activities for Road Transportation,direct,488490,3934,53998,2135756000,39552.5
+488510,Freight Transportation Arrangement,direct,488510,22383,323348,24269442000,75056.73
+488991,Packing and Crating,direct,488991,1599,22988,1258981000,54766.88
+488999,All Other Support Activities for Transportation,direct,488999,691,4017,331943000,82634.55
+492110,Couriers and Express Delivery Services,direct,492110,11667,1048131,40746551000,38875.44
+492210,Local Messengers and Local Delivery,direct,492210,5366,149851,7003744000,46738.05
+493110,General Warehousing and Storage,direct,493110,15416,1168516,57121709000,48883.98
+493120,Refrigerated Warehousing and Storage,direct,493120,1222,57210,3094424000,54088.87
+493130,Farm Product Warehousing and Storage,direct,493130,774,7884,448849000,56931.63
+493190,Other Warehousing and Storage,direct,493190,2567,61510,4270495000,69427.65
+512110,Motion Picture and Video Production,direct,512110,17683,139965,13657220000,97575.97
+512120,Motion Picture and Video Distribution,direct,512120,480,2813,324084000,115209.38
+512131,Motion Picture Theaters (except Drive‑Ins),direct,512131,4158,109126,1971399000,18065.35
+512132,Drive‑In Motion Picture Theaters,direct,512132,232,991,32744000,33041.37
+512191,Teleproduction and Other Postproduction Services,direct,512191,3079,28863,2693801000,93330.6
+512199,Other Motion Picture and Video Industries,direct,512199,281,1003,107352000,107030.91
+512230,Music Publishers,direct,512230,886,5509,603356000,109521.87
+512240,Sound Recording Studios,direct,512240,2117,6321,468761000,74159.31
+512250,Record Production and Distribution,direct,512250,880,11526,1784668000,154838.45
+512290,Other Sound Recording Industries,direct,512290,575,2344,175737000,74973.12
+513210,Software Publishers,aggregated_2017_to_2022,511210,17438,874707,172774174000,197522.34
+516110,Radio Broadcasting Stations,aggregated_2017_to_2022,515112,4204,61959,4403979000,71078.92
+517111,Wired Telecommunications Carriers,aggregated_2017_to_2022,517311,28758,603802,55667317000,92194.65
+517410,Satellite Telecommunications,direct,517410,460,8690,1146834000,131971.69
+517810,All Other Telecommunications,aggregated_2017_to_2022,517919,1902,30966,3639392000,117528.64
+518210,"Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",direct,518210,17539,570188,83193910000,145906.1
+519210,Libraries and Archives,aggregated_2017_to_2022,519120,2299,24365,972162000,39899.94
+522110,Commercial Banking,direct,522110,83288,1497167,154229863000,103014.47
+522130,Credit Unions,direct,522130,19605,328494,22992108000,69992.47
+522180,Savings Institutions and Other Depository Credit Intermediation,aggregated_2017_to_2022,522120|522190,6923,101856,9558271000,93841.02
+522210,Credit Card Issuing,direct,522210,698,66791,9017133000,135005.21
+522220,Sales Financing,direct,522220,3637,95912,10979806000,114477.92
+522291,Consumer Lending,direct,522291,13845,85685,7288231000,85058.42
+522292,Real Estate Credit,direct,522292,18589,352890,37410690000,106012.33
+522299,"International, Secondary Market, and All Other Nondepository Credit Intermediation",aggregated_2017_to_2022,522293|522294|522298,10115,85282,9355354000,109699.05
+522310,Mortgage and Nonmortgage Loan Brokers,direct,522310,10957,76003,6980233000,91841.55
+522320,"Financial Transactions Processing, Reserve, and Clearinghouse Activities",direct,522320,5035,173894,23683069000,136192.56
+522390,Other Activities Related to Credit Intermediation,direct,522390,12116,77430,5965392000,77042.39
+523150,Investment Banking and Securities Intermediation,aggregated_2017_to_2022,523110|523120,27078,349773,103030245000,294563.17
+523160,Commodity Contracts Intermediation,aggregated_2017_to_2022,523130|523140,1691,17366,5804341000,334235.92
+523210,Securities and Commodity Exchanges,direct,523210,53,6270,1565996000,249760.13
+523910,Miscellaneous Intermediation,direct,523910,11596,58566,13740311000,234612.42
+523940,Portfolio Management and Investment Advice,aggregated_2017_to_2022,523920|523930,67520,493853,133479074000,270280.98
+523991,"Trust, Fiduciary and Custody Activities",direct,523991,2805,38319,4655595000,121495.73
+523999,Miscellaneous Financial Investment Activities,direct,523999,2033,29719,5853101000,196948.11
+524113,Direct Life Insurance Carriers,direct,524113,6414,311072,42331549000,136082.8
+524114,Direct Health and Medical Insurance Carriers,direct,524114,6220,545227,52625544000,96520.43
+524126,Direct Property and Casualty Insurance Carriers,direct,524126,12721,594916,61201017000,102873.38
+524127,Direct Title Insurance Carriers,direct,524127,3999,46518,5336006000,114708.41
+524128,"Other Direct Insurance (except Life, Health and Medical) Carriers",direct,524128,586,32513,3031815000,93249.32
+524130,Reinsurance Carriers,direct,524130,649,14071,2698062000,191746.29
+524210,Insurance Agencies and Brokerages,direct,524210,135100,807633,68034987000,84239.98
+524291,Claims Adjusting,direct,524291,4554,39562,3438272000,86908.45
+524292,Pharmacy Benefit Management and Other Third-Party Administration of Insurance and Pension Funds,direct,524292,7693,439927,32891524000,74765.87
+524298,All Other Insurance Related Activities,direct,524298,3035,35146,3245338000,92338.76
+525910,Open‑End Investment Funds,direct,525910,334,1735,408710000,235567.72
+525990,Other Financial Vehicles,direct,525990,1590,7252,1298382000,179037.78
+531110,Lessors of Residential Buildings and Dwellings,direct,531110,74908,345421,18390154000,53239.83
+531120,Lessors of Nonresidential Buildings (except Miniwarehouses),direct,531120,34567,172451,13995051000,81153.78
+531130,Lessors of Miniwarehouses and Self Storage Units,direct,531130,18286,47056,1922855000,40863.12
+531190,Lessors of Other Real Estate Property,direct,531190,8649,35800,2090054000,58381.4
+531210,Offices of Real Estate Agents and Brokers,direct,531210,165585,416530,34262728000,82257.53
+531311,Residential Property Managers,direct,531311,57435,507375,29428808000,58002.09
+531312,Nonresidential Property Managers,direct,531312,18260,163972,14548100000,88723.07
+531320,Offices of Real Estate Appraisers,direct,531320,13373,37676,2534741000,67277.34
+531390,Other Activities Related to Real Estate,direct,531390,21881,75174,7726709000,102784.33
+532111,Passenger Car Rental,direct,532111,9597,78075,3945557000,50535.47
+532112,Passenger Car Leasing,direct,532112,490,8836,944806000,106926.89
+532120,"Truck, Utility Trailer, and RV (Recreational Vehicle) Rental and Leasing",direct,532120,6309,79284,4651612000,58670.25
+532210,Consumer Electronics and Appliances Rental,direct,532210,4906,23096,1096152000,47460.69
+532281,Formal Wear and Costume Rental,direct,532281,732,3970,144945000,36510.08
+532282,Video Tape and Disc Rental,direct,532282,444,3409,154665000,45369.61
+532283,Home Health Equipment Rental,direct,532283,1891,24838,1431862000,57648.04
+532284,Recreational Goods Rental,direct,532284,2924,15381,724549000,47106.76
+532289,All Other Consumer Goods Rental,direct,532289,4908,39874,2006678000,50325.48
+532310,General Rental Centers,direct,532310,2775,19137,1023215000,53467.89
+532411,"Commercial Air, Rail, and Water Transportation Equipment Rental and Leasing",direct,532411,642,4728,757966000,160314.3
+532412,"Construction, Mining and Forestry Machinery and Equipment Rental and Leasing",direct,532412,5079,66623,5798832000,87039.49
+532420,Office Machinery and Equipment Rental and Leasing,direct,532420,687,7188,681804000,94853.09
+532490,Other Commercial and Industrial Machinery and Equipment Rental and Leasing,direct,532490,9599,117702,8541467000,72568.58
+533110,Lessors of Nonfinancial Intangible Assets (except Copyrighted Works),direct,533110,2729,39529,5339258000,135071.92
+541110,Offices of Lawyers,direct,541110,166972,1078148,130681886000,121209.6
+541191,Title Abstract and Settlement Offices,direct,541191,9762,74320,5232100000,70399.62
+541199,All Other Legal Services,direct,541199,5207,31125,2160832000,69424.32
+541211,Offices of Certified Public Accountants,direct,541211,55642,572944,56088368000,97895.03
+541213,Tax Preparation Services,direct,541213,28386,131615,3234520000,24575.62
+541214,Payroll Services,direct,541214,5480,278652,20096599000,72120.78
+541219,Other Accounting Services,direct,541219,46452,247793,13673541000,55181.3
+541310,Architectural Services,direct,541310,22619,182082,17507832000,96153.56
+541320,Landscape Architectural Services,direct,541320,5215,28025,2092145000,74652.81
+541330,Engineering Services,direct,541330,62590,1199635,126920409000,105799.19
+541340,Drafting Services,direct,541340,2985,9178,614730000,66978.64
+541350,Building Inspection Services,direct,541350,7768,27326,1511294000,55306.08
+541360,Geophysical Surveying and Mapping Services,direct,541360,1019,7249,710405000,98000.41
+541370,Surveying and Mapping (except Geophysical) Services,direct,541370,7372,54801,3774939000,68884.49
+541380,Testing Laboratories and Services,direct,541380,7488,154715,11438366000,73931.85
+541410,Interior Design Services,direct,541410,16333,53565,3478984000,64948.83
+541420,Industrial Design Services,direct,541420,1631,12446,1331663000,106995.26
+541430,Graphic Design Services,direct,541430,15932,51426,3390281000,65925.43
+541490,Other Specialized Design Services,direct,541490,3407,11914,862065000,72357.31
+541511,Custom Computer Programming Services,direct,541511,68038,1044544,132731403000,127071.15
+541512,Computer Systems Design Services,direct,541512,58312,815846,98204354000,120371.19
+541513,Computer Facilities Management Services,direct,541513,6872,115566,11234525000,97213.06
+541519,Other Computer Related Services,direct,541519,11989,150617,19537928000,129719.27
+541611,Administrative Management and General Management Consulting Services,direct,541611,97678,788736,97024854000,123013.09
+541612,Human Resources Consulting Services,direct,541612,8958,152858,13206134000,86394.78
+541613,Marketing Consulting Services,direct,541613,50025,281865,23160948000,82170.36
+541614,"Process, Physical Distribution and Logistics Consulting Services",direct,541614,8676,98679,7225308000,73220.32
+541618,Other Management Consulting Services,direct,541618,13022,45828,5187523000,113195.49
+541620,Environmental Consulting Services,direct,541620,10109,96172,7833074000,81448.59
+541690,Other Scientific and Technical Consulting Services,direct,541690,27214,160934,15991346000,99365.86
+541713,Research and Development in Nanotechnology,direct,541713,2269,177936,26245313000,147498.61
+541714,Research and Development in Biotechnology (except Nanobiotechnology),direct,541714,5329,153771,29841397000,194063.88
+541715,"Research and Development in the Physical, Engineering, and Life Sciences (except Nanotechnology and Biotechnology)",direct,541715,12474,571232,82440647000,144320.78
+541720,Research and Development in the Social Sciences and Humanities,direct,541720,2108,47944,4032573000,84110.07
+541810,Advertising Agencies,direct,541810,14962,195282,20528652000,105123.11
+541820,Public Relations Agencies,direct,541820,8635,62370,7406824000,118756.2
+541830,Media Buying Agencies,direct,541830,809,20715,2307026000,111369.83
+541840,Media Representatives,direct,541840,1291,17960,2474139000,137758.3
+541850,Indoor and Outdoor Display Advertising,direct,541850,2549,21452,1661364000,77445.65
+541860,Direct Mail Advertising,direct,541860,1867,35765,2456200000,68676.08
+541870,Advertising Material Distribution Services,direct,541870,1283,11124,984336000,88487.59
+541890,Other Services Related to Advertising,direct,541890,7298,102543,4356644000,42486.02
+541910,Marketing Research and Public Opinion Polling,direct,541910,4522,83902,8936223000,106507.87
+541921,"Photography Studios, Portrait",direct,541921,11115,36521,1241052000,33981.87
+541922,Commercial Photography,direct,541922,4934,12556,663086000,52810.29
+541930,Translation and Interpretation Services,direct,541930,2802,37750,1820616000,48228.24
+541940,Veterinary Services,direct,541940,34000,468624,22726283000,48495.77
+541990,"All Other Professional, Scientific and Technical Services",direct,541990,22903,136053,11583557000,85140.03
+551111,Offices of Bank Holding Companies,direct,551111,635,7655,984859000,128655.65
+551112,Offices of Other Holding Companies,direct,551112,6738,95001,11503188000,121084.91
+561110,Office Administrative Services,direct,561110,37269,564521,47029428000,83308.55
+561210,Facilities Support Services,direct,561210,8974,251947,13478303000,53496.58
+561311,Employment Placement Agencies,direct,561311,7030,271104,13419408000,49499.11
+561312,Executive Search Services,direct,561312,6242,47905,6537699000,136472.16
+561320,Temporary Help Services,direct,561320,39366,3928974,177046028000,45061.64
+561330,Professional Employer Organizations,direct,561330,4161,3713938,286755464000,77210.62
+561410,Document Preparation Services,direct,561410,4925,43927,1644781000,37443.51
+561421,Telephone Answering Services,direct,561421,1086,50782,1795259000,35352.27
+561422,Telemarketing Bureaus and Other contact Centers,direct,561422,3370,385860,13729569000,35581.74
+561431,Private Mail Centers,direct,561431,5604,28218,828491000,29360.37
+561439,Other Business Service Centers (including Copy Shops),direct,561439,4946,45238,2159965000,47746.7
+561440,Collection Agencies,direct,561440,3092,106184,5357812000,50457.81
+561450,Credit Bureaus,direct,561450,456,29131,5417663000,185975.87
+561491,Repossession Services,direct,561491,655,6663,321209000,48207.86
+561492,Court Reporting and Stenotype Services,direct,561492,3181,12881,808725000,62784.33
+561499,All Other Business Support Services,direct,561499,3706,54945,4523294000,82324.03
+561510,Travel Agencies,direct,561510,9382,77632,7151040000,92114.59
+561520,Tour Operators,direct,561520,2533,23663,1459476000,61677.56
+561591,Convention and Visitors Bureaus,direct,561591,938,8001,580059000,72498.31
+561599,All Other Travel Arrangement and Reservation Services,direct,561599,2775,60449,6768460000,111969.76
+561611,Investigation and Personal Background Check Services,direct,561611,4085,43409,2476634000,57053.47
+561612,Security Guards and Patrol Services,direct,561612,10659,764680,23438885000,30651.89
+561613,Armored Car Services,direct,561613,766,26285,1316310000,50078.37
+561621,Security Systems Services (except Locksmiths),direct,561621,7042,125873,8479439000,67365.03
+561622,Locksmiths,direct,561622,3991,16320,788608000,48321.57
+561710,Exterminating and Pest Control Services,direct,561710,16080,139917,7039610000,50312.76
+561720,Janitorial Services,direct,561720,67295,1067762,30776401000,28823.28
+561730,Landscaping Services,direct,561730,117109,774028,38522453000,49768.81
+561740,Carpet and Upholstery Cleaning Services,direct,561740,6902,37632,1517109000,40314.33
+561790,Other Services to Buildings and Dwellings,direct,561790,17574,87422,4070348000,46559.77
+561910,Packaging and Labeling Services,direct,561910,1853,49620,2622961000,52860.96
+561920,Convention and Trade Show Organizers,direct,561920,6147,78811,4033345000,51177.44
+561990,All Other Support Services,direct,561990,12668,176554,9628341000,54534.82
+562111,Solid Waste Collection,direct,562111,10761,228376,15461157000,67700.45
+562112,Hazardous Waste Collection,direct,562112,482,9273,681694000,73513.86
+562119,Other Waste Collection,direct,562119,1458,11360,675509000,59463.82
+562211,Hazardous Waste Treatment and Disposal,direct,562211,928,29927,2460431000,82214.42
+562212,Solid Waste Landfill,direct,562212,1592,25635,1668805000,65098.69
+562213,Solid Waste Combustors and Incinerators,direct,562213,73,2211,258423000,116880.6
+562219,Other Nonhazardous Waste Treatment and Disposal,direct,562219,621,4989,333388000,66824.61
+562910,Remediation Services,direct,562910,5852,92113,6713014000,72878.03
+562920,Materials Recovery Facilities,direct,562920,1434,24734,1475985000,59674.33
+562991,Septic Tank and Related Services,direct,562991,3997,31989,1850700000,57854.26
+562998,All Other Miscellaneous Waste Management Services,direct,562998,1421,17826,1175593000,65948.22
+611110,Elementary and Secondary Schools,direct,611110,22378,1114583,51561410000,46260.72
+611210,Junior Colleges,direct,611210,695,49155,2083767000,42391.76
+611310,"Colleges, Universities and Professional Schools",direct,611310,4106,1785965,94612373000,52975.49
+611410,Business and Secretarial Schools,direct,611410,110,1218,54370000,44638.75
+611420,Computer Training,direct,611420,1629,22694,1721130000,75840.75
+611430,Professional and Management Development Training,direct,611430,7909,58123,4812896000,82805.36
+611511,Cosmetology and Barber Schools,direct,611511,1709,18152,663190000,36535.37
+611512,Flight Training,direct,611512,1145,19956,1371709000,68736.67
+611513,Apprenticeship Training,direct,611513,1492,14510,726187000,50047.35
+611519,Other Technical and Trade Schools,direct,611519,4682,58128,2983635000,51328.71
+611610,Fine Arts Schools,direct,611610,15991,119606,2323136000,19423.24
+611620,Sports and Recreation Instruction,direct,611620,19658,159381,3791265000,23787.43
+611630,Language Schools,direct,611630,1584,17958,717499000,39954.28
+611691,Exam Preparation and Tutoring,direct,611691,10285,109224,3062081000,28034.87
+611692,Automobile Driving Schools,direct,611692,2585,15648,439013000,28055.53
+611699,All Other Miscellaneous Schools and Instruction,direct,611699,7459,51840,1738865000,33542.92
+611710,Educational Support Services,direct,611710,11389,127699,7765485000,60810.85
+621111,Offices of Physicians (except Mental Health Specialists),direct,621111,197739,2582111,263986588000,102236.73
+621112,"Offices of Physicians, Mental Health Specialists",direct,621112,13017,61476,4524695000,73601.0
+621210,Offices of Dentists,direct,621210,136140,1031957,59579310000,57734.3
+621310,Offices of Chiropractors,direct,621310,40179,149574,5847513000,39094.45
+621320,Offices of Optometrists,direct,621320,22781,148762,6922408000,46533.44
+621330,Offices of Mental Health Practitioners (except Physicians),direct,621330,40885,218860,9479843000,43314.64
+621340,"Offices of Physical, Occupational and Speech Therapists and Audiologists",direct,621340,50883,464527,21868981000,47077.95
+621391,Offices of Podiatrists,direct,621391,7562,36787,1965166000,53420.12
+621399,Offices of All Other Miscellaneous Health Practitioners,direct,621399,33658,125565,6837099000,54450.67
+621410,Family Planning Centers,direct,621410,2673,29494,1888528000,64030.92
+621420,Outpatient Mental Health and Substance Abuse Centers,direct,621420,15901,307864,15698185000,50990.65
+621491,HMO Medical Centers,direct,621491,1596,153668,19838887000,129102.27
+621492,Kidney Dialysis Centers,direct,621492,8449,136099,7680353000,56432.1
+621493,Freestanding Ambulatory Surgical and Emergency Centers,direct,621493,10193,194620,12057584000,61954.5
+621498,All Other Outpatient Care Centers,direct,621498,20990,480567,35443704000,73753.93
+621511,Medical Laboratories,direct,621511,12906,238815,16940392000,70935.21
+621512,Diagnostic Imaging Centers,direct,621512,6904,101804,7251983000,71234.76
+621610,Home Health Care Services,direct,621610,39117,1567910,56107073000,35784.63
+621910,Ambulance Services,direct,621910,5644,178532,8682617000,48633.39
+621991,Blood and Organ Banks,direct,621991,2042,86981,4744075000,54541.51
+621999,All Other Miscellaneous Ambulatory Health Care Services,direct,621999,9029,105606,7174388000,67935.42
+622110,General Medical and Surgical Hospitals,direct,622110,6048,5647644,433471015000,76752.54
+622210,Psychiatric and Substance Abuse Hospitals,direct,622210,804,245003,15679390000,63996.73
+622310,Specialty (except Psychiatric and Substance Abuse) Hospitals,direct,622310,861,259842,20019060000,77043.2
+623110,Nursing Care Facilities (Skilled Nursing Facilities),direct,623110,17977,1384492,59051860000,42652.37
+623210,Residential Intellectual and Developmental Disability Facilities,direct,623210,35807,530422,19769288000,37270.87
+623220,Residential Mental Health and Substance Abuse Facilities,direct,623220,8667,217447,9822744000,45173.05
+623311,Continuing Care Retirement Communities,direct,623311,5506,443081,16422581000,37064.51
+623312,Assisted Living Facilities for the Elderly,direct,623312,21352,496802,16393135000,32997.32
+623990,Other Residential Care Facilities,direct,623990,5828,123478,5037967000,40800.52
+624110,Child and Youth Services,direct,624110,14284,221259,9113099000,41187.47
+624120,Services for the Elderly and Persons with Disabilities,direct,624120,41626,1333760,36355146000,27257.64
+624190,Other Individual and Family Services,direct,624190,36173,447961,19070002000,42570.67
+624210,Community Food Services,direct,624210,5187,55482,2161949000,38966.67
+624221,Temporary Shelters,direct,624221,4694,85617,3430732000,40070.69
+624229,Other Community Housing Services,direct,624229,4816,60309,3011006000,49926.31
+624230,Emergency and Other Relief Services,direct,624230,1305,32796,1878089000,57265.79
+624310,Vocational Rehabilitation Services,direct,624310,7075,218151,6734051000,30868.76
+624410,Child Care Services,direct,624410,80120,966107,27549706000,28516.21
+711110,Theater Companies and Dinner Theaters,direct,711110,3503,63427,2511626000,39598.69
+711120,Dance Companies,direct,711120,849,11262,377624000,33530.81
+711130,Musical Groups and Artists,direct,711130,5477,38126,2203706000,57800.61
+711190,Other Performing Arts Companies,direct,711190,431,4507,240473000,53355.45
+711211,Sports Teams and Clubs,direct,711211,1372,79231,26785312000,338066.06
+711212,Race Tracks,direct,711212,562,31870,1408888000,44207.34
+711219,Other Spectator Sports,direct,711219,3100,16302,1160342000,71177.89
+711310,"Promoters of Performing Arts, Sports and Similar Events with Facilities",direct,711310,4178,137839,4909228000,35615.67
+711320,"Promoters of Performing Arts, Sports and Similar Events without Facilities",direct,711320,4942,36082,2230244000,61810.43
+711410,"Agents and Managers for Artists, Athletes, Entertainers and Other Public Figures",direct,711410,4878,24548,3899027000,158832.78
+711510,"Independent Artists, Writers, and Performers",direct,711510,38064,61989,11490065000,185356.51
+712110,Museums,direct,712110,5442,84931,3850927000,45341.83
+712120,Historical Sites,direct,712120,1122,10904,431893000,39608.68
+712130,Zoos and Botanical Gardens,direct,712130,833,39004,1692271000,43387.11
+712190,Nature Parks and Other Similar Institutions,direct,712190,745,8178,367627000,44953.17
+713110,Amusement and Theme Parks,direct,713110,687,166135,5059320000,30453.07
+713120,Amusement Arcades,direct,713120,3392,61452,1489126000,24232.34
+713210,Casinos (except Casino Hotels),direct,713210,342,75989,3627453000,47736.55
+713290,Other Gambling Industries,direct,713290,3069,54593,2799300000,51275.8
+713910,Golf Courses and Country Clubs,direct,713910,10076,304991,12005249000,39362.63
+713920,Skiing Facilities,direct,713920,350,68247,1232032000,18052.54
+713930,Marinas,direct,713930,3766,31032,1473536000,47484.4
+713940,Fitness and Recreational Sports Centers,direct,713940,40786,649964,12090908000,18602.43
+713950,Bowling Centers,direct,713950,3305,66313,1386625000,20910.3
+713990,All Other Amusement and Recreation Industries,direct,713990,21689,191441,5313206000,27753.75
+721110,Hotels (except Casino Hotels) and Motels,direct,721110,56920,1366502,48927113000,35804.64
+721120,Casino Hotels,direct,721120,500,348043,16312078000,46868.0
+721191,Bed‑and‑Breakfast Inns,direct,721191,2464,12141,352477000,29031.96
+721199,All Other Traveler Accommodation,direct,721199,1897,8623,315951000,36640.5
+721211,RV (Recreational Vehicle) Parks and Campgrounds,direct,721211,4972,25707,942131000,36648.81
+721214,Recreational and Vacation Camps (except Campgrounds),direct,721214,2997,23284,1212787000,52086.71
+721310,"Rooming and Boarding Houses, Dormitories, and Workers’ Camps",direct,721310,1637,9450,341688000,36157.46
+722310,Food Service Contractors,direct,722310,29463,557000,15920859000,28583.23
+722320,Caterers,direct,722320,13046,136136,4266783000,31342.06
+722330,Mobile Food Services,direct,722330,11611,37137,1027099000,27657.03
+722410,Drinking Places (Alcoholic Beverages),direct,722410,40258,401424,9961111000,24814.44
+722511,Full-Service Restaurants,direct,722511,257282,5208895,140091983000,26894.76
+722513,Limited-Service Restaurants,direct,722513,265179,4711773,94016566000,19953.54
+722514,"Cafeterias, Grill Buffets, and Buffets",direct,722514,4774,70975,1532685000,21594.72
+722515,Snack and Nonalcoholic Beverage Bars,direct,722515,78856,876388,17869091000,20389.47
+811111,General Automotive Repair,direct,811111,84101,385539,19210879000,49828.63
+811114,Specialized Automotive Repair,aggregated_2017_to_2022,811112|811113|811118,8837,34251,1641264000,47918.72
+811121,"Automotive Body, Paint and Interior Repair and Maintenance",direct,811121,34665,239251,13632771000,56981.04
+811122,Automotive Glass Replacement Shops,direct,811122,7033,37132,1747634000,47065.44
+811191,Automotive Oil Change and Lubrication Shops,direct,811191,8694,73700,2334474000,31675.36
+811192,Car Washes,direct,811192,19463,166368,4631256000,27837.42
+811198,All Other Automotive Repair and Maintenance,direct,811198,5091,22672,1006084000,44375.62
+811210,Electronic and Precision Equipment Repair and Maintenance,aggregated_2017_to_2022,811211|811212|811213|811219,11421,105752,6780657000,64118.48
+811310,Commercial and Industrial Machinery and Equipment (except Automotive and Electronic) Repair and Maintenance,direct,811310,22433,209190,14585060000,69721.59
+811411,Home and Garden Equipment Repair and Maintenance,direct,811411,1704,4555,166665000,36589.46
+811412,Appliance Repair and Maintenance,direct,811412,5411,20111,918325000,45662.82
+811420,Reupholstery and Furniture Repair,direct,811420,3263,11225,444357000,39586.37
+811430,Footwear and Leather Goods Repair,direct,811430,720,1749,59584000,34067.47
+811490,Other Personal and Household Goods Repair and Maintenance,direct,811490,11007,39536,1696464000,42909.35
+812111,Barber Shops,direct,812111,7363,28674,897934000,31315.27
+812112,Beauty Salons,direct,812112,82964,386665,11751859000,30392.87
+812113,Nail Salons,direct,812113,33802,145402,3676927000,25288.01
+812191,Diet and Weight Reducing Centers,direct,812191,2513,13154,406007000,30865.67
+812199,Other Personal Care Services,direct,812199,29936,169601,5012604000,29555.27
+812210,Funeral Homes and Funeral Services,direct,812210,15375,110512,4617780000,41785.33
+812220,Cemeteries and Crematories,direct,812220,5117,32643,1648997000,50516.1
+812310,Coin‑Operated Laundries and Drycleaners,direct,812310,10911,41070,1041859000,25367.88
+812320,Drycleaning and Laundry Services (except Coin‑Operated),direct,812320,16394,92840,2555412000,27524.9
+812331,Linen Supply,direct,812331,839,45959,1996084000,43431.84
+812332,Industrial Launderers,direct,812332,1488,67652,3107366000,45931.62
+812910,Pet Care (except Veterinary) Services,direct,812910,24267,158246,4296249000,27149.18
+812921,Photofinishing Laboratories (except One‑Hour),direct,812921,357,4025,220296000,54731.93
+812922,One‑Hour Photofinishing,direct,812922,98,288,9207000,31968.75
+812930,Parking Lots and Garages,direct,812930,11944,121135,3591227000,29646.49
+812990,All Other Personal Services,direct,812990,22597,77308,3163060000,40915.04
+813110,Religious Organizations,direct,813110,185556,1538248,42293857000,27494.82
+813211,Grantmaking Foundations,direct,813211,12726,107572,8873785000,82491.59
+813212,Voluntary Health Organizations,direct,813212,4239,59709,5196310000,87027.25
+813219,Other Grantmaking and Giving Services,direct,813219,4907,40437,2489661000,61568.88
+813311,Human Rights Organizations,direct,813311,4109,48806,3270105000,67002.11
+813312,"Environment, Conservation and Wildlife Organizations",direct,813312,8304,87418,4918804000,56267.63
+813319,Other Social Advocacy Organizations,direct,813319,7842,67923,4572613000,67320.54
+813410,Civic and Social Organizations,direct,813410,24832,203796,6215150000,30496.92
+813910,Business Associations,direct,813910,15043,104462,10126189000,96936.58
+813920,Professional Organizations,direct,813920,6590,87059,8515440000,97812.29
+813930,Labor Unions and Similar Labor Organizations,direct,813930,12763,131583,6566791000,49906.07
+813940,Political Organizations,direct,813940,2686,15012,984621000,65588.93
+813990,"Other Similar Organizations (except Business, Professional, Labor, and Political Organizations)",direct,813990,18431,133757,7320405000,54729.14

@@ -1,0 +1,98 @@
+naics_code_2022,naics_title_2022,status_code,naics_codes_2017,naics_titles_2017
+212114,Surface Coal Mining,N,212111|212113,Bituminous Coal and Lignite Surface Mining|Anthracite Mining - anthracite surface mining
+212115,Underground Coal Mining,N,212112|212113,Bituminous Coal Underground Mining|Anthracite Mining - anthracite underground mining
+212220,Gold Ore and Silver Ore Mining,N,212221|212222,Gold Ore Mining|Silver Ore Mining
+212290,Other Metal Ore Mining,N,212291|212299,Uranium-Radium-Vanadium Ore Mining|All Other Metal Ore Mining
+212323,"Kaolin, Clay, and Ceramic and Refractory Minerals Mining",N,212324|212325,Kaolin and Ball Clay Mining|Clay and Ceramic and Refractory Minerals Mining
+212390,Other Nonmetallic Mineral Mining and Quarrying,N,212391|212392|212393|212399,"Potash, Soda, and Borate Mineral Mining|Phosphate Rock Mining|Other Chemical and Fertilizer Mineral Mining|All Other Nonmetallic Mineral Mining"
+315120,Apparel Knitting Mills,N,315110|315190,Hosiery and Sock Mills|Other Apparel Knitting Mills
+315250,Cut and Sew Apparel Manufacturing (except Contractors),N,315220|315240|315280,"Men's and Boys' Cut and Sew Apparel Manufacturing|Women's, Girls', and Infants' Cut and Sew Apparel Manufacturing|Other Cut and Sew Apparel Manufacturing"
+316990,Other Leather and Allied Product Manufacturing,N,316992|316998,Women's Handbag and Purse Manufacturing|All Other Leather Good and Allied Product Manufacturing
+321215,Engineered Wood Member Manufacturing,N,321213|321214,Engineered Wood Member (except Truss) Manufacturing|Truss Manufacturing
+322120,Paper Mills,N,322121|322122,Paper (except Newsprint) Mills|Newsprint Mills
+325314,Fertilizer (Mixing Only) Manufacturing,R,325314,Fertilizer (Mixing Only) Manufacturing - except compost manufacturing
+325315,Compost Manufacturing,N,325314,Fertilizer (Mixing Only) Manufacturing - compost manufacturing
+333248,All Other Industrial Machinery Manufacturing,N,333244|333249,Printing Machinery and Equipment Manufacturing|Other Industrial Machinery Manufacturing
+333310,Commercial and Service Industry Machinery Manufacturing,N,333314|333316|333318,Optical Instrument and Lens Manufacturing|Photographic and Photocopying Equipment Manufacturing|Other Commercial and Service Industry Machinery Manufacturing
+333998,All Other Miscellaneous General Purpose Machinery Manufacturing,N,333997|333999,Scale and Balance Manufacturing|All Other Miscellaneous General Purpose Machinery Manufacturing
+334610,Manufacturing and Reproducing Magnetic and Optical Media,N,334613|334614,"Blank Magnetic and Optical Recording Media Manufacturing|Software and Other Prerecorded Compact Disc, Tape, and Record Reproducing"
+335131,Residential Electric Lighting Fixture Manufacturing,N,335121,Residential Electric Lighting Fixture Manufacturing
+335132,"Commercial, Industrial, and Institutional Electric Lighting Fixture Manufacturing",N,335122,"Commercial, Industrial, and Institutional Electric Lighting Fixture Manufacturing"
+335139,Electric Lamp Bulb and Other Lighting Equipment Manufacturing,N,335110|335129,Electric Lamp Bulb and Part Manufacturing|Other Lighting Equipment Manufacturing
+335910,Battery Manufacturing,N,335911|335912,Storage Battery Manufacturing|Primary Battery Manufacturing
+336110,Automobile and Light Duty Motor Vehicle Manufacturing,N,336111|336112,Automobile Manufacturing|Light Truck and Utility Vehicle Manufacturing
+337126,Household Furniture (except Wood and Upholstered) Manufacturing,N,337124|337125,Metal Household Furniture Manufacturing|Household Furniture (except Wood and Metal) Manufacturing
+424350,Clothing and Clothing Accessories Merchant Wholesalers,N,424320|424330,"Men's and Boys' Clothing and Furnishings Merchant Wholesalers|Women's, Children's, and Infants' Clothing and Accessories Merchant Wholesalers"
+425120,Wholesale Trade Agents and Brokers,R,425110|425120,Business to Business Electronic Markets|Wholesale Trade Agents and Brokers
+441227,"Motorcycle, ATV, and All Other Motor Vehicle Dealers",N,441228|454110,"Motorcycle, ATV, and All Other Motor Vehicle Dealers|Electronic Shopping and Mail-Order Houses"
+441330,Automotive Parts and Accessories Retailers,N,441310|454110|454390,Automotive Parts and Accessories Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+441340,Tire Dealers,N,441320|454110|454390,Tire Dealers|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+444140,Hardware Retailers,N,444130|454110|454390,Hardware Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+444180,Other Building Material Dealers,N,444190|454110|454390,Other Building Material Dealers|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+444230,Outdoor Power Equipment Retailers,N,444210|454110|454390,Outdoor Power Equipment Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+444240,"Nursery, Garden Center, and Farm Supply Retailers",N,444220|454110|454390,"Nursery, Garden Center, and Farm Supply Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments"
+445131,Convenience Retailers,N,445120|454110|454390,Convenience Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+445132,Vending Machine Operators,N,454210,Vending Machine Operators
+445240,Meat Retailers,N,445210|454110|454390,Meat Markets|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+445250,Fish and Seafood Retailers,N,445220|454110|454390,Fish and Seafood Markets|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+445298,All Other Specialty Food Retailers,N,445299|454110|454390,All Other Specialty Food Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+445320,"Beer, Wine, and Liquor Retailers",N,445310|454110|454390,"Beer, Wine, and Liquor Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments"
+449110,Furniture Retailers,N,442110|454110|454390,Furniture Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+449121,Floor Covering Retailers,N,442210|454110|454390,Floor Covering Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+449122,Window Treatment Retailers,N,442291|454110|454390,Window Treatment Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+449129,All Other Home Furnishings Retailers,N,442299|454110|454390,All Other Home Furnishings Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+449210,Electronics and Appliance Retailers,N,443141|443142|454110|454390,Household Appliance Stores|Electronics Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+455110,Department Stores,N,452210|454110,Department Stores|Electronic Shopping and Mail-Order Houses
+455211,Warehouse Clubs and Supercenters,N,452311|454110,Warehouse Clubs and Supercenters|Electronic Shopping and Mail-Order Houses
+455219,All Other General Merchandise Retailers,N,452319|453998|454110|454390,All Other General Merchandise Stores|All Other Miscellaneous Store Retailers (except Tobacco Stores) - general merchandise auction houses|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+456110,Pharmacies and Drug Retailers,N,446110|454110|454390,Pharmacies and Drug Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+456120,"Cosmetics, Beauty Supplies, and Perfume Retailers",N,446120|454110|454390,"Cosmetics, Beauty Supplies, and Perfume Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments"
+456130,Optical Goods Retailers,N,446130|454110|454390,Optical Goods Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+456191,Food (Health) Supplement Retailers,N,446191|454110|454390,Food (Health) Supplement Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+456199,All Other Health and Personal Care Retailers,N,446199|454110|454390,All Other Health and Personal Care Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+457110,Gasoline Stations with Convenience Stores,N,447110,Gasoline Stations with Convenience Stores
+457120,Other Gasoline Stations,N,447190,Other Gasoline Stations
+457210,Fuel Dealers,N,454310,Fuel Dealers
+458110,Clothing and Clothing Accessories Retailers,N,448110|448120|448130|448140|448150|448190|454110|454390,Men's Clothing Stores|Women's Clothing Stores|Children's and Infants' Clothing Stores|Family Clothing Stores|Clothing Accessories Stores|Other Clothing Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+458210,Shoe Retailers,N,448210|454110|454390,Shoe Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+458310,Jewelry Retailers,N,448310|454110|454390,Jewelry Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+458320,Luggage and Leather Goods Retailers,N,448320|454110|454390,Luggage and Leather Goods Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+459110,Sporting Goods Retailers,N,451110|454110|454390,Sporting Goods Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+459120,"Hobby, Toy, and Game Retailers",N,451120|454110|454390,"Hobby, Toy, and Game Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments"
+459130,"Sewing, Needlework, and Piece Goods Retailers",N,451130|454110|454390,"Sewing, Needlework, and Piece Goods Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments"
+459140,Musical Instrument and Supplies Retailers,N,451140|454110|454390,Musical Instrument and Supplies Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+459210,Book Retailers and News Dealers,N,451211|451212|454110|454390,Book Stores|News Dealers and Newsstands|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+459310,Florists,N,453110|454110|454390,Florists|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+459410,Office Supplies and Stationery Retailers,N,453210|454110|454390,Office Supplies and Stationery Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+459420,"Gift, Novelty, and Souvenir Retailers",N,453220|454110|454390,"Gift, Novelty, and Souvenir Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments"
+459510,Used Merchandise Retailers,N,453310|454110|454390,Used Merchandise Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+459910,Pet and Pet Supplies Retailers,N,453910|454110|454390,Pet and Pet Supplies Stores|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+459920,Art Dealers,N,453920|454110|454390,Art Dealers|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments
+459930,Manufactured (Mobile) Home Dealers,N,453930,Manufactured (Mobile) Home Dealers
+459991,"Tobacco, Electronic Cigarette, and Other Smoking Supplies Retailers",N,453991|453998|454110|454390,"Tobacco Stores|All Other Miscellaneous Store Retailers (except Tobacco Stores) - electronic cigarette stores and marijuana stores, medical or recreational|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments"
+459999,All Other Miscellaneous Retailers,N,453998|454110|454390,"All Other Miscellaneous Store Retailers (except Tobacco Stores) - except general merchandise auction houses, electronic cigarette stores, and marijuana stores, medical or recreational|Electronic Shopping and Mail-Order Houses|Other Direct Selling Establishments"
+513110,Newspaper Publishers,N,511110|519130,Newspaper Publishers|Internet Publishing and Broadcasting and Web Search Portals - Internet newspaper publishers
+513120,Periodical Publishers,N,511120|519130,Periodical Publishers|Internet Publishing and Broadcasting and Web Search Portals - Internet periodical publishers
+513130,Book Publishers,N,511130|519130,Book Publishers|Internet Publishing and Broadcasting and Web Search Portals - Internet book publishers
+513140,Directory and Mailing List Publishers,N,511140|519130,Directory and Mailing List Publishers|Internet Publishing and Broadcasting and Web Search Portals - Internet directory and mailing list publishers
+513191,Greeting Card Publishers,N,511191|519130,Greeting Card Publishers|Internet Publishing and Broadcasting and Web Search Portals - Internet greeting card publishers
+513199,All Other Publishers,N,511199|519130,All Other Publishers|Internet Publishing and Broadcasting and Web Search Portals - all other Internet publishers
+513210,Software Publishers,N,511210,Software Publishers
+516110,Radio Broadcasting Stations,N,515112,Radio Stations
+516120,Television Broadcasting Stations,N,515120,Television Broadcasting - television broadcasting stations
+516210,"Media Streaming Distribution Services, Social Networks, and Other Media Networks and Content Providers",N,515111|515120|515210|519110|519130,Radio Networks|Television Broadcasting - television networks|Cable and Other Subscription Programming|News Syndicates|Internet Publishing and Broadcasting and Web Search Portals - Internet broadcasting
+517111,Wired Telecommunications Carriers,N,517311,Wired Telecommunications Carriers
+517112,Wireless Telecommunications Carriers (except Satellite),N,517312,Wireless Telecommunications Carriers (except Satellite) - except agents for wireless telecommunications carriers
+517121,Telecommunications Resellers,N,517911,Telecommunications Resellers - except agents for wireless telecommunications resellers
+517122,Agents for Wireless Telecommunications Services,N,517312|517911,Wireless Telecommunications Carriers (except Satellite) - agents for wireless telecommunications carriers|Telecommunications Resellers - agents for wireless telecommunications resellers
+517810,All Other Telecommunications,N,517919,All Other Telecommunications
+000519,"Web Search Portals, Libraries, Archives, and Other Information Services",R,519,Other Information Services - except news syndicates and Internet publishing and broadcasting
+519210,Libraries and Archives,N,519120,Libraries and Archives
+519290,Web Search Portals and All Other Information Services,N,519130|519190,Internet Publishing and Broadcasting and Web Search Portals - web search portals|All Other Information Services
+522180,Savings Institutions and Other Depository Credit Intermediation,N,522120|522190,Savings Institutions|Other Depository Credit Intermediation
+522299,"International, Secondary Market, and All Other Nondepository Credit Intermediation",N,522293|522294|522298,International Trade Financing|Secondary Market Financing|All Other Nondepository Credit Intermediation
+523150,Investment Banking and Securities Intermediation,N,523110|523120,Investment Banking and Securities Dealing|Securities Brokerage
+523160,Commodity Contracts Intermediation,N,523130|523140,Commodity Contracts Dealing|Commodity Contracts Brokerage
+523940,Portfolio Management and Investment Advice,N,523920|523930,Portfolio Management|Investment Advice
+811114,Specialized Automotive Repair,N,811112|811113|811118,Automotive Exhaust System Repair|Automotive Transmission Repair|Other Automotive Mechanical and Electrical Repair and Maintenance
+811210,Electronic and Precision Equipment Repair and Maintenance,N,811211|811212|811213|811219,Consumer Electronics Repair and Maintenance|Computer and Office Machine Repair and Maintenance|Communication Equipment Repair and Maintenance|Other Electronic and Precision Equipment Repair and Maintenance
