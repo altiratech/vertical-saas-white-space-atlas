@@ -52,6 +52,25 @@
         </label>
       </section>
 
+      <section class="shortlist-shell">
+        <div class="shortlist-bar">
+          <div>
+            <p class="eyebrow">Shortlist</p>
+            <h2>Compare 2-3 markets side by side</h2>
+            <p class="shortlist-copy">
+              Pin candidates from the table to compare workflow, buyer boundary, and caveats without leaving the
+              static payload.
+            </p>
+          </div>
+          <div class="shortlist-actions">
+            <strong id="shortlist-count">0 / 3 selected</strong>
+            <div class="shortlist-chips" id="shortlist-chips"></div>
+            <button id="clear-shortlist" class="secondary-button" type="button">Clear shortlist</button>
+          </div>
+        </div>
+        <div class="compare-panel" id="compare-panel"></div>
+      </section>
+
       <main class="layout">
         <section class="table-panel">
           <table>
@@ -63,6 +82,7 @@
                 <th>Roll-up</th>
                 <th>Move</th>
                 <th>Confidence</th>
+                <th>Shortlist</th>
               </tr>
             </thead>
             <tbody id="industry-table"></tbody>

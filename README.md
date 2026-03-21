@@ -19,7 +19,7 @@ This repo now contains the first real-data slice:
 - an added workflow layer from the BLS National Employment Matrix plus O*NET work activities
 - a normalized 6-digit national NAICS table in `clean/`
 - scored industry cells in `data/`
-- a static explorer payload and plain HTML surface in `site/`
+- a static explorer payload and plain HTML shortlist/compare surface in `site/`
 
 ## Canonical Build Truth
 

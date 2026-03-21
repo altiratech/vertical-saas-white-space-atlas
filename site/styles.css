@@ -32,6 +32,7 @@ body {
 .hero,
 .summary-grid,
 .controls,
+.shortlist-shell,
 .layout {
   margin-bottom: 24px;
 }
@@ -94,6 +95,7 @@ h1 {
 
 .summary-card,
 .controls,
+.shortlist-shell,
 .table-panel,
 .detail-panel {
   border: 1px solid var(--border);
@@ -132,6 +134,178 @@ h1 {
   color: var(--muted);
 }
 
+.shortlist-shell {
+  padding: 20px;
+}
+
+.shortlist-bar {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+  gap: 18px;
+}
+
+.shortlist-copy,
+.compare-lead {
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.shortlist-actions {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.shortlist-actions strong {
+  font-family: "SF Mono", "Monaco", "Consolas", monospace;
+  font-size: 0.84rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.shortlist-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.shortlist-chip,
+.secondary-button,
+.compare-toggle {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--ink);
+  font: inherit;
+}
+
+.shortlist-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.shortlist-chip span,
+.shortlist-empty-chip {
+  font-family: "SF Mono", "Monaco", "Consolas", monospace;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.shortlist-empty-chip {
+  display: inline-flex;
+  padding: 10px 0;
+}
+
+.secondary-button,
+.compare-toggle {
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.compare-toggle.is-active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.secondary-button:disabled,
+.compare-toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.compare-panel {
+  margin-top: 18px;
+}
+
+.compare-empty {
+  padding: 18px;
+  border: 1px dashed var(--border);
+  background: rgba(48, 86, 66, 0.05);
+}
+
+.compare-empty strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.compare-empty p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.compare-card {
+  padding: 16px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.compare-card-header,
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: start;
+}
+
+.compare-card-header h3 {
+  font-size: 1.2rem;
+  line-height: 1.1;
+}
+
+.compare-code {
+  margin: 8px 0 0;
+  font-family: "SF Mono", "Monaco", "Consolas", monospace;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.compare-remove {
+  white-space: nowrap;
+}
+
+.compare-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.compare-metric {
+  padding: 12px;
+  border: 1px solid var(--border);
+  background: rgba(48, 86, 66, 0.05);
+}
+
+.compare-metric strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.2rem;
+}
+
+.compare-notes {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.compare-notes li {
+  padding: 12px;
+  border-left: 3px solid var(--accent);
+  background: rgba(48, 86, 66, 0.08);
+}
+
 input,
 select {
   width: 100%;
@@ -149,7 +323,8 @@ select {
 }
 
 .table-panel {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 table {
@@ -184,6 +359,10 @@ tbody tr {
 tbody tr:hover,
 tbody tr.active {
   background: var(--accent-soft);
+}
+
+tbody tr.compared:not(.active) {
+  background: rgba(48, 86, 66, 0.08);
 }
 
 .industry-cell {
@@ -265,7 +444,8 @@ tbody tr.active {
   .hero,
   .layout,
   .controls,
-  .summary-grid {
+  .summary-grid,
+  .shortlist-bar {
     grid-template-columns: 1fr;
   }
 

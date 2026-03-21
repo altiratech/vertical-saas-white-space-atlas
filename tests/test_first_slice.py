@@ -128,3 +128,14 @@ def test_site_and_data_outputs_exist() -> None:
     ]:
         assert path.exists()
         assert path.stat().st_size > 0
+
+
+def test_static_explorer_includes_shortlist_compare_surface() -> None:
+    index_html = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
+    app_js = (ROOT / "site" / "app.js").read_text(encoding="utf-8")
+
+    assert "Compare 2-3 markets side by side" in index_html
+    assert 'id="compare-panel"' in index_html
+    assert 'id="shortlist-chips"' in index_html
+    assert "function renderShortlist()" in app_js
+    assert "shortlistButtonLabel" in app_js
