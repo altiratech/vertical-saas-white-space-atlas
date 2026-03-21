@@ -253,8 +253,12 @@ function buildCompareCard(row) {
           <span>${row.anchors.sba_size_standard.display} small-business ceiling on a ${formatBasis(row.anchors.sba_size_standard.basis)} basis.</span>
         </li>
         <li>
-          <strong>Watch-Out</strong><br />
-          <span>${firstWatchout(row)}</span>
+          <strong>Decision Risk</strong><br />
+          <span>${decisionRisk(row)}</span>
+        </li>
+        <li>
+          <strong>Confidence Note</strong><br />
+          <span>${confidenceNote(row)}</span>
         </li>
       </ul>
     </article>
@@ -283,7 +287,8 @@ function buildMemoMarkdown(compareRows) {
 - Why it fits: ${firstPositiveSignal(row)}
 - Workflow read: ${workflowCompareLine(row)}
 - Buyer boundary: ${row.anchors.sba_size_standard.display} ceiling on a ${formatBasis(row.anchors.sba_size_standard.basis)} basis
-- Watch-out: ${firstWatchout(row)}
+- Decision risk: ${decisionRisk(row)}
+- Confidence note: ${confidenceNote(row)}
 - Top visible occupation: ${topOccupationLine(row)}
 `
     )
@@ -301,7 +306,9 @@ Best current pick inside this shortlist: **${leadRow.entity_name} (${leadRow.nai
 
 Reason to lead with it: ${firstPositiveSignal(leadRow)}
 
-Current watch-out: ${firstWatchout(leadRow)}
+Current watch-out: ${decisionRisk(leadRow)}
+
+Confidence note: ${confidenceNote(leadRow)}
 
 ## Side-By-Side Comparison
 
@@ -474,6 +481,20 @@ function renderDetail() {
     </div>
 
     <section>
+      <p class="label">Decision Read</p>
+      <ul class="detail-list">
+        <li>
+          <strong>Primary Risk</strong><br />
+          <span>${decisionRisk(row)}</span>
+        </li>
+        <li>
+          <strong>Confidence Note</strong><br />
+          <span>${confidenceNote(row)}</span>
+        </li>
+      </ul>
+    </section>
+
+    <section>
       <p class="label">Fit Signals</p>
       <ul class="detail-list">
         ${
@@ -577,7 +598,7 @@ function renderDetail() {
     <section>
       <p class="label">Caveats</p>
       <ul class="detail-caveats">
-        ${row.caveats.map((item) => `<li>${item}</li>`).join("")}
+        ${prioritizedCaveats(row).map((item) => `<li>${item}</li>`).join("")}
       </ul>
     </section>
   `;
@@ -642,12 +663,61 @@ function firstPositiveSignal(row) {
   );
 }
 
-function firstWatchout(row) {
-  return (
-    row.score_inputs.thesis_fit_negative_signals[0] ??
-    row.caveats[0] ??
-    "No major counter-signal surfaced beyond the known national-slice limitations."
-  );
+function prioritizedCaveats(row) {
+  return [...row.caveats].sort((left, right) => caveatPriority(left) - caveatPriority(right));
+}
+
+function caveatPriority(caveat) {
+  const priorities = [
+    /broader published BLS parent industry/i,
+    /closest published BLS parent industry/i,
+    /visible BLS occupation mix/i,
+    /differ materially/i,
+    /workflow burden is inferred/i,
+    /national-only slice/i,
+  ];
+  const matchIndex = priorities.findIndex((pattern) => pattern.test(caveat));
+  return matchIndex === -1 ? priorities.length : matchIndex;
+}
+
+function decisionRisk(row) {
+  if (row.score_inputs.thesis_fit_negative_signals.length) {
+    return row.score_inputs.thesis_fit_negative_signals[0];
+  }
+  const caveat = prioritizedCaveats(row)[0];
+  return humanizeCaveat(caveat);
+}
+
+function humanizeCaveat(caveat) {
+  if (/broader published BLS parent industry/i.test(caveat)) {
+    return "Workflow evidence is directional because BLS only publishes a broader parent industry for this NAICS line.";
+  }
+  if (/closest published BLS parent industry/i.test(caveat)) {
+    return "Workflow evidence is directional because BLS rolls this NAICS line into a close parent industry.";
+  }
+  if (/visible BLS occupation mix/i.test(caveat)) {
+    return "Workflow coverage is partial because some smaller or suppressed occupations are not visible in the public BLS mix.";
+  }
+  if (/differ materially/i.test(caveat)) {
+    return "Employment scale is directional because CBP and BLS labor counts diverge materially for this line.";
+  }
+  if (/workflow burden is inferred/i.test(caveat)) {
+    return "Workflow burden is inferred from public occupation mix rather than direct company workflow evidence.";
+  }
+  if (/national-only slice/i.test(caveat)) {
+    return "Regional density and local regulatory variation are not yet represented in this national-only slice.";
+  }
+  return caveat;
+}
+
+function confidenceNote(row) {
+  if (row.scores.confidence >= 90) {
+    return "Confidence is high for this slice, but the result still abstracts away local market density.";
+  }
+  if (row.scores.confidence >= 80) {
+    return "Confidence is solid, but at least one source bridge or workflow inference keeps the result directional rather than exact.";
+  }
+  return "Confidence is more directional here because source precision or public coverage is weaker than the top-ranked rows.";
 }
 
 function workflowCompareLine(row) {

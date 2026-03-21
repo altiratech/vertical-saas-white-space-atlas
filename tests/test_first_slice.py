@@ -116,6 +116,15 @@ def test_workflow_profiles_attach_real_occupation_mix() -> None:
     assert any("visible BLS occupation mix" in caveat for caveat in home_health["caveats"])
 
 
+def test_build_summaries_read_like_complete_sentences() -> None:
+    payload = atlas_first_slice.build_first_slice(refresh=False)
+    lookup = {row["naics_code"]: row for row in payload["entities"]}
+
+    assert ". and " not in lookup["722310"]["summary"]
+    assert lookup["722310"]["summary"].endswith("build-first wedge.")
+    assert lookup["623312"]["summary"].endswith("build-first wedge.")
+
+
 def test_site_and_data_outputs_exist() -> None:
     atlas_first_slice.build_first_slice(refresh=False)
 
@@ -142,3 +151,5 @@ def test_static_explorer_includes_shortlist_compare_surface() -> None:
     assert "shortlistButtonLabel" in app_js
     assert "function renderMemo(compareRows)" in app_js
     assert "function buildMemoMarkdown(compareRows)" in app_js
+    assert "function decisionRisk(row)" in app_js
+    assert "function confidenceNote(row)" in app_js

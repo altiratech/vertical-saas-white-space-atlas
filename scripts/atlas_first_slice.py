@@ -1628,15 +1628,19 @@ def build_summary(row: dict[str, Any]) -> str:
     lead_positive = row["score_inputs"]["thesis_fit_positive_signals"][:1]
     lead_negative = row["score_inputs"]["thesis_fit_negative_signals"][:1]
     if move == "build":
-        fit_phrase = lead_positive[0] if lead_positive else "the thesis-fit signals stay supportive"
-        return (
-            f"{fit_phrase} and the structure is fragmented enough to support a build-first wedge."
+        fit_phrase = (
+            lead_positive[0].rstrip(".")
+            if lead_positive
+            else "The thesis-fit signals stay supportive"
         )
+        return f"{fit_phrase}. Fragmentation and workflow load support a build-first wedge."
     if move == "acquire":
-        fit_phrase = lead_negative[0] if lead_negative else "the fit is better for fragmentation than for a clean software wedge"
-        return (
-            f"The market looks more compelling as a fragmented roll-up lane because {fit_phrase}."
+        fit_phrase = (
+            lead_negative[0].rstrip(".")
+            if lead_negative
+            else "The fit is better for fragmentation than for a clean software wedge"
         )
+        return f"The market looks more compelling as a fragmented roll-up lane. Key reason: {fit_phrase}."
     if move == "sell":
         return (
             "The structure supports go-to-market attention now, but the software wedge still "
