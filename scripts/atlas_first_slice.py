@@ -62,6 +62,92 @@ SITE_PAYLOAD_SCHEMA_PATH = ROOT / "schemas" / "site_payload.schema.json"
 
 NUMERIC_CODE_RE = re.compile(r"\d{6}")
 
+SECTOR_FIT_ADJUSTMENTS: dict[str, tuple[float, str]] = {
+    "23": (10.0, "Construction and trade workflows tend to create recurring operator software needs."),
+    "31": (3.0, "Physical operations can support repeatable workflow software, but are not the clearest first wedge."),
+    "32": (3.0, "Physical operations can support repeatable workflow software, but are not the clearest first wedge."),
+    "33": (3.0, "Physical operations can support repeatable workflow software, but are not the clearest first wedge."),
+    "42": (5.0, "Merchant distribution workflows can create real coordination pain."),
+    "44": (4.0, "Multi-site retail operations can create recurring coordination and labor workflows."),
+    "45": (4.0, "Multi-site retail operations can create recurring coordination and labor workflows."),
+    "48": (10.0, "Logistics and routing workflows fit the operator-heavy wedge thesis."),
+    "49": (10.0, "Storage and delivery workflows fit the operator-heavy wedge thesis."),
+    "53": (3.0, "Property operations can be viable, but buyer quality varies widely."),
+    "56": (12.0, "Outsourced operator services often have repeated labor and compliance workflows."),
+    "62": (10.0, "Care delivery workflows are operations-heavy and often documentation-heavy."),
+    "72": (12.0, "Hospitality and food-service markets are location-heavy, labor-heavy, and workflow-driven."),
+    "81": (10.0, "Local recurring service operations are often good vertical-software terrain."),
+    "22": (-16.0, "Utility markets are capital-intensive and often less practical as a first software wedge."),
+    "51": (-22.0, "Information and software-native markets are less aligned with the first-wedge thesis."),
+    "52": (-22.0, "Finance and insurance markets are less aligned with the first-wedge thesis."),
+    "54": (-6.0, "Specialist professional services can skew toward knowledge-work rather than repeatable operator workflows."),
+    "55": (-12.0, "Holding-company structures are not useful first-wedge markets."),
+    "61": (-10.0, "Education buyers are often institution-heavy and slower to wedge."),
+    "71": (-14.0, "Arts, entertainment, and recreation are less consistent with the intended first-wedge profile."),
+}
+
+POSITIVE_TITLE_SIGNALS: list[tuple[str, float, str]] = [
+    ("food service", 16.0, "Food-service operations create recurring staffing, scheduling, and unit-level execution work."),
+    ("hotel", 14.0, "Hotel operations create recurring property, staffing, and guest-service workflows."),
+    ("motel", 14.0, "Lodging operations create recurring property, staffing, and guest-service workflows."),
+    ("home health", 16.0, "Home-health operations are distributed, labor-heavy, and documentation-heavy."),
+    ("assisted living", 14.0, "Assisted-living workflows combine care delivery, staffing, and compliance."),
+    ("nursing care", 14.0, "Nursing-care workflows combine care delivery, staffing, and compliance."),
+    ("outpatient", 10.0, "Outpatient operations often depend on repeatable scheduling and documentation workflows."),
+    ("dialysis", 12.0, "Dialysis operations are repeated, regulated, and workflow-heavy."),
+    ("laborator", 10.0, "Laboratory workflows are operationally repeatable and process-heavy."),
+    ("warehouse", 14.0, "Warehousing operations create repeated labor, routing, and throughput workflows."),
+    ("warehousing", 14.0, "Warehousing operations create repeated labor, routing, and throughput workflows."),
+    ("courier", 14.0, "Courier workflows are routing-heavy and operationally repetitive."),
+    ("freight", 12.0, "Freight workflows are routing-heavy and operationally repetitive."),
+    ("parking", 14.0, "Parking operations are recurring, local, and workflow-driven."),
+    ("solid waste", 14.0, "Waste operations are route-based, labor-heavy, and recurring."),
+    ("waste collection", 14.0, "Waste operations are route-based, labor-heavy, and recurring."),
+    ("security guards", 14.0, "Security operations create recurring staffing, routing, and compliance workflows."),
+    ("patrol", 12.0, "Patrol operations create recurring staffing, routing, and compliance workflows."),
+    ("janitorial", 14.0, "Janitorial operations create recurring staffing and multi-site service workflows."),
+    ("facilities support", 14.0, "Facilities support contracts create recurring service workflows."),
+    ("temporary help", 12.0, "Staffing markets create recurring assignment, scheduling, and communication loops."),
+    ("grocery", 10.0, "Grocery operations combine multi-site labor, inventory, and local execution workflows."),
+    ("supermarket", 10.0, "Supermarket operations combine multi-site labor, inventory, and local execution workflows."),
+    ("gasoline stations", 8.0, "Convenience-retail operations create repeated local labor and site workflows."),
+    ("contractor", 14.0, "Contractor markets create repeatable field-service coordination workflows."),
+    ("remodel", 14.0, "Remodeling markets create repeatable field-service coordination workflows."),
+    ("repair", 14.0, "Repair markets create recurring service and dispatch workflows."),
+    ("maintenance", 12.0, "Maintenance markets create recurring service and dispatch workflows."),
+    ("collection", 8.0, "Collection workflows are route-based and operationally repetitive."),
+]
+
+NEGATIVE_TITLE_SIGNALS: list[tuple[str, float, str]] = [
+    ("software", -28.0, "Software-native markets are not the intended first wedge."),
+    ("programming", -24.0, "Custom software markets are not the intended first wedge."),
+    ("computer systems design", -20.0, "IT-services markets are less aligned with the operator-heavy wedge thesis."),
+    ("data processing", -22.0, "Data-processing markets are less aligned with the operator-heavy wedge thesis."),
+    ("web hosting", -22.0, "Web-hosting markets are less aligned with the operator-heavy wedge thesis."),
+    ("computing infrastructure", -24.0, "Infrastructure software markets are less aligned with the operator-heavy wedge thesis."),
+    ("portfolio management", -26.0, "Capital-markets services are not the intended first wedge."),
+    ("investment", -24.0, "Capital-markets services are not the intended first wedge."),
+    ("securities", -24.0, "Capital-markets services are not the intended first wedge."),
+    ("banking", -20.0, "Banking markets are institution-heavy and not the intended first wedge."),
+    ("credit unions", -16.0, "Credit-union markets are institution-heavy and not the intended first wedge."),
+    ("insurance carriers", -22.0, "Insurance-carrier markets are institution-heavy and not the intended first wedge."),
+    ("insurance", -14.0, "Insurance buyers are often institution-heavy for a first wedge."),
+    ("research and development", -18.0, "R&D services skew toward specialist knowledge-work rather than repeatable operator workflows."),
+    ("universities", -18.0, "University buyers are institution-heavy and slower to wedge."),
+    ("college", -18.0, "University buyers are institution-heavy and slower to wedge."),
+    ("schools", -14.0, "School buyers are institution-heavy and slower to wedge."),
+    ("museum", -16.0, "Museum markets are less consistent with the intended first-wedge profile."),
+    ("golf", -14.0, "Country-club markets are less consistent with the intended first-wedge profile."),
+    ("amusement", -18.0, "Amusement markets are less consistent with the intended first-wedge profile."),
+    ("motion picture", -18.0, "Media-production markets are less aligned with the intended first wedge."),
+    ("electric power", -16.0, "Utility infrastructure is less practical as a first wedge."),
+    ("pipeline", -16.0, "Pipeline infrastructure is less practical as a first wedge."),
+    ("air transportation", -16.0, "Air transportation is capital-intensive and less practical as a first wedge."),
+    ("hospitals", -12.0, "Large institutional hospital systems are harder first-wedge buyers than local operator markets."),
+    ("medical insurance", -18.0, "Payer markets are institution-heavy and not the intended first wedge."),
+    ("pharmaceutical", -12.0, "Pharma manufacturing is less aligned with the intended first wedge."),
+]
+
 
 @dataclass(frozen=True)
 class SourceSpec:
@@ -569,6 +655,10 @@ def assemble_full_rows(
                 "employment_gap_ratio_bls_to_cbp": round(employment_gap_ratio, 3),
                 "sba_size_standard_basis": sba_row.size_standard_basis,
                 "sba_size_standard_value": sba_row.size_standard_value,
+                "sector_code": code[:2],
+                "sector_adjustment_note": SECTOR_FIT_ADJUSTMENTS.get(code[:2], (0.0, "No explicit sector-level fit adjustment."))[1],
+                "thesis_fit_positive_signals": [],
+                "thesis_fit_negative_signals": [],
             },
             "scores": {},
             "recommended_move": "",
@@ -679,23 +769,32 @@ def score_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
         market_scale = weighted_average(
             [(0.5, employment_pct), (0.5, payroll_pct)]
         )
+        thesis_fit, positive_signals, negative_signals = compute_thesis_fit(
+            row,
+            estab_pct=estab_pct,
+            pay_pct=pay_pct,
+        )
+        row["score_inputs"]["thesis_fit_positive_signals"] = positive_signals
+        row["score_inputs"]["thesis_fit_negative_signals"] = negative_signals
 
         software_wedge = weighted_average(
             [
-                (0.35, fragmentation),
-                (0.3, operating_complexity),
+                (0.27, fragmentation),
+                (0.23, operating_complexity),
                 (0.15, willingness_to_pay),
                 (0.1, growth),
-                (0.1, market_scale),
+                (0.05, market_scale),
+                (0.2, thesis_fit),
             ]
         )
         rollup_wedge = weighted_average(
             [
-                (0.45, fragmentation),
+                (0.35, fragmentation),
                 (0.2, market_scale),
                 (0.2, sba_pct),
                 (0.1, operating_complexity),
                 (0.05, growth),
+                (0.1, thesis_fit),
             ]
         )
 
@@ -712,6 +811,7 @@ def score_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "willingness_to_pay": round(willingness_to_pay, 1),
             "growth": round(growth, 1),
             "market_scale": round(market_scale, 1),
+            "thesis_fit": round(thesis_fit, 1),
             "software_wedge": round(software_wedge, 1),
             "rollup_wedge": round(rollup_wedge, 1),
             "confidence": round(max(confidence, 55.0), 1),
@@ -748,7 +848,7 @@ def build_site_payload(
     excluded_total = sum(len(values) for values in coverage_gaps.values())
     return {
         "generated_at": iso_timestamp(),
-        "method_version": "first-slice-v1",
+        "method_version": "first-slice-v2-ranking-quality",
         "canonical_naics_version": "2022",
         "summary": {
             "fully_joined_rows": len(scored_rows),
@@ -781,6 +881,7 @@ def build_site_payload(
                 "willingness_to_pay",
                 "growth",
                 "market_scale",
+                "thesis_fit",
                 "confidence",
             ],
         },
@@ -805,6 +906,8 @@ def build_source_artifact(spec: SourceSpec, local_path: Path) -> dict[str, Any]:
 def build_evidence(row: dict[str, Any]) -> list[dict[str, Any]]:
     anchors = row["anchors"]
     score_inputs = row["score_inputs"]
+    positive_signals = score_inputs["thesis_fit_positive_signals"]
+    negative_signals = score_inputs["thesis_fit_negative_signals"]
     evidence = [
         {
             "label": "CBP footprint",
@@ -846,6 +949,15 @@ def build_evidence(row: dict[str, Any]) -> list[dict[str, Any]]:
             ),
             "source_ids": ["sba_size_standards_2023"],
         },
+        {
+            "label": "Thesis fit",
+            "detail": build_thesis_fit_detail(positive_signals, negative_signals),
+            "source_ids": [
+                "cbp_2022_us_national",
+                "sba_size_standards_2023",
+                "bls_qcew_2024_us000",
+            ],
+        },
     ]
     if row["lineage"]["cbp_mapping_type"] == "aggregated_2017_to_2022":
         evidence.append(
@@ -868,15 +980,17 @@ def build_evidence(row: dict[str, Any]) -> list[dict[str, Any]]:
 def build_summary(row: dict[str, Any]) -> str:
     move = row["recommended_move"]
     scores = row["scores"]
+    lead_positive = row["score_inputs"]["thesis_fit_positive_signals"][:1]
+    lead_negative = row["score_inputs"]["thesis_fit_negative_signals"][:1]
     if move == "build":
+        fit_phrase = lead_positive[0] if lead_positive else "the thesis-fit signals stay supportive"
         return (
-            "High fragmentation, meaningful operating complexity, and credible pay power "
-            "make this a build-first software target."
+            f"{fit_phrase} and the structure is fragmented enough to support a build-first wedge."
         )
     if move == "acquire":
+        fit_phrase = lead_negative[0] if lead_negative else "the fit is better for fragmentation than for a clean software wedge"
         return (
-            "The market looks more compelling as a fragmented roll-up lane than as a pure "
-            "software wedge."
+            f"The market looks more compelling as a fragmented roll-up lane because {fit_phrase}."
         )
     if move == "sell":
         return (
@@ -896,9 +1010,10 @@ def recommend_move(scores: dict[str, float]) -> str:
         and scores["fragmentation"] >= 65
         and scores["operating_complexity"] >= 40
         and scores["willingness_to_pay"] >= 35
+        and scores["thesis_fit"] >= 60
     ):
         return "build"
-    if scores["rollup_wedge"] >= 70 and scores["fragmentation"] >= 75:
+    if scores["rollup_wedge"] >= 68 and scores["fragmentation"] >= 75 and scores["thesis_fit"] >= 40:
         return "acquire"
     if scores["software_wedge"] >= 58 or scores["rollup_wedge"] >= 60:
         return "sell"
@@ -949,6 +1064,7 @@ def flatten_for_csv(row: dict[str, Any]) -> dict[str, Any]:
         "willingness_to_pay": row["scores"]["willingness_to_pay"],
         "growth": row["scores"]["growth"],
         "market_scale": row["scores"]["market_scale"],
+        "thesis_fit": row["scores"]["thesis_fit"],
         "software_wedge": row["scores"]["software_wedge"],
         "rollup_wedge": row["scores"]["rollup_wedge"],
         "confidence": row["scores"]["confidence"],
@@ -1006,6 +1122,97 @@ def safe_ratio(numerator: float, denominator: float) -> float:
 
 def compact_whitespace(value: str) -> str:
     return " ".join(str(value).split())
+
+
+def clamp(value: float, lower: float, upper: float) -> float:
+    return max(lower, min(upper, value))
+
+
+def compute_thesis_fit(row: dict[str, Any], estab_pct: float, pay_pct: float) -> tuple[float, list[str], list[str]]:
+    title = row["entity_name"].lower()
+    sector_code = row["score_inputs"]["sector_code"]
+    employees_per_establishment = row["score_inputs"]["employees_per_establishment"]
+    establishments = row["anchors"]["cbp_establishments"]
+
+    score = 50.0
+    positive_signals: list[str] = []
+    negative_signals: list[str] = []
+
+    sector_adjustment, sector_note = SECTOR_FIT_ADJUSTMENTS.get(
+        sector_code,
+        (0.0, "No explicit sector-level fit adjustment."),
+    )
+    score += sector_adjustment
+    if sector_adjustment > 0:
+        positive_signals.append(sector_note)
+    elif sector_adjustment < 0:
+        negative_signals.append(sector_note)
+
+    for pattern, adjustment, detail in POSITIVE_TITLE_SIGNALS:
+        if pattern in title:
+            score += adjustment
+            positive_signals.append(detail)
+
+    for pattern, adjustment, detail in NEGATIVE_TITLE_SIGNALS:
+        if pattern in title:
+            score += adjustment
+            negative_signals.append(detail)
+
+    if establishments >= 10_000:
+        score += 6.0
+        positive_signals.append("The market already has a large national base of operating locations.")
+    elif establishments <= 500:
+        score -= 4.0
+        negative_signals.append("The market has a relatively small national establishment base for a first wedge.")
+
+    if 5 <= employees_per_establishment <= 80:
+        score += 8.0
+        positive_signals.append("Average site size suggests many distributed operating units rather than a few giant locations.")
+    elif employees_per_establishment > 250:
+        score -= 8.0
+        negative_signals.append("Very large average site size can point toward enterprise selling rather than a distributed operator wedge.")
+    elif employees_per_establishment < 3:
+        score -= 6.0
+        negative_signals.append("Very small average site size can make the workflow wedge thinner at the company level.")
+
+    if pay_pct >= 85:
+        score -= 8.0
+        negative_signals.append("An elite wage profile often signals knowledge-work or institution-heavy buying behavior.")
+    elif pay_pct <= 35:
+        score += 4.0
+        positive_signals.append("A moderate wage profile is more consistent with labor-operations software than elite knowledge-work tooling.")
+
+    if estab_pct >= 70:
+        score += 4.0
+        positive_signals.append("The market is already broad enough nationally to support a real first go-to-market wedge.")
+
+    positive_signals = dedupe_preserve_order(positive_signals)
+    negative_signals = dedupe_preserve_order(negative_signals)
+    return clamp(score, 0.0, 100.0), positive_signals[:5], negative_signals[:5]
+
+
+def dedupe_preserve_order(values: list[str]) -> list[str]:
+    seen: set[str] = set()
+    result: list[str] = []
+    for value in values:
+        if value in seen:
+            continue
+        seen.add(value)
+        result.append(value)
+    return result
+
+
+def build_thesis_fit_detail(positive_signals: list[str], negative_signals: list[str]) -> str:
+    if positive_signals and negative_signals:
+        return (
+            f"Positive fit signals: {positive_signals[0]} "
+            f"Counter-signal: {negative_signals[0]}"
+        )
+    if positive_signals:
+        return f"Positive fit signals: {positive_signals[0]}"
+    if negative_signals:
+        return f"Counter-signal: {negative_signals[0]}"
+    return "No strong positive or negative thesis-fit signal surfaced beyond the structural data."
 
 
 def canonical_candidate_codes(

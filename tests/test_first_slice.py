@@ -78,6 +78,19 @@ def test_rankings_are_sorted_and_evidence_backed() -> None:
     assert all(row["evidence"] for row in top_ten)
     assert all(row["caveats"] for row in top_ten)
     assert all(row["recommended_move"] in {"build", "sell", "acquire", "monitor", "ignore"} for row in top_ten)
+    assert all("thesis_fit" in row["scores"] for row in top_ten)
+
+
+def test_ranking_quality_prefers_operator_markets_over_native_software_and_finance() -> None:
+    payload = atlas_first_slice.build_first_slice(refresh=False)
+    lookup = {row["naics_code"]: row for row in payload["entities"]}
+
+    assert lookup["722310"]["recommended_move"] == "build"
+    assert lookup["513210"]["recommended_move"] != "build"
+    assert lookup["523940"]["recommended_move"] != "build"
+    assert lookup["722310"]["rank"] < lookup["513210"]["rank"]
+    assert lookup["621610"]["rank"] < lookup["524114"]["rank"]
+    assert lookup["722310"]["scores"]["thesis_fit"] > lookup["513210"]["scores"]["thesis_fit"]
 
 
 def test_site_and_data_outputs_exist() -> None:

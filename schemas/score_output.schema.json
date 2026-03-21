@@ -9,6 +9,7 @@
     "willingness_to_pay",
     "growth",
     "market_scale",
+    "thesis_fit",
     "software_wedge",
     "rollup_wedge",
     "confidence"
@@ -36,6 +37,11 @@
       "maximum": 100
     },
     "market_scale": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "thesis_fit": {
       "type": "number",
       "minimum": 0,
       "maximum": 100

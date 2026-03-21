@@ -191,7 +191,11 @@
         "payroll_per_establishment_usd",
         "employment_gap_ratio_bls_to_cbp",
         "sba_size_standard_basis",
-        "sba_size_standard_value"
+        "sba_size_standard_value",
+        "sector_code",
+        "sector_adjustment_note",
+        "thesis_fit_positive_signals",
+        "thesis_fit_negative_signals"
       ],
       "additionalProperties": false,
       "properties": {
@@ -214,6 +218,28 @@
         "sba_size_standard_value": {
           "type": "number",
           "minimum": 0
+        },
+        "sector_code": {
+          "type": "string",
+          "pattern": "^\\d{2}$"
+        },
+        "sector_adjustment_note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "thesis_fit_positive_signals": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "thesis_fit_negative_signals": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
         }
       }
     },
@@ -225,6 +251,7 @@
         "willingness_to_pay",
         "growth",
         "market_scale",
+        "thesis_fit",
         "software_wedge",
         "rollup_wedge",
         "confidence"
@@ -252,6 +279,11 @@
           "maximum": 100
         },
         "market_scale": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "thesis_fit": {
           "type": "number",
           "minimum": 0,
           "maximum": 100

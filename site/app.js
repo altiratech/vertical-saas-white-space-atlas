@@ -152,6 +152,10 @@ function renderDetail() {
         <strong>${row.scores.fragmentation.toFixed(1)}</strong>
       </div>
       <div class="detail-card">
+        <p class="label">Thesis Fit</p>
+        <strong>${row.scores.thesis_fit.toFixed(1)}</strong>
+      </div>
+      <div class="detail-card">
         <p class="label">Confidence</p>
         <strong>${row.scores.confidence.toFixed(1)}</strong>
       </div>
@@ -179,6 +183,45 @@ function renderDetail() {
         <span>${row.anchors.sba_size_standard.basis.replaceAll("_", " ")}</span>
       </div>
     </div>
+
+    <section>
+      <p class="label">Fit Signals</p>
+      <ul class="detail-list">
+        ${
+          row.score_inputs.thesis_fit_positive_signals.length
+            ? row.score_inputs.thesis_fit_positive_signals
+                .map(
+                  (item) => `
+                    <li>
+                      <strong>Positive</strong><br />
+                      <span>${item}</span>
+                    </li>
+                  `
+                )
+                .join("")
+            : `
+              <li>
+                <strong>Positive</strong><br />
+                <span>No strong positive thesis-fit signal surfaced beyond the structural data.</span>
+              </li>
+            `
+        }
+        ${
+          row.score_inputs.thesis_fit_negative_signals.length
+            ? row.score_inputs.thesis_fit_negative_signals
+                .map(
+                  (item) => `
+                    <li>
+                      <strong>Counter-signal</strong><br />
+                      <span>${item}</span>
+                    </li>
+                  `
+                )
+                .join("")
+            : ""
+        }
+      </ul>
+    </section>
 
     <section>
       <p class="label">Evidence</p>
