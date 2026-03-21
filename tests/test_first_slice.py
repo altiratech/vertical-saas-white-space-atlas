@@ -144,6 +144,8 @@ def test_static_explorer_includes_shortlist_compare_surface() -> None:
     app_js = (ROOT / "site" / "app.js").read_text(encoding="utf-8")
 
     assert "Compare 2-3 markets side by side" in index_html
+    assert "styles.css?v=" in index_html
+    assert "app.js?v=" in index_html
     assert 'id="compare-panel"' in index_html
     assert 'id="memo-panel"' in index_html
     assert 'id="shortlist-chips"' in index_html
