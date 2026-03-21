@@ -78,6 +78,8 @@ def test_rankings_are_sorted_and_evidence_backed() -> None:
     assert all(row["evidence"] for row in top_ten)
     assert all(row["caveats"] for row in top_ten)
     assert all(row["recommended_move"] in {"build", "sell", "acquire", "monitor", "ignore"} for row in top_ten)
+    assert all(row["workflow_profile"]["top_occupations"] for row in top_ten)
+    assert all("workflow_intensity" in row["scores"] for row in top_ten)
     assert all("thesis_fit" in row["scores"] for row in top_ten)
 
 
@@ -93,11 +95,33 @@ def test_ranking_quality_prefers_operator_markets_over_native_software_and_finan
     assert lookup["722310"]["scores"]["thesis_fit"] > lookup["513210"]["scores"]["thesis_fit"]
 
 
+def test_workflow_profiles_attach_real_occupation_mix() -> None:
+    payload = atlas_first_slice.build_first_slice(refresh=False)
+    lookup = {row["naics_code"]: row for row in payload["entities"]}
+
+    home_health = lookup["621610"]
+    software = lookup["513210"]
+
+    assert home_health["workflow_profile"]["occupation_coverage_share_pct"] >= 30
+    assert home_health["workflow_profile"]["frontline_operator_share_pct"] > 70
+    assert home_health["workflow_profile"]["knowledge_work_share_pct"] < 20
+    assert home_health["workflow_profile"]["top_occupations"]
+    assert software["workflow_profile"]["top_occupations"]
+    assert (
+        home_health["workflow_profile"]["component_scores"]["care_service"]
+        > software["workflow_profile"]["component_scores"]["care_service"]
+    )
+    assert home_health["scores"]["workflow_intensity"] > software["scores"]["workflow_intensity"]
+    assert "home health" in home_health["workflow_profile"]["matrix_industry_title"].lower()
+    assert any("visible BLS occupation mix" in caveat for caveat in home_health["caveats"])
+
+
 def test_site_and_data_outputs_exist() -> None:
     atlas_first_slice.build_first_slice(refresh=False)
 
     for path in [
         ROOT / "clean" / "industry_table_national_naics2022.csv",
+        ROOT / "clean" / "industry_workflow_profiles_national_naics2022.csv",
         ROOT / "data" / "industry_cells.json",
         ROOT / "data" / "coverage_gaps.csv",
         ROOT / "site" / "data.json",

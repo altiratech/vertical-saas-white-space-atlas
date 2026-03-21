@@ -2,12 +2,14 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import html
 import io
 import json
 import math
 import re
 import urllib.request
 from collections import Counter, defaultdict
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -39,11 +41,23 @@ BLS_URL = "https://data.bls.gov/cew/data/api/2024/a/area/US000.csv"
 NAICS_CROSSWALK_URL = (
     "https://www.census.gov/naics/concordances/2022_to_2017_NAICS_Changes_Only.xlsx"
 )
+BLS_MATRIX_HOME_URL = "https://data.bls.gov/projections/nationalMatrixHome?ioType=i"
+BLS_MATRIX_QUERY_URL_TEMPLATE = "https://data.bls.gov/projections/nationalMatrix?queryParams={code}&ioType=i"
+ONET_OCCUPATION_DATA_URL = (
+    "https://www.onetcenter.org/dl_files/database/db_30_2_text/Occupation%20Data.txt"
+)
+ONET_WORK_ACTIVITIES_URL = (
+    "https://www.onetcenter.org/dl_files/database/db_30_2_text/Work%20Activities.txt"
+)
 
 CBP_RAW_PATH = RAW_DIR / "cbp_2022_us_naics2017.json"
 SBA_RAW_PATH = RAW_DIR / "sba_size_standards_2023.xlsx"
 BLS_RAW_PATH = RAW_DIR / "bls_qcew_2024_us000_annual_area.csv"
 NAICS_CROSSWALK_RAW_PATH = RAW_DIR / "naics_2022_to_2017_changes_only.xlsx"
+BLS_MATRIX_HOME_RAW_PATH = RAW_DIR / "bls_nem_2024_2034_industry_home.html"
+BLS_MATRIX_PROFILES_RAW_PATH = RAW_DIR / "bls_nem_2024_2034_industry_profiles.json"
+ONET_OCCUPATION_DATA_RAW_PATH = RAW_DIR / "onet_30_2_occupation_data.txt"
+ONET_WORK_ACTIVITIES_RAW_PATH = RAW_DIR / "onet_30_2_work_activities.txt"
 
 CLEAN_CBP_2017_PATH = CLEAN_DIR / "cbp_2022_national_naics2017.csv"
 CLEAN_CBP_2022_PATH = CLEAN_DIR / "cbp_2022_national_naics2022.csv"
@@ -51,6 +65,8 @@ CLEAN_BLS_PATH = CLEAN_DIR / "bls_qcew_2024_national_private_naics2022.csv"
 CLEAN_SBA_PATH = CLEAN_DIR / "sba_size_standards_2023_naics2022.csv"
 CLEAN_CROSSWALK_PATH = CLEAN_DIR / "naics_2022_to_2017_crosswalk.csv"
 CLEAN_INDUSTRY_TABLE_PATH = CLEAN_DIR / "industry_table_national_naics2022.csv"
+CLEAN_BLS_MATRIX_DIRECTORY_PATH = CLEAN_DIR / "bls_nem_2024_2034_industry_directory.csv"
+CLEAN_WORKFLOW_PROFILE_PATH = CLEAN_DIR / "industry_workflow_profiles_national_naics2022.csv"
 
 DATA_CELLS_JSON_PATH = DATA_DIR / "industry_cells.json"
 DATA_CELLS_CSV_PATH = DATA_DIR / "industry_cells.csv"
@@ -61,6 +77,56 @@ SOURCE_ARTIFACT_SCHEMA_PATH = ROOT / "schemas" / "source_artifact.schema.json"
 SITE_PAYLOAD_SCHEMA_PATH = ROOT / "schemas" / "site_payload.schema.json"
 
 NUMERIC_CODE_RE = re.compile(r"\d{6}")
+SOC_CODE_RE = re.compile(r"\d{2}-\d{4}")
+
+WORKFLOW_COMPONENT_WEIGHTS: dict[str, list[tuple[str, float]]] = {
+    "documentation": [
+        ("Documenting/Recording Information", 0.45),
+        ("Processing Information", 0.3),
+        ("Performing Administrative Activities", 0.25),
+    ],
+    "coordination": [
+        ("Scheduling Work and Activities", 0.35),
+        ("Communicating with Supervisors, Peers, or Subordinates", 0.35),
+        ("Coordinating the Work and Activities of Others", 0.3),
+    ],
+    "compliance": [
+        ("Evaluating Information to Determine Compliance with Standards", 0.35),
+        ("Monitoring Processes, Materials, or Surroundings", 0.25),
+        ("Updating and Using Relevant Knowledge", 0.2),
+        ("Inspecting Equipment, Structures, or Materials", 0.2),
+    ],
+    "care_service": [
+        ("Assisting and Caring for Others", 1.0),
+    ],
+}
+WORKFLOW_COMPONENT_LABELS = {
+    "documentation": "documentation",
+    "coordination": "coordination",
+    "compliance": "compliance",
+    "care_service": "care and service",
+}
+WORKFLOW_SCORE_WEIGHTS = {
+    "documentation": 0.3,
+    "coordination": 0.3,
+    "compliance": 0.25,
+    "care_service": 0.15,
+}
+FRONTLINE_OPERATOR_MAJOR_GROUPS = {
+    "29",
+    "31",
+    "33",
+    "35",
+    "37",
+    "39",
+    "41",
+    "43",
+    "47",
+    "49",
+    "51",
+    "53",
+}
+KNOWLEDGE_WORK_MAJOR_GROUPS = {"13", "15", "17", "19", "21", "23", "25", "27"}
 
 SECTOR_FIT_ADJUSTMENTS: dict[str, tuple[float, str]] = {
     "23": (10.0, "Construction and trade workflows tend to create recurring operator software needs."),
@@ -198,6 +264,29 @@ class CrosswalkRow:
     naics_titles_2017: list[str]
 
 
+@dataclass(frozen=True)
+class MatrixIndustryOption:
+    matrix_code: str
+    matrix_title: str
+    code_prefix: str
+
+
+@dataclass(frozen=True)
+class MatrixOccupationRow:
+    occupation_title: str
+    occupation_code: str
+    occupation_type: str
+    employment_2024_thousands: float
+    percent_of_industry_2024: float
+    percent_of_occupation_2024: float
+    projected_employment_2034_thousands: float
+    projected_percent_of_industry_2034: float
+    projected_percent_of_occupation_2034: float
+    employment_change_2024_2034_thousands: float
+    employment_pct_change_2024_2034: float
+    display_level: int
+
+
 SOURCE_SPECS = [
     SourceSpec(
         artifact_id="cbp_2022_us_national",
@@ -230,6 +319,30 @@ SOURCE_SPECS = [
         local_path=NAICS_CROSSWALK_RAW_PATH,
         vintage="2022",
         description="Official changes-only bridge used to normalize CBP 2017 rows into 2022 industries.",
+    ),
+    SourceSpec(
+        artifact_id="bls_nem_2024_2034_industry_home",
+        name="BLS National Employment Matrix industry directory page",
+        url=BLS_MATRIX_HOME_URL,
+        local_path=BLS_MATRIX_HOME_RAW_PATH,
+        vintage="2024-2034",
+        description="Official BLS matrix industry directory used to resolve available industry occupation profiles.",
+    ),
+    SourceSpec(
+        artifact_id="onet_30_2_occupation_data",
+        name="O*NET 30.2 occupation data text file",
+        url=ONET_OCCUPATION_DATA_URL,
+        local_path=ONET_OCCUPATION_DATA_RAW_PATH,
+        vintage="30.2",
+        description="O*NET occupation roster used to resolve preferred base O*NET-SOC rows for each SOC code.",
+    ),
+    SourceSpec(
+        artifact_id="onet_30_2_work_activities",
+        name="O*NET 30.2 work activities text file",
+        url=ONET_WORK_ACTIVITIES_URL,
+        local_path=ONET_WORK_ACTIVITIES_RAW_PATH,
+        vintage="30.2",
+        description="Occupation-level O*NET work-activity ratings used to score workflow burden from industry occupation mix.",
     ),
 ]
 
@@ -332,7 +445,31 @@ def build_first_slice(refresh: bool = False) -> dict[str, Any]:
         ],
     )
 
+    matrix_options = load_bls_matrix_options(BLS_MATRIX_HOME_RAW_PATH)
+    write_csv(
+        CLEAN_BLS_MATRIX_DIRECTORY_PATH,
+        [
+            {
+                "matrix_code": option.matrix_code,
+                "matrix_title": option.matrix_title,
+                "code_prefix": option.code_prefix,
+            }
+            for option in matrix_options
+        ],
+    )
+    preferred_onet_codes = load_preferred_onet_codes(ONET_OCCUPATION_DATA_RAW_PATH)
+    onet_activity_profiles = load_onet_work_activity_profiles(
+        ONET_WORK_ACTIVITIES_RAW_PATH,
+        preferred_onet_codes,
+    )
+
     full_rows = assemble_full_rows(cbp_2022_rows, bls_2022, sba_2022, coverage_gaps)
+    attach_workflow_profiles(
+        full_rows,
+        matrix_options,
+        onet_activity_profiles,
+        refresh=refresh,
+    )
     scored_rows = score_rows(full_rows)
 
     write_csv(
@@ -350,11 +487,28 @@ def build_first_slice(refresh: bool = False) -> dict[str, Any]:
         ],
     )
     write_csv(
+        CLEAN_WORKFLOW_PROFILE_PATH,
+        [
+            flatten_workflow_profile_for_csv(row)
+            for row in scored_rows
+        ],
+    )
+    write_csv(
         DATA_COVERAGE_GAPS_PATH,
         coverage_gap_rows(coverage_gaps),
     )
 
     artifacts = [build_source_artifact(spec, fetched_sources[spec.artifact_id]) for spec in SOURCE_SPECS]
+    artifacts.append(
+        build_local_artifact(
+            artifact_id="bls_nem_2024_2034_industry_profiles",
+            name="BLS National Employment Matrix industry occupation profiles",
+            url=BLS_MATRIX_HOME_URL,
+            local_path=BLS_MATRIX_PROFILES_RAW_PATH,
+            vintage="2024-2034",
+            description="Cached industry-by-occupation profiles expanded from the official BLS National Employment Matrix industry query surface.",
+        )
+    )
     payload = build_site_payload(scored_rows, coverage_gaps, artifacts)
 
     DATA_CELLS_JSON_PATH.write_text(json.dumps(scored_rows, indent=2) + "\n", encoding="utf-8")
@@ -382,6 +536,10 @@ def fetch_bytes(url: str) -> bytes:
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(request) as response:
         return response.read()
+
+
+def fetch_text(url: str) -> str:
+    return fetch_bytes(url).decode("utf-8", errors="ignore")
 
 
 def load_cbp_rows(path: Path) -> dict[str, CBPRow2017]:
@@ -507,6 +665,85 @@ def load_crosswalk_rows(path: Path) -> tuple[list[CrosswalkRow], dict[str, list[
     return rows, new_to_old, dict(old_to_new)
 
 
+def load_bls_matrix_options(path: Path) -> list[MatrixIndustryOption]:
+    page = path.read_text(encoding="utf-8")
+    quote = chr(34)
+    pattern = re.compile(
+        rf"<option value={quote}([^{quote}]+){quote}>([^<]+)",
+        flags=re.IGNORECASE,
+    )
+    options: list[MatrixIndustryOption] = []
+    for matrix_code, matrix_title in pattern.findall(page):
+        title = html.unescape(compact_whitespace(matrix_title))
+        options.append(
+            MatrixIndustryOption(
+                matrix_code=matrix_code,
+                matrix_title=title,
+                code_prefix=matrix_option_prefix(matrix_code),
+            )
+        )
+    return options
+
+
+def load_preferred_onet_codes(path: Path) -> dict[str, list[str]]:
+    base_to_codes: defaultdict[str, list[str]] = defaultdict(list)
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle, delimiter="\t")
+        for raw in reader:
+            code = compact_whitespace(raw["O*NET-SOC Code"])
+            if "." not in code:
+                continue
+            base_to_codes[code.split(".", 1)[0]].append(code)
+
+    preferred: dict[str, list[str]] = {}
+    for base_code, codes in base_to_codes.items():
+        primary_code = f"{base_code}.00"
+        if primary_code in codes:
+            preferred[base_code] = [primary_code]
+        else:
+            preferred[base_code] = sorted(codes)
+    return preferred
+
+
+def load_onet_work_activity_profiles(
+    path: Path,
+    preferred_onet_codes: dict[str, list[str]],
+) -> dict[str, dict[str, float]]:
+    tracked_elements = {
+        element_name
+        for component in WORKFLOW_COMPONENT_WEIGHTS.values()
+        for element_name, _ in component
+    }
+    activity_rows: defaultdict[str, dict[str, float]] = defaultdict(dict)
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle, delimiter="\t")
+        for raw in reader:
+            if raw["Scale ID"] != "IM":
+                continue
+            element_name = compact_whitespace(raw["Element Name"])
+            if element_name not in tracked_elements:
+                continue
+            activity_rows[compact_whitespace(raw["O*NET-SOC Code"])][element_name] = parse_float(
+                raw["Data Value"]
+            )
+
+    profiles: dict[str, dict[str, float]] = {}
+    for base_code, codes in preferred_onet_codes.items():
+        active_codes = [code for code in codes if code in activity_rows]
+        if not active_codes:
+            continue
+        profiles[base_code] = {}
+        for element_name in tracked_elements:
+            values = [
+                activity_rows[code][element_name]
+                for code in active_codes
+                if element_name in activity_rows[code]
+            ]
+            if values:
+                profiles[base_code][element_name] = sum(values) / len(values)
+    return profiles
+
+
 def normalize_cbp_to_2022(
     candidate_codes: list[str],
     cbp_2017: dict[str, CBPRow2017],
@@ -599,7 +836,7 @@ def assemble_full_rows(
 
         caveats = [
             "National-only slice; regional density and local regulatory variation are not yet represented.",
-            "Workflow burden is inferred from public industry structure, not company-level software workflow evidence.",
+            "Workflow burden is inferred from public industry structure and occupation mix, not company-level software workflow evidence.",
         ]
         if cbp_row["cbp_mapping_type"] == "aggregated_2017_to_2022":
             caveats.append(
@@ -660,6 +897,7 @@ def assemble_full_rows(
                 "thesis_fit_positive_signals": [],
                 "thesis_fit_negative_signals": [],
             },
+            "workflow_profile": {},
             "scores": {},
             "recommended_move": "",
             "summary": "",
@@ -679,6 +917,375 @@ def assemble_full_rows(
     return rows
 
 
+def attach_workflow_profiles(
+    rows: list[dict[str, Any]],
+    matrix_options: list[MatrixIndustryOption],
+    onet_activity_profiles: dict[str, dict[str, float]],
+    refresh: bool,
+) -> None:
+    if not rows:
+        return
+
+    candidate_mappings = {
+        row["naics_code"]: candidate_matrix_industries(
+            row["naics_code"],
+            row["entity_name"],
+            matrix_options,
+        )
+        for row in rows
+    }
+    matrix_codes = {
+        mapping["matrix_code"]
+        for mappings in candidate_mappings.values()
+        for mapping in mappings
+    }
+    matrix_profiles = fetch_bls_matrix_profiles(matrix_codes, refresh=refresh)
+
+    for row in rows:
+        selected_mapping = None
+        workflow_profile = None
+        for index, mapping in enumerate(candidate_mappings[row["naics_code"]]):
+            try:
+                workflow_profile = build_industry_workflow_profile(
+                    mapping,
+                    matrix_profiles[mapping["matrix_code"]],
+                    onet_activity_profiles,
+                )
+                selected_mapping = dict(mapping)
+                if index > 0:
+                    selected_mapping["mapping_note"] = (
+                        selected_mapping["mapping_note"]
+                        + " Fallback selected after a more specific BLS line did not expose detailed occupation rows."
+                    )
+                    workflow_profile["mapping_note"] = selected_mapping["mapping_note"]
+                break
+            except ValueError:
+                continue
+        if workflow_profile is None or selected_mapping is None:
+            raise ValueError(
+                f"No usable BLS workflow profile found for {row['naics_code']} {row['entity_name']!r}"
+            )
+
+        mapping = selected_mapping
+        row["workflow_profile"] = workflow_profile
+        row["sources"] = dedupe_preserve_order(
+            row["sources"]
+            + [
+                "bls_nem_2024_2034_industry_home",
+                "bls_nem_2024_2034_industry_profiles",
+                "onet_30_2_occupation_data",
+                "onet_30_2_work_activities",
+            ]
+        )
+        if mapping["mapping_type"] == "numeric_parent":
+            row["caveats"].append(
+                "Workflow layer uses the closest published BLS parent industry because the matrix does not expose this NAICS line separately."
+            )
+        elif mapping["mapping_type"] == "broad_parent":
+            row["caveats"].append(
+                "Workflow layer uses a broader published BLS parent industry; treat occupation mix as directional rather than exact for this NAICS line."
+            )
+        if workflow_profile["occupation_coverage_share_pct"] < 85:
+            row["caveats"].append(
+                "Workflow score is based on the visible BLS occupation mix and may miss some small or suppressed occupations."
+            )
+        row["caveats"] = dedupe_preserve_order(row["caveats"])
+
+
+def candidate_matrix_industries(
+    naics_code: str,
+    entity_name: str,
+    matrix_options: list[MatrixIndustryOption],
+) -> list[dict[str, str]]:
+    by_code = {option.matrix_code: option for option in matrix_options}
+    by_title: defaultdict[str, list[MatrixIndustryOption]] = defaultdict(list)
+    for option in matrix_options:
+        by_title[normalize_lookup_text(option.matrix_title)].append(option)
+
+    candidates: list[dict[str, str]] = []
+    seen_codes: set[str] = set()
+
+    def add_candidate(option: MatrixIndustryOption, mapping_type: str, mapping_note: str) -> None:
+        if option.matrix_code in seen_codes:
+            return
+        seen_codes.add(option.matrix_code)
+        candidates.append(
+            {
+                "matrix_code": option.matrix_code,
+                "matrix_title": option.matrix_title,
+                "mapping_type": mapping_type,
+                "mapping_note": mapping_note,
+            }
+        )
+
+    if naics_code in by_code:
+        option = by_code[naics_code]
+        add_candidate(
+            option,
+            "exact_code",
+            "BLS matrix publishes this exact industry code.",
+        )
+
+    title_matches = by_title.get(normalize_lookup_text(entity_name), [])
+    if len(title_matches) == 1:
+        option = title_matches[0]
+        add_candidate(
+            option,
+            "exact_title",
+            "BLS matrix publishes a title-equivalent industry, but not the exact NAICS code.",
+        )
+
+    parent_candidates: list[tuple[int, tuple[int, int], str, MatrixIndustryOption]] = []
+    for option in matrix_options:
+        if len(option.code_prefix) < 3:
+            continue
+        if naics_code.startswith(option.code_prefix):
+            parent_candidates.append(
+                (
+                    len(option.code_prefix),
+                    title_token_score(entity_name, option.matrix_title),
+                    option.matrix_code,
+                    option,
+                )
+            )
+
+    if not parent_candidates:
+        raise ValueError(f"No BLS matrix industry mapping found for {naics_code} {entity_name!r}")
+
+    parent_candidates.sort(reverse=True)
+    for prefix_length, _, _, option in parent_candidates:
+        mapping_type = "numeric_parent" if prefix_length >= 4 else "broad_parent"
+        mapping_note = (
+            "BLS matrix rolls this industry into a closely related parent line."
+            if mapping_type == "numeric_parent"
+            else "BLS matrix only publishes a broader parent line for this industry."
+        )
+        add_candidate(option, mapping_type, mapping_note)
+
+    return candidates
+
+
+def fetch_bls_matrix_profiles(
+    matrix_codes: set[str],
+    refresh: bool,
+) -> dict[str, dict[str, Any]]:
+    existing_profiles: dict[str, dict[str, Any]] = {}
+    if not refresh and BLS_MATRIX_PROFILES_RAW_PATH.exists():
+        raw_payload = json.loads(BLS_MATRIX_PROFILES_RAW_PATH.read_text(encoding="utf-8"))
+        existing_profiles = raw_payload.get("profiles", {})
+
+    codes_to_fetch = sorted(matrix_codes) if refresh else sorted(matrix_codes - set(existing_profiles))
+    if codes_to_fetch:
+        with ThreadPoolExecutor(max_workers=8) as executor:
+            for matrix_code, profile in executor.map(fetch_single_bls_matrix_profile, codes_to_fetch):
+                existing_profiles[matrix_code] = profile
+        BLS_MATRIX_PROFILES_RAW_PATH.write_text(
+            json.dumps(
+                {
+                    "generated_at": iso_timestamp(),
+                    "source_url": BLS_MATRIX_HOME_URL,
+                    "profiles": {
+                        code: existing_profiles[code]
+                        for code in sorted(existing_profiles)
+                    },
+                },
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+
+    return existing_profiles
+
+
+def fetch_single_bls_matrix_profile(matrix_code: str) -> tuple[str, dict[str, Any]]:
+    html_text = fetch_text(BLS_MATRIX_QUERY_URL_TEMPLATE.format(code=matrix_code))
+    return matrix_code, parse_bls_matrix_profile_page(matrix_code, html_text)
+
+
+def parse_bls_matrix_profile_page(matrix_code: str, page: str) -> dict[str, Any]:
+    title_match = re.search(
+        rf"<strong>{re.escape(matrix_code)}\s+([^<]+)</strong>",
+        page,
+        flags=re.IGNORECASE,
+    )
+    matrix_title = html.unescape(compact_whitespace(title_match.group(1))) if title_match else matrix_code
+
+    tbody_match = re.search(r"<tbody>(.*?)</tbody>", page, flags=re.IGNORECASE | re.DOTALL)
+    if not tbody_match:
+        raise ValueError(f"Could not parse occupation table for matrix code {matrix_code}")
+
+    rows: list[dict[str, Any]] = []
+    for row_html in re.findall(r"<tr>(.*?)</tr>", tbody_match.group(1), flags=re.IGNORECASE | re.DOTALL):
+        cells = re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", row_html, flags=re.IGNORECASE | re.DOTALL)
+        if len(cells) != 13:
+            continue
+        cleaned = [
+            compact_whitespace(html.unescape(re.sub(r"<[^>]+>", " ", cell)))
+            for cell in cells
+        ]
+        rows.append(
+            {
+                "occupation_title": cleaned[0],
+                "occupation_code": cleaned[1],
+                "occupation_type": cleaned[2],
+                "employment_2024_thousands": parse_numeric_cell(cleaned[3]),
+                "percent_of_industry_2024": parse_numeric_cell(cleaned[4]),
+                "percent_of_occupation_2024": parse_numeric_cell(cleaned[5]),
+                "projected_employment_2034_thousands": parse_numeric_cell(cleaned[6]),
+                "projected_percent_of_industry_2034": parse_numeric_cell(cleaned[7]),
+                "projected_percent_of_occupation_2034": parse_numeric_cell(cleaned[8]),
+                "employment_change_2024_2034_thousands": parse_numeric_cell(cleaned[9]),
+                "employment_pct_change_2024_2034": parse_numeric_cell(cleaned[10]),
+                "occupation_sort": cleaned[11],
+                "display_level": int(cleaned[12] or 0),
+            }
+        )
+
+    return {
+        "matrix_code": matrix_code,
+        "matrix_title": matrix_title,
+        "rows": rows,
+    }
+
+
+def build_industry_workflow_profile(
+    mapping: dict[str, str],
+    matrix_profile: dict[str, Any],
+    onet_activity_profiles: dict[str, dict[str, float]],
+) -> dict[str, Any]:
+    line_item_rows = [
+        MatrixOccupationRow(
+            occupation_title=raw["occupation_title"],
+            occupation_code=raw["occupation_code"],
+            occupation_type=raw["occupation_type"],
+            employment_2024_thousands=raw["employment_2024_thousands"],
+            percent_of_industry_2024=raw["percent_of_industry_2024"],
+            percent_of_occupation_2024=raw["percent_of_occupation_2024"],
+            projected_employment_2034_thousands=raw["projected_employment_2034_thousands"],
+            projected_percent_of_industry_2034=raw["projected_percent_of_industry_2034"],
+            projected_percent_of_occupation_2034=raw["projected_percent_of_occupation_2034"],
+            employment_change_2024_2034_thousands=raw["employment_change_2024_2034_thousands"],
+            employment_pct_change_2024_2034=raw["employment_pct_change_2024_2034"],
+            display_level=raw["display_level"],
+        )
+        for raw in matrix_profile["rows"]
+        if raw["occupation_type"] == "Line Item" and SOC_CODE_RE.fullmatch(raw["occupation_code"])
+    ]
+    if not line_item_rows:
+        raise ValueError(f"No line-item occupations found for matrix code {mapping['matrix_code']}")
+
+    weighted_rows: list[tuple[float, MatrixOccupationRow, dict[str, float]]] = []
+    covered_share = 0.0
+    for occupation in line_item_rows:
+        onet_profile = onet_activity_profiles.get(occupation.occupation_code)
+        if not onet_profile:
+            continue
+        share = occupation.percent_of_industry_2024
+        if share <= 0:
+            continue
+        weighted_rows.append((share, occupation, onet_profile))
+        covered_share += share
+
+    if not weighted_rows or covered_share <= 0:
+        raise ValueError(f"No O*NET workflow coverage found for matrix code {mapping['matrix_code']}")
+
+    component_scores = {
+        component_name: round(
+            compute_weighted_workflow_component(weighted_rows, element_weights),
+            1,
+        )
+        for component_name, element_weights in WORKFLOW_COMPONENT_WEIGHTS.items()
+    }
+    component_blend = weighted_average(
+        [
+            (WORKFLOW_SCORE_WEIGHTS[component_name], component_scores[component_name])
+            for component_name in WORKFLOW_SCORE_WEIGHTS
+        ]
+    )
+    frontline_operator_share_pct = (
+        sum(
+            share
+            for share, occupation, _ in weighted_rows
+            if soc_major_group(occupation.occupation_code) in FRONTLINE_OPERATOR_MAJOR_GROUPS
+        )
+        / covered_share
+        * 100.0
+    )
+    knowledge_work_share_pct = (
+        sum(
+            share
+            for share, occupation, _ in weighted_rows
+            if soc_major_group(occupation.occupation_code) in KNOWLEDGE_WORK_MAJOR_GROUPS
+        )
+        / covered_share
+        * 100.0
+    )
+    workflow_intensity = weighted_average(
+        [
+            (0.45, component_blend),
+            (0.35, frontline_operator_share_pct),
+            (0.20, 100.0 - knowledge_work_share_pct),
+        ]
+    )
+    top_occupations = [
+        {
+            "occupation_code": occupation.occupation_code,
+            "occupation_title": occupation.occupation_title,
+            "employment_2024_thousands": round(occupation.employment_2024_thousands, 1),
+            "percent_of_industry": round(occupation.percent_of_industry_2024, 1),
+        }
+        for _, occupation, _ in sorted(
+            weighted_rows,
+            key=lambda item: (-item[0], item[1].occupation_title),
+        )[:5]
+    ]
+
+    return {
+        "matrix_industry_code": mapping["matrix_code"],
+        "matrix_industry_title": mapping["matrix_title"],
+        "mapping_type": mapping["mapping_type"],
+        "mapping_note": mapping["mapping_note"],
+        "occupation_coverage_share_pct": round(covered_share, 1),
+        "frontline_operator_share_pct": round(frontline_operator_share_pct, 1),
+        "knowledge_work_share_pct": round(knowledge_work_share_pct, 1),
+        "workflow_intensity": round(workflow_intensity, 1),
+        "component_scores": component_scores,
+        "top_occupations": top_occupations,
+    }
+
+
+def compute_weighted_workflow_component(
+    weighted_rows: list[tuple[float, MatrixOccupationRow, dict[str, float]]],
+    element_weights: list[tuple[str, float]],
+) -> float:
+    total_share = sum(share for share, _, _ in weighted_rows)
+    if total_share <= 0:
+        return 0.0
+
+    weighted_component = 0.0
+    for share, _, onet_profile in weighted_rows:
+        component_value = compute_activity_component_score(onet_profile, element_weights)
+        weighted_component += (share / total_share) * component_value
+    return weighted_component
+
+
+def compute_activity_component_score(
+    onet_profile: dict[str, float],
+    element_weights: list[tuple[str, float]],
+) -> float:
+    weighted_total = 0.0
+    total_weight = 0.0
+    for element_name, weight in element_weights:
+        if element_name not in onet_profile:
+            continue
+        weighted_total += weight * onet_profile[element_name]
+        total_weight += weight
+    if total_weight <= 0:
+        return 0.0
+    return (weighted_total / total_weight) * 20.0
+
+
 def score_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     if not rows:
         return rows
@@ -695,7 +1302,6 @@ def score_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     pay_growth_values = [row["anchors"]["bls_pay_growth_pct"] for row in rows]
     employment_logs = [math.log10(row["anchors"]["cbp_employment"] + 1) for row in rows]
     payroll_logs = [math.log10(row["anchors"]["cbp_annual_payroll_usd"] + 1) for row in rows]
-
     dollar_threshold_logs = [
         math.log10(
             row["anchors"]["sba_size_standard"]["value"] * 1_000_000 + 1
@@ -769,6 +1375,7 @@ def score_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
         market_scale = weighted_average(
             [(0.5, employment_pct), (0.5, payroll_pct)]
         )
+        workflow_intensity = row["workflow_profile"]["workflow_intensity"]
         thesis_fit, positive_signals, negative_signals = compute_thesis_fit(
             row,
             estab_pct=estab_pct,
@@ -779,20 +1386,22 @@ def score_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
         software_wedge = weighted_average(
             [
-                (0.27, fragmentation),
-                (0.23, operating_complexity),
-                (0.15, willingness_to_pay),
+                (0.24, fragmentation),
+                (0.2, operating_complexity),
+                (0.16, workflow_intensity),
+                (0.14, willingness_to_pay),
                 (0.1, growth),
-                (0.05, market_scale),
-                (0.2, thesis_fit),
+                (0.04, market_scale),
+                (0.12, thesis_fit),
             ]
         )
         rollup_wedge = weighted_average(
             [
-                (0.35, fragmentation),
-                (0.2, market_scale),
-                (0.2, sba_pct),
-                (0.1, operating_complexity),
+                (0.33, fragmentation),
+                (0.18, market_scale),
+                (0.18, sba_pct),
+                (0.08, operating_complexity),
+                (0.08, workflow_intensity),
                 (0.05, growth),
                 (0.1, thesis_fit),
             ]
@@ -811,6 +1420,7 @@ def score_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "willingness_to_pay": round(willingness_to_pay, 1),
             "growth": round(growth, 1),
             "market_scale": round(market_scale, 1),
+            "workflow_intensity": round(workflow_intensity, 1),
             "thesis_fit": round(thesis_fit, 1),
             "software_wedge": round(software_wedge, 1),
             "rollup_wedge": round(rollup_wedge, 1),
@@ -843,12 +1453,13 @@ def build_site_payload(
     move_counts = Counter(row["recommended_move"] for row in scored_rows)
     score_values = [row["scores"]["software_wedge"] for row in scored_rows]
     rollup_values = [row["scores"]["rollup_wedge"] for row in scored_rows]
+    workflow_values = [row["scores"]["workflow_intensity"] for row in scored_rows]
     confidence_values = [row["scores"]["confidence"] for row in scored_rows]
 
     excluded_total = sum(len(values) for values in coverage_gaps.values())
     return {
         "generated_at": iso_timestamp(),
-        "method_version": "first-slice-v2-ranking-quality",
+        "method_version": "first-slice-v3-workflow-intensity",
         "canonical_naics_version": "2022",
         "summary": {
             "fully_joined_rows": len(scored_rows),
@@ -860,6 +1471,7 @@ def build_site_payload(
             "recommended_move_counts": dict(sorted(move_counts.items())),
             "software_wedge_range": [min(score_values), max(score_values)],
             "rollup_wedge_range": [min(rollup_values), max(rollup_values)],
+            "workflow_intensity_range": [min(workflow_values), max(workflow_values)],
             "confidence_range": [min(confidence_values), max(confidence_values)],
             "national_only": True,
         },
@@ -881,6 +1493,7 @@ def build_site_payload(
                 "willingness_to_pay",
                 "growth",
                 "market_scale",
+                "workflow_intensity",
                 "thesis_fit",
                 "confidence",
             ],
@@ -903,11 +1516,33 @@ def build_source_artifact(spec: SourceSpec, local_path: Path) -> dict[str, Any]:
     }
 
 
+def build_local_artifact(
+    artifact_id: str,
+    name: str,
+    url: str,
+    local_path: Path,
+    vintage: str,
+    description: str,
+) -> dict[str, Any]:
+    content = local_path.read_bytes()
+    return {
+        "artifact_id": artifact_id,
+        "name": name,
+        "url": url,
+        "local_path": str(local_path.relative_to(ROOT)),
+        "vintage": vintage,
+        "description": description,
+        "sha256": hashlib.sha256(content).hexdigest(),
+        "size_bytes": len(content),
+    }
+
+
 def build_evidence(row: dict[str, Any]) -> list[dict[str, Any]]:
     anchors = row["anchors"]
     score_inputs = row["score_inputs"]
     positive_signals = score_inputs["thesis_fit_positive_signals"]
     negative_signals = score_inputs["thesis_fit_negative_signals"]
+    workflow_profile = row["workflow_profile"]
     evidence = [
         {
             "label": "CBP footprint",
@@ -950,12 +1585,22 @@ def build_evidence(row: dict[str, Any]) -> list[dict[str, Any]]:
             "source_ids": ["sba_size_standards_2023"],
         },
         {
+            "label": "Occupation workflow mix",
+            "detail": build_workflow_evidence_detail(workflow_profile),
+            "source_ids": [
+                "bls_nem_2024_2034_industry_profiles",
+                "onet_30_2_work_activities",
+            ],
+        },
+        {
             "label": "Thesis fit",
             "detail": build_thesis_fit_detail(positive_signals, negative_signals),
             "source_ids": [
                 "cbp_2022_us_national",
                 "sba_size_standards_2023",
                 "bls_qcew_2024_us000",
+                "bls_nem_2024_2034_industry_profiles",
+                "onet_30_2_work_activities",
             ],
         },
     ]
@@ -1009,11 +1654,17 @@ def recommend_move(scores: dict[str, float]) -> str:
         scores["software_wedge"] >= 60
         and scores["fragmentation"] >= 65
         and scores["operating_complexity"] >= 40
+        and scores["workflow_intensity"] >= 55
         and scores["willingness_to_pay"] >= 35
         and scores["thesis_fit"] >= 60
     ):
         return "build"
-    if scores["rollup_wedge"] >= 68 and scores["fragmentation"] >= 75 and scores["thesis_fit"] >= 40:
+    if (
+        scores["rollup_wedge"] >= 68
+        and scores["fragmentation"] >= 75
+        and scores["workflow_intensity"] >= 40
+        and scores["thesis_fit"] >= 40
+    ):
         return "acquire"
     if scores["software_wedge"] >= 58 or scores["rollup_wedge"] >= 60:
         return "sell"
@@ -1038,6 +1689,7 @@ def coverage_gap_rows(coverage_gaps: dict[str, list[str]]) -> list[dict[str, Any
 def flatten_for_csv(row: dict[str, Any]) -> dict[str, Any]:
     anchors = row["anchors"]
     sba_size = anchors["sba_size_standard"]
+    workflow_profile = row["workflow_profile"]
     return {
         "rank": row["rank"],
         "naics_code": row["naics_code"],
@@ -1064,13 +1716,52 @@ def flatten_for_csv(row: dict[str, Any]) -> dict[str, Any]:
         "willingness_to_pay": row["scores"]["willingness_to_pay"],
         "growth": row["scores"]["growth"],
         "market_scale": row["scores"]["market_scale"],
+        "workflow_intensity": row["scores"]["workflow_intensity"],
         "thesis_fit": row["scores"]["thesis_fit"],
         "software_wedge": row["scores"]["software_wedge"],
         "rollup_wedge": row["scores"]["rollup_wedge"],
         "confidence": row["scores"]["confidence"],
+        "workflow_matrix_industry_code": workflow_profile["matrix_industry_code"],
+        "workflow_mapping_type": workflow_profile["mapping_type"],
+        "workflow_coverage_share_pct": workflow_profile["occupation_coverage_share_pct"],
+        "workflow_frontline_operator_share_pct": workflow_profile["frontline_operator_share_pct"],
+        "workflow_knowledge_work_share_pct": workflow_profile["knowledge_work_share_pct"],
+        "workflow_documentation": workflow_profile["component_scores"]["documentation"],
+        "workflow_coordination": workflow_profile["component_scores"]["coordination"],
+        "workflow_compliance": workflow_profile["component_scores"]["compliance"],
+        "workflow_care_service": workflow_profile["component_scores"]["care_service"],
+        "workflow_top_occupations": "|".join(
+            f"{occupation['occupation_title']} ({occupation['percent_of_industry']:.1f}%)"
+            for occupation in workflow_profile["top_occupations"][:3]
+        ),
         "recommended_move": row["recommended_move"],
         "summary": row["summary"],
         "caveats": " | ".join(row["caveats"]),
+    }
+
+
+def flatten_workflow_profile_for_csv(row: dict[str, Any]) -> dict[str, Any]:
+    workflow_profile = row["workflow_profile"]
+    top_occupations = workflow_profile["top_occupations"]
+    return {
+        "rank": row["rank"],
+        "naics_code": row["naics_code"],
+        "entity_name": row["entity_name"],
+        "matrix_industry_code": workflow_profile["matrix_industry_code"],
+        "matrix_industry_title": workflow_profile["matrix_industry_title"],
+        "mapping_type": workflow_profile["mapping_type"],
+        "mapping_note": workflow_profile["mapping_note"],
+        "occupation_coverage_share_pct": workflow_profile["occupation_coverage_share_pct"],
+        "frontline_operator_share_pct": workflow_profile["frontline_operator_share_pct"],
+        "knowledge_work_share_pct": workflow_profile["knowledge_work_share_pct"],
+        "workflow_intensity": workflow_profile["workflow_intensity"],
+        "documentation": workflow_profile["component_scores"]["documentation"],
+        "coordination": workflow_profile["component_scores"]["coordination"],
+        "compliance": workflow_profile["component_scores"]["compliance"],
+        "care_service": workflow_profile["component_scores"]["care_service"],
+        "top_occupation_1": format_workflow_occupation(top_occupations, 0),
+        "top_occupation_2": format_workflow_occupation(top_occupations, 1),
+        "top_occupation_3": format_workflow_occupation(top_occupations, 2),
     }
 
 
@@ -1133,6 +1824,9 @@ def compute_thesis_fit(row: dict[str, Any], estab_pct: float, pay_pct: float) ->
     sector_code = row["score_inputs"]["sector_code"]
     employees_per_establishment = row["score_inputs"]["employees_per_establishment"]
     establishments = row["anchors"]["cbp_establishments"]
+    workflow_profile = row["workflow_profile"]
+    workflow_components = workflow_profile["component_scores"]
+    workflow_intensity = workflow_profile["workflow_intensity"]
 
     score = 50.0
     positive_signals: list[str] = []
@@ -1186,6 +1880,25 @@ def compute_thesis_fit(row: dict[str, Any], estab_pct: float, pay_pct: float) ->
         score += 4.0
         positive_signals.append("The market is already broad enough nationally to support a real first go-to-market wedge.")
 
+    if workflow_intensity >= 70:
+        score += 8.0
+        positive_signals.append("The occupation mix carries strong repeatable workflow load across documentation, coordination, or compliance.")
+    elif workflow_intensity >= 60:
+        score += 4.0
+        positive_signals.append("The occupation mix shows real day-to-day workflow burden.")
+    elif workflow_intensity <= 35:
+        score -= 6.0
+        negative_signals.append("The occupation mix looks lighter on repeatable workflow burden than the strongest operator wedges.")
+
+    if workflow_components["documentation"] >= 65:
+        positive_signals.append("The occupation mix leans heavily on documentation and recordkeeping work.")
+    if workflow_components["coordination"] >= 65:
+        positive_signals.append("The occupation mix requires frequent scheduling and worker coordination.")
+    if workflow_components["compliance"] >= 60:
+        positive_signals.append("The occupation mix carries meaningful monitoring and standards/compliance work.")
+    if workflow_components["care_service"] >= 60:
+        positive_signals.append("Frontline care and service work adds handoff and service-complexity pressure.")
+
     positive_signals = dedupe_preserve_order(positive_signals)
     negative_signals = dedupe_preserve_order(negative_signals)
     return clamp(score, 0.0, 100.0), positive_signals[:5], negative_signals[:5]
@@ -1213,6 +1926,61 @@ def build_thesis_fit_detail(positive_signals: list[str], negative_signals: list[
     if negative_signals:
         return f"Counter-signal: {negative_signals[0]}"
     return "No strong positive or negative thesis-fit signal surfaced beyond the structural data."
+
+
+def build_workflow_evidence_detail(workflow_profile: dict[str, Any]) -> str:
+    top_occupation = workflow_profile["top_occupations"][0]
+    components = workflow_profile["component_scores"]
+    return (
+        f"Mapped to BLS matrix industry {workflow_profile['matrix_industry_code']} "
+        f"({workflow_profile['matrix_industry_title']}); top visible occupation is "
+        f"{top_occupation['occupation_title']} at {top_occupation['percent_of_industry']:.1f}% of industry employment. "
+        f"Workflow intensity is {workflow_profile['workflow_intensity']:.1f}/100, with "
+        f"documentation {components['documentation']:.1f}, "
+        f"coordination {components['coordination']:.1f}, and "
+        f"compliance {components['compliance']:.1f}. "
+        f"Frontline operator share is {workflow_profile['frontline_operator_share_pct']:.1f}% of the visible occupation mix, "
+        f"versus {workflow_profile['knowledge_work_share_pct']:.1f}% knowledge-work share."
+    )
+
+
+def format_workflow_occupation(top_occupations: list[dict[str, Any]], index: int) -> str:
+    if index >= len(top_occupations):
+        return ""
+    occupation = top_occupations[index]
+    return f"{occupation['occupation_title']} ({occupation['percent_of_industry']:.1f}%)"
+
+
+def normalize_lookup_text(value: str) -> str:
+    normalized = compact_whitespace(value).lower().replace("except", "")
+    normalized = normalized.replace("‑", "-")
+    normalized = re.sub(r"[^a-z0-9]+", " ", normalized)
+    return " ".join(normalized.split())
+
+
+def title_token_score(left: str, right: str) -> tuple[int, int]:
+    left_tokens = set(normalize_lookup_text(left).split())
+    right_tokens = set(normalize_lookup_text(right).split())
+    overlap = len(left_tokens & right_tokens)
+    spread_penalty = abs(len(left_tokens) - len(right_tokens))
+    return (overlap, -spread_penalty)
+
+
+def matrix_option_prefix(code: str) -> str:
+    match = re.match(r"(\d+)", code)
+    if not match:
+        return ""
+    return match.group(1).rstrip("0")
+
+
+def parse_numeric_cell(value: str) -> float:
+    if value in ("", None):
+        return 0.0
+    return float(str(value).replace(",", ""))
+
+
+def soc_major_group(code: str) -> str:
+    return code.split("-", 1)[0]
 
 
 def canonical_candidate_codes(

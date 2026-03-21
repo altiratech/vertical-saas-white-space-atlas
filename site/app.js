@@ -60,6 +60,11 @@ function renderSummary(payload) {
       value: payload.summary.confidence_range.map((value) => value.toFixed(1)).join(" - "),
       detail: "Confidence drops when a 2022 industry needs a forward crosswalk from CBP 2017 anchors.",
     },
+    {
+      label: "Workflow Range",
+      value: payload.summary.workflow_intensity_range.map((value) => value.toFixed(1)).join(" - "),
+      detail: "Workflow intensity is derived from BLS industry occupation mix plus O*NET work activities.",
+    },
   ];
 
   const summaryGrid = document.querySelector("#summary-grid");
@@ -156,6 +161,10 @@ function renderDetail() {
         <strong>${row.scores.thesis_fit.toFixed(1)}</strong>
       </div>
       <div class="detail-card">
+        <p class="label">Workflow</p>
+        <strong>${row.scores.workflow_intensity.toFixed(1)}</strong>
+      </div>
+      <div class="detail-card">
         <p class="label">Confidence</p>
         <strong>${row.scores.confidence.toFixed(1)}</strong>
       </div>
@@ -220,6 +229,52 @@ function renderDetail() {
                 .join("")
             : ""
         }
+      </ul>
+    </section>
+
+    <section>
+      <p class="label">Workflow Profile</p>
+      <ul class="detail-list">
+        <li>
+          <strong>Mapped Industry</strong><br />
+          <span>${row.workflow_profile.matrix_industry_code} ${row.workflow_profile.matrix_industry_title}</span>
+        </li>
+        <li>
+          <strong>Mapping Note</strong><br />
+          <span>${row.workflow_profile.mapping_note}</span>
+        </li>
+        <li>
+          <strong>Coverage</strong><br />
+          <span>${row.workflow_profile.occupation_coverage_share_pct.toFixed(1)}% of industry employment is covered by the visible scored occupation mix.</span>
+        </li>
+        <li>
+          <strong>Mix</strong><br />
+          <span>
+            Frontline operator share ${row.workflow_profile.frontline_operator_share_pct.toFixed(1)}%,
+            knowledge-work share ${row.workflow_profile.knowledge_work_share_pct.toFixed(1)}%
+          </span>
+        </li>
+        <li>
+          <strong>Components</strong><br />
+          <span>
+            Documentation ${row.workflow_profile.component_scores.documentation.toFixed(1)},
+            coordination ${row.workflow_profile.component_scores.coordination.toFixed(1)},
+            compliance ${row.workflow_profile.component_scores.compliance.toFixed(1)},
+            care/service ${row.workflow_profile.component_scores.care_service.toFixed(1)}
+          </span>
+        </li>
+      </ul>
+      <ul class="detail-list">
+        ${row.workflow_profile.top_occupations
+          .map(
+            (item) => `
+              <li>
+                <strong>${item.occupation_title}</strong><br />
+                <span>${item.occupation_code} · ${item.percent_of_industry.toFixed(1)}% of industry employment</span>
+              </li>
+            `
+          )
+          .join("")}
       </ul>
     </section>
 

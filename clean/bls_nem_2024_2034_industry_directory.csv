@@ -1,0 +1,424 @@
+matrix_code,matrix_title,code_prefix
+721000,Accommodation,721
+720000,Accommodation and food services,72
+541200,"Accounting, tax preparation, bookkeeping, and payroll services",5412
+560000,Administrative and support and waste management and remediation services,56
+561000,Administrative and support services,561
+541800,"Advertising, public relations, and related services",5418
+336400,Aerospace product and parts manufacturing,3364
+524200,"Agencies, brokerages, and other insurance related activities",5242
+711400,"Agents and managers for artists, athletes, entertainers, and other public figures",7114
+110000,"Agriculture, forestry, fishing, and hunting",11
+481000,Air transportation,481
+621990,All other ambulatory healthcare services,62199
+4445R0,"All other retail trade (444, 449, 456-9)",4445
+331300,Alumina and aluminum production and processing,3313
+621910,Ambulance services,62191
+621000,Ambulatory healthcare services,621
+713100,Amusement parks and arcades,7131
+713000,"Amusement, gambling, and recreation industries",713
+311100,Animal food manufacturing,3111
+112000,Animal production and aquaculture,112
+311600,Animal slaughtering and processing,3116
+315000,Apparel manufacturing,315
+424300,"Apparel, piece goods, and notions merchant wholesalers",4243
+541300,"Architectural, engineering, and related services",5413
+710000,"Arts, entertainment, and recreation",71
+334300,Audio and video equipment manufacturing,3343
+441100,Automobile dealers,4411
+811120,"Automotive body, paint, interior, and glass repair",81112
+532100,Automotive equipment rental and leasing,5321
+811110,Automotive mechanical and electrical repair and maintenance,81111
+441300,"Automotive parts, accessories, and tire retailers",4413
+811100,Automotive repair and maintenance,8111
+311800,Bakeries and tortilla manufacturing,3118
+445300,"Beer, wine, and liquor retailers",4453
+312000,Beverage and tobacco product manufacturing,312
+312100,Beverage manufacturing,3121
+221117,Biomass electric power generation,221117
+459200,Book retailers and news dealers,4592
+516000,Broadcasting and Content Providers,516
+238200,Building equipment contractors,2382
+238300,Building finishing contractors,2383
+444000,Building material and garden equipment and supplies dealers,444
+444100,Building material and supplies dealers,4441
+61140L,Business schools and computer and management training; local,6114
+61140P,Business schools and computer and management training; private,6114
+61140S,Business schools and computer and management training; state,6114
+561400,Business support services,5614
+813900,"Business, professional, labor, political, and similar organizations",8139
+721120,Casino hotels,72112
+485500,Charter bus industry,4855
+325000,Chemical manufacturing,325
+3250A1,"Chemical manufacturing (3251,2,3,9)",325
+3250A2,"Chemical manufacturing (3255,6)",325
+624400,Child daycare services,6244
+813400,Civic and social organizations,8134
+8134-9,"Civic, social, professional, and similar organizations",8134
+458100,Clothing and clothing accessories retailers,4581
+458000,"Clothing, clothing accessories, shoe, and jewelry retailers",458
+212100,Coal mining,2121
+332800,"Coating, engraving, heat treating, and allied activities",3328
+61130L,"Colleges, universities, and professional schools; local",6113
+61130P,"Colleges, universities, and professional schools; private",6113
+61130S,"Colleges, universities, and professional schools; state",6113
+811300,Commercial and industrial machinery and equipment (except automotive and electronic) repair and maintenance,8113
+333300,Commercial and service industry machinery manufacturing,3333
+334200,Communications equipment manufacturing,3342
+624200,"Community food and housing, and emergency and other relief services",6242
+6242-3,"Community food and housing, emergency and other relief services, and vocational rehabilitation services",6242
+334000,Computer and electronic product manufacturing,334
+334100,Computer and peripheral equipment manufacturing,3341
+541500,Computer systems design and related services,5415
+518000,"Computing infrastructure providers, data processing, web hosting, and related services",518
+230000,Construction,23
+236000,Construction of buildings,236
+623300,Continuing care retirement communities and assisted living facilities for the elderly,6233
+322200,Converted paper product manufacturing,3222
+492100,Couriers and express delivery services,4921
+492000,Couriers and messengers,492
+522000,Credit intermediation and related activities,522
+5220A1,"Credit intermediation and related activities (5221,3)",522
+111000,Crop production,111
+311500,Dairy product manufacturing,3115
+812200,Death care services,8122
+483100,"Deep sea, coastal, and great lakes water transportation",4831
+524114,Direct health and medical insurance carriers,524114
+524120,"Direct insurance (except life, health, and medical) carriers",52412
+722400,Drinking places (alcoholic beverages),7224
+812300,Drycleaning and laundry services,8123
+238310,Drywall and insulation contractors,23831
+6110P0,Educational services; private,611
+6110Y0,Educational services; state and local,611
+611000,"Educational services; state, local, and private",611
+610000,"Educational services; state, local, and private",61
+61170L,Educational support services; local,6117
+61170P,Educational support services; private,6117
+335100,Electric lighting equipment manufacturing,3351
+221110,Electric power generation,22111
+221100,"Electric power generation, transmission and distribution",2211
+238210,Electrical contractors and other wiring installation contractors,23821
+335300,Electrical equipment manufacturing,3353
+335000,"Electrical equipment, appliance, and component manufacturing",335
+811200,Electronic and precision equipment repair and maintenance,8112
+449200,Electronics and appliance retailers,4492
+61110L,Elementary and secondary schools; local,6111
+61110P,Elementary and secondary schools; private,6111
+61110S,Elementary and secondary schools; state,6111
+561300,Employment services,5613
+333600,"Engine, turbine, and power transmission equipment manufacturing",3336
+541330,Engineering services,54133
+561710,Exterminating and pest control services,56171
+332000,Fabricated metal product manufacturing,332
+3320A1,"Fabricated metal product manufacturing (3321,2,5,6,9)",332
+3320A2,"Fabricated metal product manufacturing (3323,4)",332
+561200,Facilities support services,5612
+423820,Farm and garden machinery and equipment merchant wholesalers,42382
+424500,Farm product raw material merchant wholesalers,4245
+910000,Federal government,91
+999100,"Federal government, excluding postal service",9991
+520000,Finance and insurance,52
+114000,"Fishing, hunting and trapping",114
+713940,Fitness and recreational sports centers,71394
+459300,Florists,4593
+445000,Food and beverage retailers,445
+311000,Food manufacturing,311
+722000,Food services and drinking places,722
+1131-2,Forestry,1131
+113000,Forestry and logging,113
+221112,Fossil fuel electric power generation,221112
+238100,"Foundation, structure, and building exterior contractors",2381
+331500,Foundries,3315
+488500,Freight transportation arrangement,4885
+311400,Fruit and vegetable preserving and specialty food manufacturing,3114
+457200,Fuel dealers,4572
+722511,Full-service restaurants,722511
+525000,"Funds, trusts, and other financial vehicles",525
+449100,Furniture and home furnishings retailers,4491
+337000,Furniture and related product manufacturing,337
+3370A1,"Furniture and related product manufacturing (3371,2)",337
+449000,"Furniture, home furnishings, electronics, and appliance retailers",449
+713200,Gambling industries (except casino hotels),7132
+457100,Gasoline stations,4571
+457000,Gasoline stations and fuel dealers,457
+62210L,General medical and surgical hospitals; local,6221
+62210P,General medical and surgical hospitals; private,6221
+62210S,General medical and surgical hospitals; state,6221
+455000,General merchandise retailers,455
+221116,Geothermal electric power generation,221116
+900000,"Government, excluding state and local education and hospitals",9
+311200,Grain and oilseed milling,3112
+813200,Grantmaking and giving services,8132
+8132-3,Grantmaking and giving services and social advocacy organizations,8132
+4450A1,Grocery and specialty food retailers,445
+456100,Health and personal care retailers,4561
+456000,Health and personal care retailers,456
+620000,Healthcare and social assistance,62
+237000,Heavy and civil engineering construction,237
+237300,"Highway, street, and bridge construction",2373
+621600,Home healthcare services,6216
+6220P0,Hospitals; private,622
+6220Y0,Hospitals; state and local,622
+622000,"Hospitals; state, local, and private",622
+335200,Household appliance manufacturing,3352
+221111,Hydroelectric power generation,221111
+711500,"Independent artists, writers, and performers",7115
+624100,Individual and family services,6241
+510000,Information,51
+483200,Inland water transportation,4832
+524210,Insurance agencies and brokerages,52421
+525100,Insurance and employee benefit funds,5251
+524100,Insurance carriers,5241
+524000,Insurance carriers and related activities,524
+485200,Interurban and rural bus transportation,4852
+561600,Investigation and security services,5616
+561610,"Investigation, guard, and armored car services",56161
+331100,Iron and steel mills and ferroalloy manufacturing,3311
+339910,Jewelry and silverware manufacturing,33991
+458300,"Jewelry, luggage, and leather goods retailers",4583
+6110P1,"Junior colleges, colleges, universities, and professional schools; private (6112,3)",611
+6110Y1,"Junior colleges, colleges, universities, and professional schools; state and local (6112,3)",611
+61120L,Junior colleges; local,6112
+61120P,Junior colleges; private,6112
+61120S,Junior colleges; state,6112
+813930,Labor unions and similar labor organizations,81393
+237200,Land subdivision,2372
+561730,Landscaping services,56173
+444200,Lawn and garden equipment and supplies retailers,4442
+316000,Leather and allied product manufacturing,316
+541100,Legal services,5411
+533000,Lessors of nonfinancial intangible assets (except copyrighted works),533
+999300,"Local government, excluding education and hospitals",9993
+492200,Local messengers and local delivery,4922
+113300,Logging,1133
+332710,Machine shops,33271
+332700,"Machine shops; turned product; and screw, nut, and bolt manufacturing",3327
+333000,Machinery manufacturing,333
+3330A1,"Machinery manufacturing (3331,2,4,9)",333
+423800,"Machinery, equipment, and supplies merchant wholesalers",4238
+550000,Management of companies and enterprises,55
+551000,Management of companies and enterprises,551
+541600,"Management, scientific, and technical consulting services",5416
+31-330,Manufacturing,31
+334600,Manufacturing and reproducing magnetic and optical media,3346
+238140,Masonry contractors,23814
+516210,"Media streaming distribution services, social networks, and other media networks and content providers",51621
+621500,Medical and diagnostic laboratories,6215
+339100,Medical equipment and supplies manufacturing,3391
+423000,"Merchant wholesalers, durable goods",423
+4230A1,"Merchant wholesalers, durable goods (4232,3,5,6,7,9)",423
+424000,"Merchant wholesalers, nondurable goods",424
+4240A3,"Merchant wholesalers, nondurable goods (4241,7,9)",424
+4240A2,"Merchant wholesalers, nondurable goods (4242,6)",424
+4240A1,"Merchant wholesalers, nondurable goods (4244,8)",424
+212200,Metal ore mining,2122
+333500,Metalworking machinery manufacturing,3335
+212000,Mining (except oil and gas),212
+210000,"Mining, quarrying, and oil and gas extraction",21
+5136A9,"Miscellaneous information services (5131, 516, 519)",5136
+339000,Miscellaneous manufacturing,339
+4590A1,Miscellaneous store retailers (4594 and 4595 only),459
+521-20,"Monetary authorities - central bank, and credit intermediation and related activities",521
+521000,Monetary authorities-central bank,521
+512000,Motion picture and sound recording industries,512
+512130,Motion picture and video exhibition,51213
+512100,Motion picture and video industries,5121
+423100,Motor vehicle and motor vehicle parts and supplies merchant wholesalers,4231
+441000,Motor vehicle and parts dealers,441
+336200,Motor vehicle body and trailer manufacturing,3362
+336100,Motor vehicle manufacturing,3361
+336300,Motor vehicle parts manufacturing,3363
+712000,"Museums, historical sites, and similar institutions",712
+221200,Natural gas distribution,2212
+334500,"Navigational, measuring, electromedical, and control instruments manufacturing",3345
+513110,Newspaper publishers,51311
+513100,"Newspaper, Periodical, Book, and Directory Publishers",5131
+522200,Nondepository credit intermediation,5222
+331400,Nonferrous metal (except aluminum) production and processing,3314
+212300,Nonmetallic mineral mining and quarrying,2123
+327000,Nonmetallic mineral product manufacturing,327
+236200,Nonresidential building construction,2362
+481200,Nonscheduled air transportation,4812
+221113,Nuclear electric power generation,221113
+623000,Nursing and residential care facilities,623
+623100,Nursing care facilities (skilled nursing facilities),6231
+561100,Office administrative services,5611
+621390,Offices of all other health practitioners,62139
+621310,Offices of chiropractors,62131
+621200,Offices of dentists,6212
+621330,Offices of mental health practitioners (except physicians),62133
+621320,Offices of optometrists,62132
+621300,Offices of other health practitioners,6213
+621340,"Offices of physical, occupational and speech therapists, and audiologists",62134
+621100,Offices of physicians,6211
+211000,Oil and gas extraction,211
+621900,Other ambulatory healthcare services,6219
+713900,Other amusement and recreation industries,7139
+811190,Other automotive repair and maintenance,81119
+238290,Other building equipment contractors,23829
+6110P2,Other educational services; private (6114-7),611
+6110Y2,Other educational services; state and local (6114-7),611
+221118,Other electric power generation,221118
+335900,Other electrical equipment and component manufacturing,3359
+311900,Other food manufacturing,3119
+337900,Other furniture related product manufacturing,3379
+237900,Other heavy and civil engineering construction,2379
+524290,Other insurance related activities,52429
+525900,Other investment pools and funds,5259
+339900,Other miscellaneous manufacturing,3399
+459900,Other miscellaneous retailers,4599
+441200,Other motor vehicle dealers,4412
+522290,Other nondepository credit intermediation,52229
+812900,Other personal services,8129
+486900,Other pipeline transportation,4869
+541900,"Other professional, scientific, and technical services",5419
+623900,Other residential care facilities,6239
+61160L,Other schools and instruction; local,6116
+61160P,Other schools and instruction; private,6116
+61160S,Other schools and instruction; state,6116
+810000,Other services (except public administration),81
+238900,Other specialty trade contractors,2389
+488900,Other support activities for transportation,4889
+561900,Other support services,5619
+485900,Other transit and ground passenger transportation,4859
+336900,Other transportation equipment manufacturing,3369
+321900,Other wood product manufacturing,3219
+621400,Outpatient care centers,6214
+621420,Outpatient mental health and substance abuse centers,62142
+238320,Painting and wall covering contractors,23832
+322000,Paper manufacturing,322
+711100,Performing arts companies,7111
+711000,"Performing arts, spectator sports, and related industries",711
+811400,Personal and household goods repair and maintenance,8114
+812000,Personal and laundry services,812
+812100,Personal care services,8121
+324000,Petroleum and coal products manufacturing,324
+325400,Pharmaceutical and medicine manufacturing,3254
+456110,Pharmacies and drug retailers,45611
+541920,Photographic services,54192
+486000,Pipeline transportation,486
+486100,Pipeline transportation of crude oil,4861
+486200,Pipeline transportation of natural gas,4862
+326000,Plastics and rubber products manufacturing,326
+326100,Plastics product manufacturing,3261
+238220,"Plumbing, heating, and air-conditioning contractors",23822
+491000,Postal service,491
+238110,Poured concrete foundation and structure contractors,23811
+237130,Power and communication line and related structures construction,23713
+331000,Primary metal manufacturing,331
+323000,Printing and related support activities,323
+814000,Private households,814
+423400,Professional and commercial equipment and supplies merchant wholesalers,4234
+541000,"Professional, scientific, and technical services",541
+540000,"Professional, scientific, and technical services",54
+7113-4,"Promoters of performing arts and sports, and agents for public figures",7113
+711300,"Promoters of performing arts, sports, and similar events",7113
+62220L,Psychiatric and substance abuse hospitals; local,6222
+62220P,Psychiatric and substance abuse hospitals; private,6222
+62220S,Psychiatric and substance abuse hospitals; state,6222
+513-90,"Publishing, broadcasting, and content providers",513
+322100,"Pulp, paper, and paperboard mills",3221
+721200,RV (recreational vehicle) parks and recreational camps,7212
+516100,Radio and Television Broadcasting Stations,5161
+516110,Radio broadcasting stations,51611
+482000,Rail transportation,482
+336500,Railroad rolling stock manufacturing,3365
+531000,Real estate,531
+530000,Real estate and rental and leasing,53
+813000,"Religious, grantmaking, civic, professional, and similar organizations",813
+562900,Remediation and other waste management services,5629
+532000,Rental and leasing services,532
+5320A1,"Rental and leasing services (5322,3,4)",532
+811000,Repair and maintenance,811
+541710,"Research and development in the physical, engineering, and life sciences",54171
+541720,Research and development in the social sciences and humanities,54172
+236100,Residential building construction,2361
+623210,Residential intellectual and developmental disability facilities,62321
+623200,"Residential intellectual and developmental disability, mental health, and substance abuse facilities",6232
+623220,Residential mental health and substance abuse facilities,62322
+44-450,Retail trade,44
+238160,Roofing contractors,23816
+721300,"Rooming and boarding houses, dormitories, and workers' camps",7213
+326200,Rubber product manufacturing,3262
+321100,Sawmills and wood preservation,3211
+487000,Scenic and sightseeing transportation,487
+487-80,Scenic and sightseeing transportation and support activities for transportation,487
+487100,"Scenic and sightseeing transportation, land",4871
+487900,"Scenic and sightseeing transportation, other",4879
+487200,"Scenic and sightseeing transportation, water",4872
+481100,Scheduled air transportation,4811
+485400,School and employee bus transportation,4854
+541700,Scientific research and development services,5417
+311700,Seafood product preparation and packaging,3117
+523000,"Securities, commodity contracts, and other financial investments and related activities",523
+561620,Security systems services,56162
+TE1100,Self-employed workers,
+334400,Semiconductor and other electronic component manufacturing,3344
+624120,Services for the elderly and persons with disabilities,62412
+561700,Services to buildings and dwellings,5617
+336600,Ship and boat building,3366
+458200,Shoe retailers,4582
+813300,Social advocacy organizations,8133
+624000,Social assistance,624
+513200,Software publishers,5132
+221114,Solar electric power generation,221114
+512200,Sound recording industries,5122
+722300,Special food services,7223
+541400,Specialized design services,5414
+62230L,Specialty (except psychiatric and substance abuse) hospitals; local,6223
+62230P,Specialty (except psychiatric and substance abuse) hospitals; private,6223
+62230S,Specialty (except psychiatric and substance abuse) hospitals; state,6223
+238000,Specialty trade contractors,238
+711200,Spectator sports,7112
+459110,Sporting goods retailers,45911
+459000,"Sporting goods, hobby, musical instrument, book, and miscellaneous retailers",459
+9992-3,"State and local government, excluding education and hospitals",9992
+999200,"State government, excluding education and hospitals",9992
+331200,Steel product manufacturing from purchased steel,3312
+311300,Sugar and confectionery product manufacturing,3113
+115000,Support activities for agriculture and forestry,115
+488100,Support activities for air transportation,4881
+213000,Support activities for mining,213
+488200,Support activities for rail transportation,4882
+488400,Support activities for road transportation,4884
+488000,Support activities for transportation,488
+488300,Support activities for water transportation,4883
+485300,Taxi and limousine service,4853
+61150L,Technical and trade schools; local,6115
+61150P,Technical and trade schools; private,6115
+61150S,Technical and trade schools; state,6115
+517000,Telecommunications,517
+516120,Television broadcasting stations,51612
+561320,Temporary help services,56132
+541380,Testing laboratories and services,54138
+313000,Textile mills,313
+314000,Textile product mills,314
+711110,Theater companies and dinner theaters,71111
+312200,Tobacco manufacturing,3122
+TE1200,Total wage and salary employment,
+TE1000,"Total, all industries",
+485000,Transit and ground passenger transportation,485
+48-490,Transportation and warehousing,48
+336000,Transportation equipment manufacturing,336
+561500,Travel arrangement and reservation services,5615
+721100,Traveler accommodation,7211
+484000,Truck transportation,484
+332720,"Turned product and screw, nut, and bolt manufacturing",33272
+485100,Urban transit systems,4851
+220000,Utilities,22
+221000,Utilities,221
+237100,Utility system construction,2371
+321200,"Veneer, plywood, and engineered wood product manufacturing",3212
+541940,Veterinary services,54194
+624300,Vocational rehabilitation services,6243
+493000,Warehousing and storage,493
+562100,Waste collection,5621
+562000,Waste management and remediation services,562
+562200,Waste treatment and disposal,5622
+483000,Water transportation,483
+221300,"Water, sewage and other systems",2213
+519000,"Web search portals, libraries, archives, and other information services",519
+420000,Wholesale trade,42
+425000,Wholesale trade agents and brokers,425
+221115,Wind electric power generation,221115
+321000,Wood product manufacturing,321

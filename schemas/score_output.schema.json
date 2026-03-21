@@ -9,6 +9,7 @@
     "willingness_to_pay",
     "growth",
     "market_scale",
+    "workflow_intensity",
     "thesis_fit",
     "software_wedge",
     "rollup_wedge",
@@ -37,6 +38,11 @@
       "maximum": 100
     },
     "market_scale": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "workflow_intensity": {
       "type": "number",
       "minimum": 0,
       "maximum": 100
