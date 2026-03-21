@@ -155,7 +155,6 @@ function renderShortlist() {
 
 function renderMemo(compareRows) {
   const memoPanel = document.querySelector("#memo-panel");
-  const memoText = buildMemoMarkdown(compareRows);
 
   if (!compareRows.length) {
     memoPanel.innerHTML = `
@@ -166,6 +165,8 @@ function renderMemo(compareRows) {
     `;
     return;
   }
+
+  const memoText = buildMemoMarkdown(compareRows);
 
   memoPanel.innerHTML = `
     <div class="memo-header">
@@ -267,6 +268,10 @@ function buildCompareCard(row) {
 
 function buildMemoMarkdown(compareRows) {
   const orderedRows = [...compareRows].sort((left, right) => left.rank - right.rank);
+  if (!orderedRows.length) {
+    return "";
+  }
+
   const leadRow = orderedRows[0];
   const shortlistNames = orderedRows.map((row) => `${row.entity_name} (${row.naics_code})`).join(", ");
   const generatedAt = new Date(state.payload.generated_at).toLocaleString();

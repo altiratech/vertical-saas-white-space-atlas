@@ -153,3 +153,18 @@ def test_static_explorer_includes_shortlist_compare_surface() -> None:
     assert "function buildMemoMarkdown(compareRows)" in app_js
     assert "function decisionRisk(row)" in app_js
     assert "function confidenceNote(row)" in app_js
+
+
+def test_static_explorer_guards_empty_shortlist_memo() -> None:
+    app_js = (ROOT / "site" / "app.js").read_text(encoding="utf-8")
+
+    render_memo_start = app_js.index("function renderMemo(compareRows)")
+    build_memo_start = app_js.index("function buildMemoMarkdown(compareRows)")
+    render_memo_block = app_js[render_memo_start:build_memo_start]
+    build_memo_block = app_js[build_memo_start:app_js.index("function compareMetric(", build_memo_start)]
+
+    assert render_memo_block.index("if (!compareRows.length)") < render_memo_block.index(
+        "const memoText = buildMemoMarkdown(compareRows);"
+    )
+    assert "if (!orderedRows.length)" in build_memo_block
+    assert 'return "";' in build_memo_block
